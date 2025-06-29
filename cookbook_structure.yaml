@@ -1,0 +1,18 @@
+sections:
+  - name: "Pasta"
+    recipes:
+      - "Spaghetti"
+  - name: "Rice & Noodles"
+    recipes:
+  - name: "Potatoes & Root Vegetables"
+    recipes:
+  - name: "Breads"
+    recipes:
+  - name: "Other Grains & Salads"
+    recipes:
+  - name: "BBQ"
+    recipes:
+  - name: "Brunch"
+    recipes:
+  - name: "Baking"
+    recipes:
