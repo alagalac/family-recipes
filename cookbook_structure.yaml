@@ -14,6 +14,7 @@ sections:
   - name: "Brunch"
     recipes:
       - "american-pancakes"
+      - "british-pancakes"
   - name: "Baking"
     recipes:
       - "cheese-scones"
