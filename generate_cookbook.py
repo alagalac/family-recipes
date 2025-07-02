@@ -116,8 +116,9 @@ def generate_pdf(cookbook_structure, recipes_folder):
             # Move Y to the lower of the two columns for next content
             pdf.set_y(max(y_after_ingredients, pdf.get_y()))
 
-            # Add Notes section if present
-            if recipe.get('notes'):
+            # Add Notes section if present (handle list or string)
+            notes = recipe.get('notes')
+            if notes:
                 pdf.ln(5)
                 pdf.set_font('Arial', 'B', 12)
                 pdf.set_text_color(60, 60, 120)
@@ -125,12 +126,15 @@ def generate_pdf(cookbook_structure, recipes_folder):
                 pdf.set_font('Arial', 'I', 12)
                 pdf.set_text_color(40, 40, 40)
                 pdf.set_fill_color(245, 245, 220)
-                pdf.multi_cell(0, 10, recipe['notes'], border=1, fill=True)
+                if isinstance(notes, list):
+                    for note in notes:
+                        # Use ASCII dash instead of Unicode bullet to avoid UnicodeEncodeError
+                        pdf.multi_cell(0, 10, f"- {note}", border=0, fill=True)
+                else:
+                    pdf.multi_cell(0, 10, notes, border=1, fill=True)
                 pdf.set_text_color(0, 0, 0)
                 pdf.set_font('Arial', '', 12)
                 pdf.set_fill_color(255, 255, 255)
-
-            # Remove commentary section here (already shown above)
 
             # Add Attribution section if present
             if recipe.get('attribution'):
@@ -191,12 +195,15 @@ def generate_word(cookbook_structure, recipes_folder):
             for i, step in enumerate(recipe['instructions'], start=1):
                 cells[1].add_paragraph(f"{i}. {step}")
 
-            # Add Notes section if present
-            if recipe.get('notes'):
+            # Add Notes section if present (handle list or string)
+            notes = recipe.get('notes')
+            if notes:
                 doc.add_paragraph('Notes', style='Heading 3')
-                doc.add_paragraph(recipe['notes'])
-
-            # Remove commentary section here (already shown above)
+                if isinstance(notes, list):
+                    for note in notes:
+                        doc.add_paragraph(note, style='List Bullet')
+                else:
+                    doc.add_paragraph(notes)
 
             # Add Attribution section if present
             if recipe.get('attribution'):
