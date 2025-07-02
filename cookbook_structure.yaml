@@ -15,5 +15,6 @@ sections:
     recipes:
   - name: "Baking"
     recipes:
+      - "cheese-scones"
       - "sourdough-bread"
       - "sourdough-starter"
