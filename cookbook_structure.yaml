@@ -13,6 +13,7 @@ sections:
     recipes:
   - name: "Brunch"
     recipes:
+      - "american-pancakes"
   - name: "Baking"
     recipes:
       - "cheese-scones"
