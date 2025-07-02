@@ -65,6 +65,15 @@ def generate_pdf(cookbook_structure, recipes_folder):
             pdf.cell(200, 10, recipe['title'], ln=True, align='L')
             pdf.ln(5)
 
+            # Add Commentary section if present (directly under title)
+            if recipe.get('commentary'):
+                pdf.set_font('Arial', 'I', 12)
+                pdf.set_text_color(100, 80, 40)
+                pdf.multi_cell(0, 10, recipe['commentary'])
+                pdf.set_text_color(0, 0, 0)
+                pdf.set_font('Arial', '', 12)
+                pdf.ln(3)
+
             # Horizontal row for prep time, cook time, and servings
             pdf.set_font('Arial', '', 12)
             pdf.cell(60, 10, f"Prep Time: {recipe['prep_time']}", align='L')
@@ -121,6 +130,17 @@ def generate_pdf(cookbook_structure, recipes_folder):
                 pdf.set_font('Arial', '', 12)
                 pdf.set_fill_color(255, 255, 255)
 
+            # Remove commentary section here (already shown above)
+
+            # Add Attribution section if present
+            if recipe.get('attribution'):
+                pdf.ln(2)
+                pdf.set_font('Arial', 'I', 10)
+                pdf.set_text_color(120, 120, 120)
+                pdf.cell(0, 8, f"Attribution: {recipe['attribution']}", ln=True)
+                pdf.set_text_color(0, 0, 0)
+                pdf.set_font('Arial', '', 12)
+
             # Page break after each recipe
             pdf.add_page()
 
@@ -149,6 +169,10 @@ def generate_word(cookbook_structure, recipes_folder):
             # Recipe Title (Big)
             doc.add_heading(recipe['title'], level=2)
 
+            # Add Commentary section if present (directly under title)
+            if recipe.get('commentary'):
+                doc.add_paragraph(recipe['commentary'], style='Intense Quote')
+
             # Prep Time, Cook Time, Servings in one row (horizontal)
             doc.add_paragraph(f"Prep Time: {recipe['prep_time']}  |  Cook Time: {recipe['cook_time']}  |  Servings: {recipe['servings']}")
 
@@ -171,6 +195,12 @@ def generate_word(cookbook_structure, recipes_folder):
             if recipe.get('notes'):
                 doc.add_paragraph('Notes', style='Heading 3')
                 doc.add_paragraph(recipe['notes'])
+
+            # Remove commentary section here (already shown above)
+
+            # Add Attribution section if present
+            if recipe.get('attribution'):
+                doc.add_paragraph(f"Attribution: {recipe['attribution']}", style='Intense Quote')
 
             # Add a page break after each recipe
             doc.add_page()
