@@ -78,22 +78,31 @@ def generate_pdf(cookbook_structure, recipes_folder):
             # Left column for Ingredients
             x_left = pdf.get_x()
             y_top = pdf.get_y()
-            pdf.cell(80, 10, 'Ingredients', border=1, align='C')
+            # Draw background for Ingredients header
+            pdf.set_fill_color(230, 240, 255)
+            pdf.cell(80, 10, 'Ingredients', border=1, align='C', fill=True)
             pdf.ln(10)
             pdf.set_font('Arial', '', 12)
+            pdf.set_fill_color(255, 255, 255)
             for ingredient in recipe['ingredients']:
-                pdf.multi_cell(80, 10, ingredient)
+                pdf.multi_cell(80, 8, ingredient, border=0, fill=True)
             y_after_ingredients = pdf.get_y()
 
             # Right column for Instructions
-            pdf.set_xy(x_left + 90, y_top)  # 10 units gap between columns
+            pdf.set_xy(x_left + 90, y_top)
             pdf.set_font('Arial', 'B', 12)
-            pdf.cell(110, 10, 'Instructions', border=1, align='C')
+            pdf.set_fill_color(230, 255, 230)
+            pdf.cell(110, 10, 'Instructions', border=1, align='C', fill=True)
             pdf.ln(10)
             pdf.set_font('Arial', '', 12)
+            pdf.set_fill_color(255, 255, 255)
             for i, step in enumerate(recipe['instructions'], start=1):
                 pdf.set_x(x_left + 90)
-                pdf.multi_cell(110, 10, f"{i}. {step}")
+                pdf.multi_cell(110, 8, f"{i}. {step}", border=0, fill=True)
+
+            # Draw a subtle vertical line between columns
+            pdf.set_draw_color(180, 180, 180)
+            pdf.line(x_left + 85, y_top, x_left + 85, max(y_after_ingredients, pdf.get_y()))
 
             # Move Y to the lower of the two columns for next content
             pdf.set_y(max(y_after_ingredients, pdf.get_y()))
@@ -102,9 +111,15 @@ def generate_pdf(cookbook_structure, recipes_folder):
             if recipe.get('notes'):
                 pdf.ln(5)
                 pdf.set_font('Arial', 'B', 12)
+                pdf.set_text_color(60, 60, 120)
                 pdf.cell(0, 10, 'Notes', ln=True)
+                pdf.set_font('Arial', 'I', 12)
+                pdf.set_text_color(40, 40, 40)
+                pdf.set_fill_color(245, 245, 220)
+                pdf.multi_cell(0, 10, recipe['notes'], border=1, fill=True)
+                pdf.set_text_color(0, 0, 0)
                 pdf.set_font('Arial', '', 12)
-                pdf.multi_cell(0, 10, recipe['notes'])
+                pdf.set_fill_color(255, 255, 255)
 
             # Page break after each recipe
             pdf.add_page()

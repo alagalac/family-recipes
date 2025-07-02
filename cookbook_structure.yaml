@@ -1,7 +1,6 @@
 sections:
   - name: "Pasta"
     recipes:
-      - "Spaghetti"
   - name: "Rice & Noodles"
     recipes:
   - name: "Potatoes & Root Vegetables"
@@ -16,3 +15,5 @@ sections:
     recipes:
   - name: "Baking"
     recipes:
+      - "sourdough-bread"
+      - "sourdough-starter"
