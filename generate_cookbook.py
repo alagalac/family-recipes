@@ -38,15 +38,17 @@ def generate_pdf(cookbook_structure, recipes_folder):
     pdf.add_page()
 
     # Set font for recipe name (Title)
-    pdf.set_font('Arial', 'B', 22)
-    pdf.cell(200, 10, 'My Cookbook', 0, 1, 'C')  # Cookbook Title
+    pdf.set_font('Arial', 'B', 36)
+    pdf.cell(200, 14, 'My Cookbook', 0, 1, 'C')  # Cookbook Title
     pdf.ln(10)
     pdf.add_page()
 
     for section in cookbook_structure['sections']:
         # Add Section Title
-        pdf.set_font('Arial', 'B', 16)
-        pdf.cell(200, 10, section['name'], ln=True, align='L')
+        pdf.set_font('Arial', 'B', 26)
+        pdf.set_text_color(30, 60, 120)
+        pdf.cell(200, 12, section['name'], ln=True, align='L')
+        pdf.set_text_color(0, 0, 0)
         pdf.ln(5)
         pdf.add_page()
 
@@ -61,37 +63,38 @@ def generate_pdf(cookbook_structure, recipes_folder):
             recipe = load_recipe(recipe_file)
 
             # Recipe Title (Big)
-            pdf.set_font('Arial', 'B', 18)
-            pdf.cell(200, 10, recipe['title'], ln=True, align='L')
+            pdf.set_font('Times', 'B', 26)
+            pdf.set_text_color(80, 30, 30)
+            pdf.cell(200, 12, recipe['title'], ln=True, align='L')
+            pdf.set_text_color(0, 0, 0)
             pdf.ln(5)
 
             # Add Commentary section if present (directly under title)
             if recipe.get('commentary'):
-                pdf.set_font('Arial', 'I', 12)
+                pdf.set_font('Times', 'I', 13)
                 pdf.set_text_color(100, 80, 40)
                 pdf.multi_cell(0, 10, recipe['commentary'])
                 pdf.set_text_color(0, 0, 0)
-                pdf.set_font('Arial', '', 12)
+                pdf.set_font('Helvetica', '', 12)
                 pdf.ln(3)
 
             # Horizontal row for prep time, cook time, and servings
-            pdf.set_font('Arial', '', 12)
+            pdf.set_font('Helvetica', '', 12)
             pdf.cell(60, 10, f"Prep Time: {recipe['prep_time']}", align='L')
             pdf.cell(60, 10, f"Cook Time: {recipe['cook_time']}", align='C')
             pdf.cell(60, 10, f"Servings: {recipe['servings']}", align='R')
             pdf.ln(12)
 
             # Split the page into two columns: ingredients and instructions
-            pdf.set_font('Arial', 'B', 12)
+            pdf.set_font('Helvetica', 'B', 13)
             
             # Left column for Ingredients
             x_left = pdf.get_x()
             y_top = pdf.get_y()
-            # Draw background for Ingredients header
             pdf.set_fill_color(230, 240, 255)
             pdf.cell(80, 10, 'Ingredients', border=1, align='C', fill=True)
             pdf.ln(10)
-            pdf.set_font('Arial', '', 12)
+            pdf.set_font('Courier', '', 11)
             pdf.set_fill_color(255, 255, 255)
             for ingredient in recipe['ingredients']:
                 pdf.multi_cell(80, 8, ingredient, border=0, fill=True)
@@ -99,11 +102,11 @@ def generate_pdf(cookbook_structure, recipes_folder):
 
             # Right column for Instructions
             pdf.set_xy(x_left + 90, y_top)
-            pdf.set_font('Arial', 'B', 12)
+            pdf.set_font('Helvetica', 'B', 13)
             pdf.set_fill_color(230, 255, 230)
             pdf.cell(110, 10, 'Instructions', border=1, align='C', fill=True)
             pdf.ln(10)
-            pdf.set_font('Arial', '', 12)
+            pdf.set_font('Courier', '', 11)
             pdf.set_fill_color(255, 255, 255)
             for i, step in enumerate(recipe['instructions'], start=1):
                 pdf.set_x(x_left + 90)
@@ -120,30 +123,29 @@ def generate_pdf(cookbook_structure, recipes_folder):
             notes = recipe.get('notes')
             if notes:
                 pdf.ln(5)
-                pdf.set_font('Arial', 'B', 12)
+                pdf.set_font('Helvetica', 'B', 12)
                 pdf.set_text_color(60, 60, 120)
                 pdf.cell(0, 10, 'Notes', ln=True)
-                pdf.set_font('Arial', 'I', 12)
+                pdf.set_font('Helvetica', 'I', 12)
                 pdf.set_text_color(40, 40, 40)
                 pdf.set_fill_color(245, 245, 220)
                 if isinstance(notes, list):
                     for note in notes:
-                        # Use ASCII dash instead of Unicode bullet to avoid UnicodeEncodeError
                         pdf.multi_cell(0, 10, f"- {note}", border=0, fill=True)
                 else:
                     pdf.multi_cell(0, 10, notes, border=1, fill=True)
                 pdf.set_text_color(0, 0, 0)
-                pdf.set_font('Arial', '', 12)
+                pdf.set_font('Helvetica', '', 12)
                 pdf.set_fill_color(255, 255, 255)
 
             # Add Attribution section if present
             if recipe.get('attribution'):
                 pdf.ln(2)
-                pdf.set_font('Arial', 'I', 10)
+                pdf.set_font('Helvetica', 'I', 10)
                 pdf.set_text_color(120, 120, 120)
                 pdf.cell(0, 8, f"Attribution: {recipe['attribution']}", ln=True)
                 pdf.set_text_color(0, 0, 0)
-                pdf.set_font('Arial', '', 12)
+                pdf.set_font('Helvetica', '', 12)
 
             # Page break after each recipe
             pdf.add_page()
