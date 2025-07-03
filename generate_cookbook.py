@@ -94,7 +94,7 @@ def generate_pdf(cookbook_structure, recipes_folder):
             pdf.set_fill_color(230, 240, 255)
             pdf.cell(80, 10, 'Ingredients', border=1, align='C', fill=True)
             pdf.ln(10)
-            pdf.set_font('Courier', '', 11)
+            pdf.set_font('Arial', '', 11)  # was 'Courier', '', 11
             pdf.set_fill_color(255, 255, 255)
             for ingredient in recipe['ingredients']:
                 pdf.multi_cell(80, 8, ingredient, border=0, fill=True)
@@ -106,7 +106,7 @@ def generate_pdf(cookbook_structure, recipes_folder):
             pdf.set_fill_color(230, 255, 230)
             pdf.cell(110, 10, 'Instructions', border=1, align='C', fill=True)
             pdf.ln(10)
-            pdf.set_font('Courier', '', 11)
+            pdf.set_font('Arial', '', 11)  # was 'Courier', '', 11
             pdf.set_fill_color(255, 255, 255)
             for i, step in enumerate(recipe['instructions'], start=1):
                 pdf.set_x(x_left + 90)
