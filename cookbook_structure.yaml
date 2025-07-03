@@ -1,6 +1,7 @@
 sections:
   - name: "Pasta"
     recipes:
+      - "gnocchi"
   - name: "Rice & Noodles"
     recipes:
   - name: "Potatoes & Root Vegetables"
