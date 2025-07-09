@@ -1,27 +1,26 @@
 sections:
-  - name: "Pasta"
+  - name: "Weekday meals"
     recipes:
       - "gnocchi"
-  - name: "Rice & Noodles"
-    recipes:
-  - name: "Potatoes & Root Vegetables"
-    recipes:
-  - name: "Breads"
+  - name: "Makeaways"
     recipes:
       - "burgers"
-  - name: "Other Grains & Salads"
-    recipes:
   - name: "BBQ"
+    recipes:
+  - name: "Sunday meals"
     recipes:
   - name: "Brunch"
     recipes:
       - "american-pancakes"
       - "british-pancakes"
+      - "corn-fritters"
+  - name: "Desserts"
+    recipes:
+      - "chocolate-pudding"
   - name: "Baking"
     recipes:
       - "cheese-scones"
       - "sourdough-bread"
       - "sourdough-starter"
       - "no-knead-bread"
-      - "chocolate-pudding"
       - "feijoa-chutney"
