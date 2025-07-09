@@ -3,6 +3,7 @@ sections:
     recipes:
       - "gnocchi"
       - "spag-bol"
+      - "chicken-leek-pasties"
   - name: "Makeaways"
     recipes:
       - "burgers"
