@@ -8,6 +8,7 @@ sections:
     recipes:
   - name: "Breads"
     recipes:
+      - "burgers"
   - name: "Other Grains & Salads"
     recipes:
   - name: "BBQ"
