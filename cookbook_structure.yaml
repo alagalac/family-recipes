@@ -8,6 +8,7 @@ sections:
       - "burgers"
   - name: "BBQ"
     recipes:
+      - "focaccia-bread"
   - name: "Sunday meals"
     recipes:
   - name: "Brunch"
