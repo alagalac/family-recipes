@@ -5,6 +5,7 @@ sections:
       - "spag-bol"
       - "chicken-leek-pasties"
       - "mini-meatloaves"
+      - "pita-nachos"
   - name: "Makeaways"
     recipes:
       - "burgers"
