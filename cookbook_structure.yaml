@@ -12,6 +12,7 @@ sections:
       - "focaccia-bread"
   - name: "Sunday meals"
     recipes:
+      - "pizzas"
   - name: "Brunch"
     recipes:
       - "american-pancakes"
