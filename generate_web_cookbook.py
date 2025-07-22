@@ -58,25 +58,103 @@ def generate_html_cookbook(structure_file, recipes_folder, output_file):
 <meta charset="utf-8">
 <title>My Family Cookbook</title>
 <style>
-body { font-family: Georgia, serif; margin: 0; padding: 0; background: #f8f8f8; }
-h1 { text-align: center; margin-top: 30px; }
-.section { page-break-before: always; margin: 40px 0 0 0; }
-.recipe { background: #fff; margin: 30px auto 40px auto; padding: 24px 32px; max-width: 800px; border-radius: 8px; box-shadow: 0 2px 8px #ddd; }
-.recipe h2 { margin-top: 0; color: #3a3a3a; }
-.meta { font-size: 1em; margin-bottom: 10px; color: #666; }
-.columns { display: flex; gap: 40px; }
-.ingredients, .instructions { flex: 1; }
-.ingredients ul, .notes ul { margin: 0; padding-left: 20px; }
-.instructions ol { margin: 0; padding-left: 20px; }
-.notes { background: #f3f3e6; padding: 10px 16px; border-radius: 6px; margin-top: 18px; }
-.commentary { font-style: italic; color: #7a5c2e; margin: 12px 0; }
-.attribution { font-size: 0.95em; color: #888; margin-top: 10px; }
+body {
+  font-family: Georgia, serif;
+  margin: 0;
+  padding: 0;
+  background: #f8f8f8;
+  color: #222;
+}
+h1, h2, h3, h4 {
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+h1 {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+}
+.section {
+  page-break-before: always;
+  margin: 60px 0 0 0;
+  border-top: 2px solid #e0e0e0;
+  padding-top: 30px;
+}
+.recipe {
+  background: #fff;
+  margin: 30px auto 40px auto;
+  padding: 28px 36px;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 4px 24px #e0e0e0;
+}
+.recipe h2 {
+  margin-top: 0;
+  color: #3a3a3a;
+  font-size: 2em;
+}
+.meta {
+  font-size: 1em;
+  margin-bottom: 14px;
+  color: #666;
+}
+.columns {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 10px;
+}
+.ingredients, .instructions {
+  flex: 1;
+  background: #f6f8fa;
+  border-radius: 6px;
+  padding: 12px 18px;
+  box-sizing: border-box;
+}
+.ingredients ul, .notes ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.instructions ol {
+  margin: 0;
+  padding-left: 20px;
+}
+.notes {
+  background: #f3f3e6;
+  padding: 12px 18px;
+  border-radius: 6px;
+  margin-top: 18px;
+  font-size: 1em;
+}
+.commentary {
+  font-style: italic;
+  color: #7a5c2e;
+  margin: 12px 0;
+  background: #fffbe8;
+  border-left: 4px solid #ffe08a;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+.attribution {
+  font-size: 0.95em;
+  color: #888;
+  margin-top: 10px;
+}
+@media (max-width: 700px) {
+  .columns {
+    flex-direction: column;
+    gap: 0;
+  }
+  .recipe {
+    padding: 16px 6vw;
+  }
+}
 @media print {
-  body { background: #fff; }
+  body { background: #fff; color: #000; }
   .recipe { box-shadow: none; page-break-inside: avoid; }
-  .section { page-break-before: always; }
-    @page {
-    margin: 0.3in 1in 0.3in 1in !important
+  .section { page-break-before: always; border: none; padding-top: 0; }
+  a, a:visited { color: #000; text-decoration: none; }
+  @page {
+    margin: 0.3in 1in 0.3in 1in !important;
   }
 }
 </style>
