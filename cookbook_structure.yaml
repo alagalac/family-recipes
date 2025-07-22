@@ -13,6 +13,7 @@ sections:
   - name: "BBQ"
     recipes:
       - "focaccia-bread"
+      - "pasta-salad"
   - name: "Sunday meals"
     recipes:
       - "pizzas"
