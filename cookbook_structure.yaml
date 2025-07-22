@@ -6,6 +6,7 @@ sections:
       - "chicken-leek-pasties"
       - "mini-meatloaves"
       - "pita-nachos"
+      - "chicken-chorizo-paella"
   - name: "Makeaways"
     recipes:
       - "burgers"
