@@ -1,5 +1,5 @@
 sections:
-  - name: "Weekday meals"
+  - name: "Quick Weeknights"
     recipes:
       - "gnocchi"
       - "spag-bol"
@@ -7,16 +7,19 @@ sections:
       - "mini-meatloaves"
       - "pita-nachos"
       - "chicken-chorizo-paella"
-  - name: "Makeaways"
+  - name: "Longer Weeknights"
+    recipes:
+      - "frittata"
+  - name: "Fakeaways"
     recipes:
       - "burgers"
-  - name: "BBQ"
+  - name: "Weekend"
+    recipes:
+      - "pizzas"
+  - name: "BBQ & Sharing"
     recipes:
       - "focaccia-bread"
       - "pasta-salad"
-  - name: "Sunday meals"
-    recipes:
-      - "pizzas"
   - name: "Brunch"
     recipes:
       - "american-pancakes"
