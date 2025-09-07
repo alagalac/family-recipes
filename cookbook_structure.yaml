@@ -29,6 +29,7 @@ sections:
   - name: "Desserts"
     recipes:
       - "chocolate-pudding"
+      - "tiramisu"
   - name: "Baking"
     recipes:
       - "cheese-scones"
