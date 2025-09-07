@@ -7,6 +7,7 @@ sections:
       - "mini-meatloaves"
       - "pita-nachos"
       - "chicken-chorizo-paella"
+      - "chicken-katsu-curry"
   - name: "Longer Weeknights"
     recipes:
       - "frittata"
