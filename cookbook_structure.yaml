@@ -1,7 +1,6 @@
 sections:
   - name: "Quick Weeknights"
     recipes:
-      - "gnocchi"
       - "spag-bol"
       - "chicken-leek-pasties"
       - "mini-meatloaves"
@@ -11,6 +10,7 @@ sections:
   - name: "Longer Weeknights"
     recipes:
       - "frittata"
+      - "gnocchi"
   - name: "Fakeaways"
     recipes:
       - "burgers"
