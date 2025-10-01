@@ -2,7 +2,103 @@
 
 ## Normalisation
 
-- Stardardise measures
+- Standardise measures
 - Ingredients subheadings
-- Serving sizes (all 4 servings)
+- Serving sizes all 4 servings
 - Sides???
+
+
+## Blank Recipes To Fill In
+
+- [ ] spaghetti-meatballs.yaml
+- [ ] spaghetti-carbonara.yaml
+- [ ] creamy-mushroom-pasta.yaml
+- [ ] prawn-fettuccine.yaml
+- [ ] macaroni-cheese.yaml
+- [ ] pesto-pasta.yaml
+- [ ] ravioli.yaml
+- [ ] orzo-tomato-risotto.yaml
+- [ ] stir-fry.yaml
+- [ ] fried-rice.yaml
+- [ ] chow-mein.yaml
+- [ ] thai-curry.yaml
+- [ ] massaman-curry.yaml
+- [ ] butter-chicken-curry.yaml
+- [ ] palak-paneer-curry.yaml
+- [ ] sausage-rolls.yaml
+- [ ] rissoles.yaml
+- [ ] mince-and-macaroni.yaml
+- [ ] shakshuka.yaml
+- [ ] stuffed-baked-potatoes.yaml
+- [ ] chilli-con-carne.yaml
+- [ ] lasagna.yaml
+- [ ] mushroom-risotto.yaml
+- [ ] okonomiyaki.yaml
+- [ ] pumpkin-soup.yaml
+- [ ] chicken-noodle-soup.yaml
+- [ ] tomato-soup.yaml
+- [ ] cottage-pie.yaml
+- [ ] shepherds-pie.yaml
+- [ ] chicken-pot-pie.yaml
+- [ ] mini-meatloafs.yaml
+- [ ] bangers-and-mash.yaml
+- [ ] mince-pie.yaml
+- [ ] pork-schnitzel.yaml
+- [ ] lamb-koftas.yaml
+- [ ] stuffed-capsicums.yaml
+- [ ] tofu-stuffing-balls.yaml
+- [ ] dumplings.yaml
+- [ ] ramen.yaml
+- [ ] pizza.yaml
+- [ ] calzone.yaml
+- [ ] beef-burgers.yaml
+- [ ] vege-burgers.yaml
+- [ ] fish-burgers.yaml
+- [ ] peanut-pork-burgers.yaml
+- [ ] hot-dogs.yaml
+- [ ] meatball-subs.yaml
+- [ ] fish-and-chips.yaml
+- [ ] gyros.yaml
+- [ ] kebab-wraps.yaml
+- [ ] banh-mi.yaml
+- [ ] falafel-wrap.yaml
+- [ ] nachos.yaml
+- [ ] quesadillas.yaml
+- [ ] burritos.yaml
+- [ ] burrito-bowl.yaml
+- [ ] sushi-bowls.yaml
+- [ ] enchiladas.yaml
+- [ ] vietnamese-pork-tacos.yaml
+- [ ] fish-tacos.yaml
+- [ ] pulled-beef-tacos.yaml
+- [ ] jfc.yaml
+- [ ] sweet-and-sour-pork.yaml
+- [ ] lemon-chicken.yaml
+- [ ] roast-pork.yaml
+- [ ] roast-lamb.yaml
+- [ ] roast-chicken.yaml
+- [ ] roast-beef.yaml
+- [ ] steak-and-chips.yaml
+- [ ] lamb-tagine.yaml
+- [ ] lamb-beef-stew.yaml
+- [ ] chorizo-paella.yaml
+- [ ] pulled-lamb-shoulder.yaml
+- [ ] bbq.yaml
+- [ ] roast-vege-salad.yaml
+- [ ] med-pasta-salad.yaml
+- [ ] lentil-pomegranate-salad.yaml
+- [ ] vege-kebabs.yaml
+- [ ] coleslaw.yaml
+- [ ] potato-salad.yaml
+- [ ] waffles.yaml
+- [ ] scrambled-eggs.yaml
+- [ ] self-saucing-pudding.yaml
+- [ ] crumble.yaml
+- [ ] carrot-cake.yaml
+- [ ] chocolate-cake.yaml
+- [ ] flat-bread.yaml
+- [ ] lemon-poppyseed-muffins.yaml
+- [ ] banana-bread.yaml
+- [ ] choc-chip-cookies.yaml
+- [ ] banana-pikelets.yaml
+- [ ] yorkshire-puddings.yaml
