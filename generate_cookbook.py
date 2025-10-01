@@ -96,8 +96,17 @@ def generate_pdf(cookbook_structure, recipes_folder):
             pdf.ln(10)
             pdf.set_font('Arial', '', 11)  # was 'Courier', '', 11
             pdf.set_fill_color(255, 255, 255)
-            for ingredient in recipe['ingredients']:
-                pdf.multi_cell(80, 8, ingredient, border=0, fill=True)
+            ingredients = recipe['ingredients']
+            if isinstance(ingredients, dict):
+                for subheading, items in ingredients.items():
+                    pdf.set_font('Helvetica', 'B', 12)
+                    pdf.multi_cell(80, 8, subheading, border=0, fill=True)
+                    pdf.set_font('Arial', '', 11)
+                    for ingredient in items:
+                        pdf.multi_cell(80, 8, ingredient, border=0, fill=True)
+            else:
+                for ingredient in ingredients:
+                    pdf.multi_cell(80, 8, ingredient, border=0, fill=True)
             y_after_ingredients = pdf.get_y()
 
             # Right column for Instructions
@@ -106,11 +115,22 @@ def generate_pdf(cookbook_structure, recipes_folder):
             pdf.set_fill_color(230, 255, 230)
             pdf.cell(110, 10, 'Instructions', border=1, align='C', fill=True)
             pdf.ln(10)
-            pdf.set_font('Arial', '', 11)  # was 'Courier', '', 11
+            pdf.set_font('Arial', '', 11)
             pdf.set_fill_color(255, 255, 255)
-            for i, step in enumerate(recipe['instructions'], start=1):
-                pdf.set_x(x_left + 90)
-                pdf.multi_cell(110, 8, f"{i}. {step}", border=0, fill=True)
+            instructions = recipe['instructions']
+            if isinstance(instructions, dict):
+                for subheading, steps in instructions.items():
+                    pdf.set_font('Helvetica', 'B', 12)
+                    pdf.set_x(x_left + 90)
+                    pdf.multi_cell(110, 8, subheading, border=0, fill=True)
+                    pdf.set_font('Arial', '', 11)
+                    for i, step in enumerate(steps, start=1):
+                        pdf.set_x(x_left + 90)
+                        pdf.multi_cell(110, 8, f"{i}. {step}", border=0, fill=True)
+            else:
+                for i, step in enumerate(instructions, start=1):
+                    pdf.set_x(x_left + 90)
+                    pdf.multi_cell(110, 8, f"{i}. {step}", border=0, fill=True)
 
             # Draw a subtle vertical line between columns
             pdf.set_draw_color(180, 180, 180)
@@ -189,13 +209,27 @@ def generate_word(cookbook_structure, recipes_folder):
 
             # Left column for Ingredients
             cells[0].text = 'Ingredients'
-            for ingredient in recipe['ingredients']:
-                cells[0].add_paragraph(ingredient)
+            ingredients = recipe['ingredients']
+            if isinstance(ingredients, dict):
+                for subheading, items in ingredients.items():
+                    cells[0].add_paragraph(subheading, style='Heading 4')
+                    for ingredient in items:
+                        cells[0].add_paragraph(ingredient)
+            else:
+                for ingredient in ingredients:
+                    cells[0].add_paragraph(ingredient)
 
             # Right column for Instructions
             cells[1].text = 'Instructions'
-            for i, step in enumerate(recipe['instructions'], start=1):
-                cells[1].add_paragraph(f"{i}. {step}")
+            instructions = recipe['instructions']
+            if isinstance(instructions, dict):
+                for subheading, steps in instructions.items():
+                    cells[1].add_paragraph(subheading, style='Heading 4')
+                    for i, step in enumerate(steps, start=1):
+                        cells[1].add_paragraph(f"{i}. {step}")
+            else:
+                for i, step in enumerate(instructions, start=1):
+                    cells[1].add_paragraph(f"{i}. {step}")
 
             # Add Notes section if present (handle list or string)
             notes = recipe.get('notes')

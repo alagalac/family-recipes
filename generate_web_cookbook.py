@@ -21,16 +21,43 @@ def render_recipe(recipe):
         html.append(f'<blockquote class="commentary">{html_escape(recipe["commentary"])}</blockquote>')
     html.append(f'<div class="meta"><strong>Prep Time:</strong> {html_escape(recipe.get("prep_time", ""))} | <strong>Cook Time:</strong> {html_escape(recipe.get("cook_time", ""))} | <strong>Servings:</strong> {html_escape(recipe.get("servings", ""))}</div>')
     html.append('<div class="columns">')
-    html.append('<div class="ingredients"><h3>Ingredients</h3><ul>')
-    for ing in recipe.get("ingredients", []):
-        if ing:
-            html.append(f'<li>{html_escape(ing)}</li>')
-    html.append('</ul></div>')
-    html.append('<div class="instructions"><h3>Instructions</h3><ol>')
-    for step in recipe.get("instructions", []):
-        if step:
+    # Ingredients block with subheading support
+    html.append('<div class="ingredients"><h3>Ingredients</h3>')
+    ingredients = recipe.get("ingredients", [])
+    if isinstance(ingredients, dict):
+        for subheading, items in ingredients.items():
+            html.append(f'<h4>{html_escape(subheading)}</h4>')
+            html.append('<ul>')
+            for ing in items:
+                if ing:
+                    html.append(f'<li>{html_escape(ing)}</li>')
+            html.append('</ul>')
+    else:
+        html.append('<ul>')
+        for ing in ingredients:
+            if ing:
+                html.append(f'<li>{html_escape(ing)}</li>')
+        html.append('</ul>')
+    html.append('</div>')
+
+    # Instructions block with subheading support
+    html.append('<div class="instructions"><h3>Instructions</h3>')
+    instructions = recipe.get("instructions", [])
+    if isinstance(instructions, dict):
+      for subheading, steps in instructions.items():
+        html.append(f'<h4>{html_escape(subheading)}</h4>')
+        html.append('<ol>')
+        for i, step in enumerate(steps, start=1):
+          if step:
             html.append(f'<li>{html_escape(step)}</li>')
-    html.append('</ol></div>')
+        html.append('</ol>')
+    else:
+        html.append('<ol>')
+        for step in instructions:
+            if step:
+                html.append(f'<li>{html_escape(step)}</li>')
+        html.append('</ol>')
+    html.append('</div>')
     html.append('</div>')
     notes = recipe.get("notes")
     if notes:
