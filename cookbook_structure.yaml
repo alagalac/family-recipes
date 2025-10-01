@@ -54,7 +54,6 @@ sections:
       - "ramen"
   - name: "Fakeaways"
     recipes:
-      - "burgers"
       - "calzone"
       - "beef-burgers"
       - "vege-burgers"
