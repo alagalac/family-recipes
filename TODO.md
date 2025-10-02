@@ -3,15 +3,15 @@
 ## Normalisation
 
 - Standardise measures
-- Ingredients subheadings
 - Serving sizes all 4 servings
 - Sides???
 
 
 ## Blank Recipes To Fill In
+- [ ] chicken-curry-filos.yaml
 
 - [ ] spaghetti-meatballs.yaml
-- [ ] spaghetti-carbonara.yaml
+- [x] spaghetti-carbonara.yaml
 - [ ] creamy-mushroom-pasta.yaml
 - [ ] prawn-fettuccine.yaml
 - [ ] macaroni-cheese.yaml

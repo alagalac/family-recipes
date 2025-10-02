@@ -30,6 +30,7 @@ sections:
       - "shakshuka"
       - "stuffed-baked-potatoes"
       - "chilli-con-carne"
+      - "chicken-curry-filos"
   - name: "Longer Weeknights"
     recipes:
       - "frittata"
