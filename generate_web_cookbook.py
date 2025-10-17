@@ -187,7 +187,7 @@ h1 {
 </style>
 </head>
 <body>
-<h1>My Family Cookbook</h1>
+<h1>My Cookbook</h1>
 """)
     for section in cookbook['sections']:
         html.append(f'<div class="section"><h1>{html_escape(section["name"])}</h1>')
