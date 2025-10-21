@@ -22,7 +22,6 @@ sections:
       - "massaman-curry"
       - "butter-chicken-curry"
       - "palak-paneer-curry"
-      - "frittata"
       - "corn-fritters"
       - "sausage-rolls"
       - "rissoles"
@@ -101,6 +100,7 @@ sections:
       - "tofu-stuffing-balls"
       - "coleslaw"
       - "potato-salad"
+      - "thai slaw"
   - name: "Brunch"
     recipes:
       - "american-pancakes"
@@ -116,6 +116,7 @@ sections:
       - "carrot-cake"
       - "chocolate-cake"
       - "chocolate-mousse"
+      - "milk-tart"
   - name: "Baking"
     recipes:
       - "cheese-scones"
