@@ -30,6 +30,7 @@ sections:
       - "stuffed-baked-potatoes"
       - "chilli-con-carne"
       - "chicken-curry-filos"
+      - "tofu-stuffing-balls"
   - name: "Longer Weeknights"
     recipes:
       - "frittata"
@@ -50,6 +51,8 @@ sections:
       - "tofu-stuffing-balls"
       - "dumplings"
       - "ramen"
+      - "chicken-tarragon-sauce"
+      - "sweet-potato-quinoa-patties"
   - name: "Fakeaways"
     recipes:
       - "calzone"
@@ -97,7 +100,11 @@ sections:
       - "lentil-pomegranate-salad"
       - "vege-kebabs"
       - "stuffed-capsicums"
-      - "tofu-stuffing-balls"
+  - name: "Sides"
+    recipes:
+      - "sweet-sour-yams"
+      - "leek-in-white-sauce"
+      - "sweet-sour-cabbage"
       - "coleslaw"
       - "potato-salad"
       - "thai slaw"

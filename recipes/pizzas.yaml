@@ -3,10 +3,27 @@ prep_time: "30 minutes"
 cook_time: "15 minutes"
 servings: "4 pizzas"
 ingredients:
-  - "Pizza dough"
-  - "1 can tomato puree (400g)"
-  - "Mozzarella cheese"
-  - "Toppings of choice (pepperoni, mushrooms, peppers, etc.)"
+  Bases:
+    - "Pizza dough"
+    - "1 can tomato puree (400g)"
+    - "2 tsp Mixed herbs"
+    - "Mozzarella cheese"
+    - "Toppings of choice (pepperoni, mushrooms, peppers, etc.)"
+  Hawaiian:
+    - "Ham"
+    - "Pineapple"
+  Potato & Rosemary:
+    - "Potatoes, thinly sliced"
+    - "Fresh rosemary"
+    - "Garlic aioli"
+  Chicken & Plum Sauce:
+    - "Cooked chicken, shredded"
+    - "Plum sauce (cranberry or apricot sauce can be used as alternatives)"
+  Supreme:
+    - "Tomato"
+    - "Mushrooms"
+    - "Capsicum"
+    - "Olives"
 instructions:
   - "Preheat the oven to 220°C."
   - "Roll out the pizza dough on a floured surface."
