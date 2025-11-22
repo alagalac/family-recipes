@@ -69,7 +69,6 @@ sections:
       - "quesadillas"
       - "burritos"
       - "burrito-bowl"
-      - "sushi-bowls"
       - "enchiladas"
       - "vietnamese-pork-tacos"
       - "fish-tacos"
@@ -79,10 +78,7 @@ sections:
   - name: "Weekend"
     recipes:
       - "pizzas"
-      - "roast-pork"
-      - "roast-lamb"
-      - "roast-chicken"
-      - "roast-beef"
+      - "roast"
       - "steak-and-chips"
       - "lamb-tagine"
       - "lamb-beef-stew"
@@ -92,11 +88,9 @@ sections:
     recipes:
       - "focaccia-bread"
       - "pasta-salad"
-      - "bbq"
       - "roast-vege-salad"
       - "lentil-pomegranate-salad"
       - "vege-kebabs"
-      - "stuffed-capsicums"
   - name: "Sides"
     recipes:
       - "sweet-sour-yams"
