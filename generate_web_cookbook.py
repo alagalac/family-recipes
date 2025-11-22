@@ -209,6 +209,6 @@ h1 {
 if __name__ == "__main__":
     structure_file = "cookbook_structure.yaml"
     recipes_folder = "./recipes"
-    output_file = "./site/index.html"
+    output_file = "./docs/index.html"
     generate_html_cookbook(structure_file, recipes_folder, output_file)
     print(f"Cookbook HTML generated: {output_file}")
