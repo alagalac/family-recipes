@@ -13,7 +13,6 @@ sections:
       - "prawn-fettuccine"
       - "macaroni-cheese"
       - "pesto-pasta"
-      - "ravioli"
       - "orzo-tomato-risotto"
       - "stir-fry"
       - "fried-rice"
@@ -24,7 +23,6 @@ sections:
       - "palak-paneer-curry"
       - "corn-fritters"
       - "sausage-rolls"
-      - "rissoles"
       - "mince-and-macaroni"
       - "shakshuka"
       - "stuffed-baked-potatoes"
@@ -78,7 +76,6 @@ sections:
       - "pulled-beef-tacos"
       - "jfc"
       - "sweet-and-sour-pork"
-      - "lemon-chicken"
   - name: "Weekend"
     recipes:
       - "pizzas"

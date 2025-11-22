@@ -5,6 +5,9 @@
 - Standardise measures
 - Serving sizes all 4 servings
 - Sides???
+- Better site navigation
+- Split out layout etc from generation script
+- Add a foreword section
 
 
 ## Blank Recipes To Fill In
