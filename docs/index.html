@@ -1,116 +1,156 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>My Family Cookbook</title>
-<style>
-body {
-  font-family: Georgia, serif;
-  margin: 0;
-  padding: 0;
-  background: #f8f8f8;
-  color: #222;
-}
-h1, h2, h3, h4 {
-  font-family: 'Segoe UI', Arial, sans-serif;
-}
-h1 {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 2.5em;
-  letter-spacing: 1px;
-}
-.section {
-  page-break-before: always;
-  margin: 60px 0 0 0;
-  border-top: 2px solid #e0e0e0;
-  padding-top: 30px;
-}
-.recipe {
-  background: #fff;
-  margin: 30px auto 40px auto;
-  padding: 28px 36px;
-  max-width: 800px;
-  border-radius: 10px;
-  box-shadow: 0 4px 24px #e0e0e0;
-}
-.recipe h2 {
-  margin-top: 0;
-  color: #3a3a3a;
-  font-size: 2em;
-}
-.meta {
-  font-size: 1em;
-  margin-bottom: 14px;
-  color: #666;
-}
-.columns {
-  display: flex;
-  gap: 40px;
-  margin-bottom: 10px;
-}
-.ingredients, .instructions {
-  flex: 1;
-  background: #f6f8fa;
-  border-radius: 6px;
-  padding: 12px 18px;
-  box-sizing: border-box;
-}
-.ingredients ul, .notes ul {
-  margin: 0;
-  padding-left: 20px;
-}
-.instructions ol {
-  margin: 0;
-  padding-left: 20px;
-}
-.notes {
-  background: #f3f3e6;
-  padding: 12px 18px;
-  border-radius: 6px;
-  margin-top: 18px;
-  font-size: 1em;
-}
-.commentary {
-  font-style: italic;
-  color: #7a5c2e;
-  margin: 12px 0;
-  background: #fffbe8;
-  border-left: 4px solid #ffe08a;
-  padding: 8px 16px;
-  border-radius: 4px;
-}
-.attribution {
-  font-size: 0.95em;
-  color: #888;
-  margin-top: 10px;
-}
-@media (max-width: 700px) {
-  .columns {
-    flex-direction: column;
-    gap: 0;
-  }
-  .recipe {
-    padding: 16px 6vw;
-  }
-}
-@media print {
-  body { background: #fff; color: #000; }
-  .recipe { box-shadow: none; page-break-inside: avoid; }
-  .section { page-break-before: always; border: none; padding-top: 0; }
-  a, a:visited { color: #000; text-decoration: none; }
-  @page {
-    margin: 0.3in 1in 0.3in 1in !important;
-  }
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<nav class="recipe-nav">
+<h3>Quick Weeknights</h3>
+<ul>
+<li><a href="#spag-bol">Spag Bol</a></li>
+<li><a href="#chicken-leek-pasties">Chicken &amp; Leek Pasties</a></li>
+<li><a href="#mini-meatloaves">Mini Meatloaves with Carrot Potato Mash</a></li>
+<li><a href="#pita-nachos">Pita Nachos</a></li>
+<li><a href="#chicken-chorizo-paella">Chicken Chroizo Paella</a></li>
+<li><a href="#chicken-katsu-curry">Chicken Katsu Curry</a></li>
+<li><a href="#spaghetti-meatballs">Spaghetti Meatballs</a></li>
+<li><a href="#spaghetti-carbonara">Spaghetti Carbonara (Traditional)</a></li>
+<li><a href="#creamy-mushroom-pasta">Creamy Mushroom Pasta</a></li>
+<li><a href="#prawn-fettuccine">King Prawn Linguine</a></li>
+<li><a href="#macaroni-cheese">Baked Mac and Cheese</a></li>
+<li><a href="#pesto-pasta">Pesto Pasta</a></li>
+<li><a href="#orzo-tomato-risotto">Orzo Tomato Risotto</a></li>
+<li><a href="#stir-fry">Stir Fry</a></li>
+<li><a href="#fried-rice">Pineapple Fried Rice</a></li>
+<li><a href="#chow-mein">Chow Mein</a></li>
+<li><a href="#thai-curry">Thai Curry</a></li>
+<li><a href="#massaman-curry">Massaman Curry</a></li>
+<li><a href="#butter-chicken-curry">Butter Chicken Curry</a></li>
+<li><a href="#palak-paneer-curry">Palak Paneer Curry</a></li>
+<li><a href="#corn-fritters">Corn Fritters</a></li>
+<li><a href="#sausage-rolls">Sausage Rolls</a></li>
+<li><a href="#mince-and-macaroni">Mince and Macaroni</a></li>
+<li><a href="#shakshuka">Shakshuka</a></li>
+<li><a href="#stuffed-baked-potatoes">Stuffed Baked Potatoes</a></li>
+<li><a href="#chilli-con-carne">Chilli Con Carne</a></li>
+<li><a href="#chicken-curry-filos">Chicken Curry Filos</a></li>
+<li><a href="#tofu-stuffing-balls">Pistachio &amp; Cranberry Stuffing Balls</a></li>
+</ul>
+<h3>Longer Weeknights</h3>
+<ul>
+<li><a href="#frittata">Vegeful Frittata</a></li>
+<li><a href="#gnocchi">Gnocchi</a></li>
+<li><a href="#lasagna">Lasagna</a></li>
+<li><a href="#mushroom-risotto">Mushroom Risotto</a></li>
+<li><a href="#okonomiyaki">Hiroshima Okonomiyaki</a></li>
+<li><a href="#pumpkin-soup">Pumpkin Soup</a></li>
+<li><a href="#chicken-noodle-soup">Chicken Noodle Soup</a></li>
+<li><a href="#tomato-soup">Tomato Soup</a></li>
+<li><a href="#cottage-pie">Cottage Pie</a></li>
+<li><a href="#chicken-pot-pie">Chicken Pot Pie</a></li>
+<li><a href="#bangers-and-mash">Bangers and Mash</a></li>
+<li><a href="#mince-pie">Mince Pie</a></li>
+<li><a href="#pork-schnitzel">Schnitzel</a></li>
+<li><a href="#lamb-koftas">Lamb Koftas</a></li>
+<li><a href="#stuffed-capsicums">Stuffed Capsicums</a></li>
+<li><a href="#tofu-stuffing-balls">Pistachio &amp; Cranberry Stuffing Balls</a></li>
+<li><a href="#dumplings">Dumplings</a></li>
+<li><a href="#ramen">Ramen</a></li>
+<li><a href="#sweet-potato-quinoa-patties">Sweet Potato &amp; Quinoa Patties</a></li>
+</ul>
+<h3>Fakeaways</h3>
+<ul>
+<li><a href="#calzone">Calzone</a></li>
+<li><a href="#beef-burgers">Beef Burgers</a></li>
+<li><a href="#vege-burgers">Kumara, Chickpea, and Mushroom Burgers</a></li>
+<li><a href="#fish-burgers">Fish Burgers</a></li>
+<li><a href="#peanut-pork-burgers">Peanut Pork Burgers</a></li>
+<li><a href="#hot-dogs">Hot Dogs</a></li>
+<li><a href="#meatball-subs">Meatball Subs</a></li>
+<li><a href="#fish-and-chips">Fish and Chips</a></li>
+<li><a href="#gyros">Gyros</a></li>
+<li><a href="#kebab-wraps">Kebab Wraps</a></li>
+<li><a href="#banh-mi">Banh Mi</a></li>
+<li><a href="#falafel-wrap">Falafel Wrap</a></li>
+<li><a href="#nachos">Nachos</a></li>
+<li><a href="#quesadillas">Quesadillas</a></li>
+<li><a href="#burritos">Burritos</a></li>
+<li><a href="#burrito-bowl">Burrito Bowl</a></li>
+<li><a href="#sushi-bowls">Sushi Bowls</a></li>
+<li><a href="#enchiladas">Enchiladas</a></li>
+<li><a href="#vietnamese-pork-tacos">Vietnamese Pork Tacos</a></li>
+<li><a href="#fish-tacos">Fish Tacos</a></li>
+<li><a href="#pulled-beef-tacos">Pulled Beef Tacos</a></li>
+<li><a href="#jfc">JFC</a></li>
+<li><a href="#sweet-and-sour-pork">Sweet and Sour Pork</a></li>
+</ul>
+<h3>Weekend</h3>
+<ul>
+<li><a href="#pizzas">Pizzas</a></li>
+<li><a href="#roast-pork">Roast Pork</a></li>
+<li><a href="#roast-lamb">Roast Lamb</a></li>
+<li><a href="#roast-chicken">Roast Chicken</a></li>
+<li><a href="#roast-beef">Roast Beef</a></li>
+<li><a href="#steak-and-chips">Steak and Chips</a></li>
+<li><a href="#lamb-tagine">Lamb Tagine</a></li>
+<li><a href="#lamb-beef-stew">Lamb / Beef Stew</a></li>
+<li><a href="#chicken-leek-pasties">Chicken &amp; Leek Pasties</a></li>
+<li><a href="#pulled-lamb-shoulder">Pulled Lamb Shoulder</a></li>
+</ul>
+<h3>BBQ &amp; Sharing</h3>
+<ul>
+<li><a href="#focaccia-bread">Focaccia Bread</a></li>
+<li><a href="#pasta-salad">Pasta Salad</a></li>
+<li><a href="#bbq">BBQ</a></li>
+<li><a href="#roast-vege-salad">Roast Vege Salad</a></li>
+<li><a href="#lentil-pomegranate-salad">Lentil Pomegranate Salad</a></li>
+<li><a href="#vege-kebabs">Vege Kebabs</a></li>
+<li><a href="#stuffed-capsicums">Stuffed Capsicums</a></li>
+</ul>
+<h3>Sides</h3>
+<ul>
+<li><a href="#coleslaw">Coleslaw</a></li>
+<li><a href="#potato-salad">Potato Salad</a></li>
+</ul>
+<h3>Brunch</h3>
+<ul>
+<li><a href="#american-pancakes">American Pancakes</a></li>
+<li><a href="#british-pancakes">British Pancakes</a></li>
+<li><a href="#corn-fritters">Corn Fritters</a></li>
+<li><a href="#waffles">Waffles</a></li>
+<li><a href="#scrambled-eggs">Scrambled Eggs</a></li>
+</ul>
+<h3>Desserts</h3>
+<ul>
+<li><a href="#chocolate-pudding">Self-saucing Chocolate Pudding</a></li>
+<li><a href="#tiramisu">Tiramisu</a></li>
+<li><a href="#crumble">Crumble</a></li>
+<li><a href="#carrot-cake">Carrot Cake</a></li>
+<li><a href="#chocolate-cake">Chocolate Cake</a></li>
+<li><a href="#milk-tart">South African Milk Tart</a></li>
+</ul>
+<h3>Baking</h3>
+<ul>
+<li><a href="#cheese-scones">Cheese Scones</a></li>
+<li><a href="#sourdough-bread">Sourdough Bread</a></li>
+<li><a href="#sourdough-starter">Sourdough Starter (feeding)</a></li>
+<li><a href="#no-knead-bread">No Knead Bread</a></li>
+<li><a href="#feijoa-chutney">Feijoa Chutney</a></li>
+<li><a href="#yoghurt">Greek Yoghurt (EasiYo)</a></li>
+<li><a href="#flat-bread">Garlic Butter Flatbreads</a></li>
+<li><a href="#lemon-poppyseed-muffins">Lemon Poppy Seed Muffins</a></li>
+<li><a href="#banana-bread">Banana Bread</a></li>
+<li><a href="#choc-chip-cookies">Choc Chip Cookies</a></li>
+<li><a href="#banana-pikelets">Banana Pikelets</a></li>
+<li><a href="#yorkshire-puddings">Yorkshire Puddings</a></li>
+</ul>
+</nav>
+<main>
 <h1>My Cookbook</h1>
-
 <div class="section"><h1>Quick Weeknights</h1>
-<div class="recipe">
+<div class="recipe" id="spag-bol">
 <h2>Spag Bol</h2>
 <blockquote class="commentary">One of our quick and easy go to meals. The carrots are the secret to making the sauce sweet and tasty.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 15 minutes | <strong>Cook Time:</strong> 30 minutes | <strong>Servings:</strong> 4 servings</div>
@@ -144,7 +184,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="chicken-leek-pasties">
 <h2>Chicken &amp; Leek Pasties</h2>
 <blockquote class="commentary">The pastry from this recipe is amazing BTW. I used it to make beef wellingtons for some friends once and they were dreaming about the pastry months later. If there&#x27;s anything you take from this recipe, it&#x27;s the pastry!</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 1 hour | <strong>Cook Time:</strong> 25 minutes | <strong>Servings:</strong> 4 (4 pasties)</div>
@@ -191,7 +231,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: River Cottage</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="mini-meatloaves">
 <h2>Mini Meatloaves with Carrot Potato Mash</h2>
 <blockquote class="commentary">The girls really love these mini meatloaves, and they don&#x27;t usually like meat otherwise.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 25 minutes | <strong>Cook Time:</strong> 20-30 minutes | <strong>Servings:</strong> 5</div>
@@ -238,7 +278,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Adapted from Dinner Done Better by My Food Bag</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="pita-nachos">
 <h2>Pita Nachos</h2>
 <blockquote class="commentary">We find a lot of the corn chips are too salty, so we prefer to make our own pita chips. They get super crispy.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 5 minutes | <strong>Cook Time:</strong> 20 minutes | <strong>Servings:</strong> 4</div>
@@ -274,7 +314,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="chicken-chorizo-paella">
 <h2>Chicken Chroizo Paella</h2>
 <blockquote class="commentary">One of our top recipes that we cooked when living in the UK. We loved using good quality spanish chorizo.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 20 minutes | <strong>Cook Time:</strong> 20 minutes | <strong>Servings:</strong> 4</div>
@@ -310,7 +350,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Recipes that Work by HelloFresh</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="chicken-katsu-curry">
 <h2>Chicken Katsu Curry</h2>
 <blockquote class="commentary">They used to have a Wagamama in Wellington, and I loved going there for the katsu curry. It turns out they still have them in the UK, and so we often went there for katsu curry too!</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 10 mins | <strong>Cook Time:</strong> 15 mins | <strong>Servings:</strong> 2</div>
@@ -364,7 +404,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Wagamama</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="spaghetti-meatballs">
 <h2>Spaghetti Meatballs</h2>
 <blockquote class="commentary">Another easy spaghetti recipe.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 20 mins | <strong>Cook Time:</strong> 20 mins | <strong>Servings:</strong> 4</div>
@@ -404,7 +444,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="spaghetti-carbonara">
 <h2>Spaghetti Carbonara (Traditional)</h2>
 <blockquote class="commentary">Kimmie likes creamy pasta dishes. I really like this more traditional version of carbonara, which is creamy without using cream.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 5m | <strong>Cook Time:</strong> 15m | <strong>Servings:</strong> 4</div>
@@ -448,7 +488,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Recipetin Eats</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="creamy-mushroom-pasta">
 <h2>Creamy Mushroom Pasta</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -467,7 +507,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="prawn-fettuccine">
 <h2>King Prawn Linguine</h2>
 <div class="meta"><strong>Prep Time:</strong> 5 minutes | <strong>Cook Time:</strong> 15 minutes | <strong>Servings:</strong> 2</div>
 <div class="columns">
@@ -506,7 +546,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Recipes That Work by Hello Fresh</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="macaroni-cheese">
 <h2>Baked Mac and Cheese</h2>
 <div class="meta"><strong>Prep Time:</strong> 10 minutes | <strong>Cook Time:</strong> 1 hour | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -564,7 +604,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: RecipeTin Eats</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="pesto-pasta">
 <h2>Pesto Pasta</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -583,7 +623,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="orzo-tomato-risotto">
 <h2>Orzo Tomato Risotto</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -602,7 +642,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="stir-fry">
 <h2>Stir Fry</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -621,7 +661,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="fried-rice">
 <h2>Pineapple Fried Rice</h2>
 <blockquote class="commentary">This fried rice was a hit with the girls, especially the pineapple!</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 20 minutes | <strong>Cook Time:</strong> 30 minutes | <strong>Servings:</strong> 4</div>
@@ -673,7 +713,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Nadia&#x27;s Comfort Kitchen by Nadia Lim</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="chow-mein">
 <h2>Chow Mein</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -692,7 +732,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="thai-curry">
 <h2>Thai Curry</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -711,7 +751,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="massaman-curry">
 <h2>Massaman Curry</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -730,7 +770,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="butter-chicken-curry">
 <h2>Butter Chicken Curry</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -749,7 +789,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="palak-paneer-curry">
 <h2>Palak Paneer Curry</h2>
 <blockquote class="commentary">This isn&#x27;t a traditional palak paneer recipe, but it&#x27;s what the kids like! The grated carrots help to bulk it out and sweeten the sauce.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 10 minutes | <strong>Cook Time:</strong> 30 minutes | <strong>Servings:</strong> 4</div>
@@ -794,7 +834,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: My own recipe</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="corn-fritters">
 <h2>Corn Fritters</h2>
 <blockquote class="commentary">I like this recipe because it doesn&#x27;t use eggs, and it has lots of chunky corn in it.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 10 minutes | <strong>Cook Time:</strong> 15 minutes | <strong>Servings:</strong> 4 servings</div>
@@ -827,7 +867,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: adapted from Hello Fresh: Recipes that Work</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="sausage-rolls">
 <h2>Sausage Rolls</h2>
 <blockquote class="commentary">Everybody likes sausage rolls! These ones work well cold too.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 20 minutes | <strong>Cook Time:</strong> 30 minutes | <strong>Servings:</strong> 6</div>
@@ -862,7 +902,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Adapted from Kiwi Favourites by My Food Bag</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="mince-and-macaroni">
 <h2>Mince and Macaroni</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -881,7 +921,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="shakshuka">
 <h2>Shakshuka</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -900,7 +940,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="stuffed-baked-potatoes">
 <h2>Stuffed Baked Potatoes</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -919,7 +959,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="chilli-con-carne">
 <h2>Chilli Con Carne</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -938,7 +978,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="chicken-curry-filos">
 <h2>Chicken Curry Filos</h2>
 <blockquote class="commentary">When making this recipe we bought puff pastry instead by accident, but it worked just as well.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 15m | <strong>Cook Time:</strong> 30m | <strong>Servings:</strong> 4-5</div>
@@ -980,7 +1020,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Family Favourites by Bargain Box</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="tofu-stuffing-balls">
 <h2>Pistachio &amp; Cranberry Stuffing Balls</h2>
 <blockquote class="commentary">It turns out one of our favourite parts of a roast chicken is the stuffing, so why not have a meal based on stuffing! The tofu keeps the stuffing balls nice and moist.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 10m | <strong>Cook Time:</strong> 40m | <strong>Servings:</strong> 4</div>
@@ -1042,7 +1082,7 @@ h1 {
 </div>
 </div>
 <div class="section"><h1>Longer Weeknights</h1>
-<div class="recipe">
+<div class="recipe" id="frittata">
 <h2>Vegeful Frittata</h2>
 <blockquote class="commentary">I didn&#x27;t think that I liked frittatas until I tried this recipe. It&#x27;s great, and since then I&#x27;ve started ordering the frittata on our Qantas flights between Sydney and Wellington! Lexie and Kaira love this one too.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 15 minutes | <strong>Cook Time:</strong> 45 minutes | <strong>Servings:</strong> 4 - 6</div>
@@ -1076,7 +1116,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Vegeful by Nadia Lim</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="gnocchi">
 <h2>Gnocchi</h2>
 <blockquote class="commentary">I really love this recipe. I&#x27;ve made it a couple of times for my parents and it&#x27;s never failed to impress.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 30 minutes | <strong>Cook Time:</strong> 1 hour 15 minutes | <strong>Servings:</strong> 4</div>
@@ -1118,7 +1158,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Adapted from a recipe by Nadia Lim</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="lasagna">
 <h2>Lasagna</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1137,7 +1177,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="mushroom-risotto">
 <h2>Mushroom Risotto</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1156,7 +1196,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="okonomiyaki">
 <h2>Hiroshima Okonomiyaki</h2>
 <blockquote class="commentary">We encountered Hiroshima-style okonomiyaki during our holiday to Japan. We love it and have included it here, but we don&#x27;t make it that often as it is quite tricky and messy!</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 5 mins | <strong>Cook Time:</strong> 20 mins | <strong>Servings:</strong> 2</div>
@@ -1215,7 +1255,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: RecipeTin Eats: Japan</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="pumpkin-soup">
 <h2>Pumpkin Soup</h2>
 <blockquote class="commentary">We like to make pumpkin soup. This recipe is really easy and quick.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 5m | <strong>Cook Time:</strong> 10m | <strong>Servings:</strong> 4-6</div>
@@ -1254,7 +1294,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: RecipeTin Eats</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="chicken-noodle-soup">
 <h2>Chicken Noodle Soup</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1273,7 +1313,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="tomato-soup">
 <h2>Tomato Soup</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1292,7 +1332,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="cottage-pie">
 <h2>Cottage Pie</h2>
 <blockquote class="commentary">A good hearty classic. I like to have it with HP sauce.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 15 minutes | <strong>Cook Time:</strong> 45 minutes | <strong>Servings:</strong> 6</div>
@@ -1339,7 +1379,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Adapted from VJ cooks</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="chicken-pot-pie">
 <h2>Chicken Pot Pie</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1358,7 +1398,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="bangers-and-mash">
 <h2>Bangers and Mash</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1377,7 +1417,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="mince-pie">
 <h2>Mince Pie</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1396,7 +1436,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="pork-schnitzel">
 <h2>Schnitzel</h2>
 <blockquote class="commentary">One of Kimmie&#x27;s favourite meals is schnitzel. I don&#x27;t tend to like making it as often the coating sticks to the pan and the cuts of meat aren&#x27;t great. But this recipe seams to be okay.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 10 minutes | <strong>Cook Time:</strong> 15 minutes | <strong>Servings:</strong> 4</div>
@@ -1446,7 +1486,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: RecipeTin Eats</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="lamb-koftas">
 <h2>Lamb Koftas</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1465,7 +1505,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="stuffed-capsicums">
 <h2>Stuffed Capsicums</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1484,7 +1524,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="tofu-stuffing-balls">
 <h2>Pistachio &amp; Cranberry Stuffing Balls</h2>
 <blockquote class="commentary">It turns out one of our favourite parts of a roast chicken is the stuffing, so why not have a meal based on stuffing! The tofu keeps the stuffing balls nice and moist.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 10m | <strong>Cook Time:</strong> 40m | <strong>Servings:</strong> 4</div>
@@ -1544,7 +1584,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: My Food Bag: Dinner Done Well</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="dumplings">
 <h2>Dumplings</h2>
 <blockquote class="commentary">I was taught how to make and fold dumplings by a friend who was taught by her parents as a kid. It&#x27;s a useful life skill!</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 45 minutes | <strong>Cook Time:</strong> 15 minutes | <strong>Servings:</strong> 4 servings (about 50 dumplings)</div>
@@ -1580,7 +1620,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: From a friend</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="ramen">
 <h2>Ramen</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1600,7 +1640,7 @@ h1 {
 </div>
 </div>
 <div class="recipe"><h2>chicken-tarragon-sauce</h2><p><em>Recipe file not found.</em></p></div>
-<div class="recipe">
+<div class="recipe" id="sweet-potato-quinoa-patties">
 <h2>Sweet Potato &amp; Quinoa Patties</h2>
 <blockquote class="commentary">A nice dish with great flavour that the girls enjoyed.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 15 minutes | <strong>Cook Time:</strong> 40 minutes | <strong>Servings:</strong> 4</div>
@@ -1646,7 +1686,7 @@ h1 {
 </div>
 </div>
 <div class="section"><h1>Fakeaways</h1>
-<div class="recipe">
+<div class="recipe" id="calzone">
 <h2>Calzone</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1665,7 +1705,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="beef-burgers">
 <h2>Beef Burgers</h2>
 <blockquote class="commentary">The patties. It&#x27;s all about the patties.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 15 minutes | <strong>Cook Time:</strong> 10 minutes | <strong>Servings:</strong> 4 burgers</div>
@@ -1698,7 +1738,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: I dunno, it&#x27;s a burger recipe.</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="vege-burgers">
 <h2>Kumara, Chickpea, and Mushroom Burgers</h2>
 <blockquote class="commentary">We like to try vege burgers now and then. This recipe from Vegeful is one of the best.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 30m | <strong>Cook Time:</strong> 20m | <strong>Servings:</strong> 6</div>
@@ -1757,7 +1797,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Vegeful by Nadia Lim</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="fish-burgers">
 <h2>Fish Burgers</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1776,7 +1816,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="peanut-pork-burgers">
 <h2>Peanut Pork Burgers</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1795,7 +1835,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="hot-dogs">
 <h2>Hot Dogs</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1814,7 +1854,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="meatball-subs">
 <h2>Meatball Subs</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1833,7 +1873,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="fish-and-chips">
 <h2>Fish and Chips</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1852,7 +1892,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="gyros">
 <h2>Gyros</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1871,7 +1911,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="kebab-wraps">
 <h2>Kebab Wraps</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1890,7 +1930,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="banh-mi">
 <h2>Banh Mi</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1909,7 +1949,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="falafel-wrap">
 <h2>Falafel Wrap</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1928,7 +1968,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="nachos">
 <h2>Nachos</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1947,7 +1987,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="quesadillas">
 <h2>Quesadillas</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1966,7 +2006,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="burritos">
 <h2>Burritos</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -1985,7 +2025,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="burrito-bowl">
 <h2>Burrito Bowl</h2>
 <blockquote class="commentary">Anything goes. This is a nice easy and adaptable meal.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 10m | <strong>Cook Time:</strong> 25m | <strong>Servings:</strong> 4</div>
@@ -2030,7 +2070,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="sushi-bowls">
 <h2>Sushi Bowls</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2049,7 +2089,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="enchiladas">
 <h2>Enchiladas</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2068,7 +2108,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="vietnamese-pork-tacos">
 <h2>Vietnamese Pork Tacos</h2>
 <blockquote class="commentary">This recipie is great because it&#x27;s very quick and easy to throw together.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 10 mins | <strong>Cook Time:</strong> 10 mins | <strong>Servings:</strong> 4</div>
@@ -2103,7 +2143,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Adapted from Hello Fresh</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="fish-tacos">
 <h2>Fish Tacos</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2122,7 +2162,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="pulled-beef-tacos">
 <h2>Pulled Beef Tacos</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2141,7 +2181,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="jfc">
 <h2>JFC</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2160,7 +2200,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="sweet-and-sour-pork">
 <h2>Sweet and Sour Pork</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2181,7 +2221,7 @@ h1 {
 </div>
 </div>
 <div class="section"><h1>Weekend</h1>
-<div class="recipe">
+<div class="recipe" id="pizzas">
 <h2>Pizzas</h2>
 <blockquote class="commentary">Now you might be thinking, why is this under the Sunday meals section? Well, sunday night is usually pizza night. It&#x27;s an easy tasty meal to end the weekend with (plus we get leftovers for monday lunch!).</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 30 minutes | <strong>Cook Time:</strong> 15 minutes | <strong>Servings:</strong> 4 pizzas</div>
@@ -2237,7 +2277,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="roast-pork">
 <h2>Roast Pork</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2256,7 +2296,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="roast-lamb">
 <h2>Roast Lamb</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2275,7 +2315,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="roast-chicken">
 <h2>Roast Chicken</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2294,7 +2334,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="roast-beef">
 <h2>Roast Beef</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2313,7 +2353,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="steak-and-chips">
 <h2>Steak and Chips</h2>
 <blockquote class="commentary">Lots of people don&#x27;t know how to cook steak, and just chuck it on the BBQ with no seasoning. I cooked steak for some of my friends using this method some of my friends said it was the best steak they&#x27;d ever had.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 15 minutes | <strong>Cook Time:</strong> 40 minutes | <strong>Servings:</strong> 4</div>
@@ -2364,7 +2404,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Various recipes</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="lamb-tagine">
 <h2>Lamb Tagine</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2383,7 +2423,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="lamb-beef-stew">
 <h2>Lamb / Beef Stew</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2402,7 +2442,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="chicken-leek-pasties">
 <h2>Chicken &amp; Leek Pasties</h2>
 <blockquote class="commentary">The pastry from this recipe is amazing BTW. I used it to make beef wellingtons for some friends once and they were dreaming about the pastry months later. If there&#x27;s anything you take from this recipe, it&#x27;s the pastry!</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 1 hour | <strong>Cook Time:</strong> 25 minutes | <strong>Servings:</strong> 4 (4 pasties)</div>
@@ -2449,7 +2489,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: River Cottage</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="pulled-lamb-shoulder">
 <h2>Pulled Lamb Shoulder</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2470,7 +2510,7 @@ h1 {
 </div>
 </div>
 <div class="section"><h1>BBQ &amp; Sharing</h1>
-<div class="recipe">
+<div class="recipe" id="focaccia-bread">
 <h2>Focaccia Bread</h2>
 <blockquote class="commentary">This is my go-to focaccia recipe. A couple of times as potluck lunches other people have made focaccia bread too, but this one is always the best.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 1 hour 30 minutes | <strong>Cook Time:</strong> 15-20 minutes | <strong>Servings:</strong> 1 loaf</div>
@@ -2505,7 +2545,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Inspired Taste</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="pasta-salad">
 <h2>Pasta Salad</h2>
 <blockquote class="commentary">We introduced this recipe to our family BBQ nights, and it quickly became a part of the regular rotation.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 15 minutes | <strong>Cook Time:</strong> 10 minutes | <strong>Servings:</strong> 4 servings</div>
@@ -2542,7 +2582,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="bbq">
 <h2>BBQ</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2561,7 +2601,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="roast-vege-salad">
 <h2>Roast Vege Salad</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2580,7 +2620,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="lentil-pomegranate-salad">
 <h2>Lentil Pomegranate Salad</h2>
 <blockquote class="commentary">This recipe was sent to us by Kimmie&#x27;s grand nonna. She altered the original recipe to have pomegranate seeds and candied walnuts (instead of regular walnuts).</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 5 minutes | <strong>Cook Time:</strong> 10 minutes | <strong>Servings:</strong> 4</div>
@@ -2616,7 +2656,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Grand Nonna</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="vege-kebabs">
 <h2>Vege Kebabs</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2635,7 +2675,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="stuffed-capsicums">
 <h2>Stuffed Capsicums</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2659,7 +2699,7 @@ h1 {
 <div class="recipe"><h2>sweet-sour-yams</h2><p><em>Recipe file not found.</em></p></div>
 <div class="recipe"><h2>leek-in-white-sauce</h2><p><em>Recipe file not found.</em></p></div>
 <div class="recipe"><h2>sweet-sour-cabbage</h2><p><em>Recipe file not found.</em></p></div>
-<div class="recipe">
+<div class="recipe" id="coleslaw">
 <h2>Coleslaw</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2678,7 +2718,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="potato-salad">
 <h2>Potato Salad</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2700,7 +2740,7 @@ h1 {
 <div class="recipe"><h2>thai slaw</h2><p><em>Recipe file not found.</em></p></div>
 </div>
 <div class="section"><h1>Brunch</h1>
-<div class="recipe">
+<div class="recipe" id="american-pancakes">
 <h2>American Pancakes</h2>
 <blockquote class="commentary">For some reason the Chelsea Sugar recipe is our go-to recipe for pancakes. Easy and delicious.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 5 minutes | <strong>Cook Time:</strong> 15 minutes | <strong>Servings:</strong> 3 (8 medium pancakes)</div>
@@ -2728,7 +2768,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Chelsea Sugar</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="british-pancakes">
 <h2>British Pancakes</h2>
 <blockquote class="commentary">These are the pancakes which I grew up with. Mum would occasionally make them as a weekend treat. However, Kimmie grew up with the more fluffier style pancakes. We had a long dispute over what constitues a pancake, so we settled for calling one style British and the other style American.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 25 minutes | <strong>Cook Time:</strong> 15 minutes | <strong>Servings:</strong> 8 pancakes</div>
@@ -2762,7 +2802,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Good Housekeeping</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="corn-fritters">
 <h2>Corn Fritters</h2>
 <blockquote class="commentary">I like this recipe because it doesn&#x27;t use eggs, and it has lots of chunky corn in it.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 10 minutes | <strong>Cook Time:</strong> 15 minutes | <strong>Servings:</strong> 4 servings</div>
@@ -2795,7 +2835,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: adapted from Hello Fresh: Recipes that Work</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="waffles">
 <h2>Waffles</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2814,7 +2854,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="scrambled-eggs">
 <h2>Scrambled Eggs</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2835,7 +2875,7 @@ h1 {
 </div>
 </div>
 <div class="section"><h1>Desserts</h1>
-<div class="recipe">
+<div class="recipe" id="chocolate-pudding">
 <h2>Self-saucing Chocolate Pudding</h2>
 <blockquote class="commentary">Growing up, Aunty Barbara&#x27;s self-saucing chocolate pudding was a family favourite. This recipe is very similar, but with less sugar and more cocoa powder!</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 15 minutes | <strong>Cook Time:</strong> 35 minutes | <strong>Servings:</strong> 4</div>
@@ -2876,7 +2916,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Chelsea Sugar</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="tiramisu">
 <h2>Tiramisu</h2>
 <blockquote class="commentary">I often make this for Christmas. It&#x27;s one of Kimmie&#x27;s favourites and is always a hit.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 20 mins | <strong>Cook Time:</strong> 5 mins | <strong>Servings:</strong> 8</div>
@@ -2913,7 +2953,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Chelsea Sugar</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="crumble">
 <h2>Crumble</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2932,7 +2972,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="carrot-cake">
 <h2>Carrot Cake</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2951,7 +2991,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="chocolate-cake">
 <h2>Chocolate Cake</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -2971,7 +3011,7 @@ h1 {
 </div>
 </div>
 <div class="recipe"><h2>chocolate-mousse</h2><p><em>Recipe file not found.</em></p></div>
-<div class="recipe">
+<div class="recipe" id="milk-tart">
 <h2>South African Milk Tart</h2>
 <blockquote class="commentary">One of Jase&#x27;s favourite desserts</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 20 mins (plus cooling) | <strong>Cook Time:</strong> 30 mins | <strong>Servings:</strong> 8-10</div>
@@ -3027,7 +3067,7 @@ h1 {
 </div>
 </div>
 <div class="section"><h1>Baking</h1>
-<div class="recipe">
+<div class="recipe" id="cheese-scones">
 <h2>Cheese Scones</h2>
 <blockquote class="commentary">When we lived in London I felt homesick for cheese scones, so I researched all of the Wellington cheese scone recipes that I could find. This recipe is the result of that research and combining the best bits of each.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 10 minutes | <strong>Cook Time:</strong> 15-20 minutes | <strong>Servings:</strong> 13 scones</div>
@@ -3065,7 +3105,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: This is a combination of the Ministry of Food and Pravda cheese scone recipes.</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="sourdough-bread">
 <h2>Sourdough Bread</h2>
 <blockquote class="commentary">In early 2020 I started experimenting with making my own sourdough bread. This was fortunate timing, as it was right before covid-19 lockdowns started and so at least we had plenty of bread through the lockdowns.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> Overnight + 6 hours | <strong>Cook Time:</strong> 25 minutes | <strong>Servings:</strong> 1 loaf</div>
@@ -3095,7 +3135,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Adapted from Tartine Bread by Chad Robertson</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="sourdough-starter">
 <h2>Sourdough Starter (feeding)</h2>
 <div class="meta"><strong>Prep Time:</strong> 5 minutes | <strong>Cook Time:</strong> None | <strong>Servings:</strong> 1 jar</div>
 <div class="columns">
@@ -3117,7 +3157,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Adapted from Tartine Bread by Chad Robertson</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="no-knead-bread">
 <h2>No Knead Bread</h2>
 <blockquote class="commentary">For when not making sourdough, this is my favourite bread recipe. It tastes great for a non-sourdough recipe.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 5 minutes + 3 hours rising | <strong>Cook Time:</strong> 45 minutes | <strong>Servings:</strong> 1 loaf</div>
@@ -3152,7 +3192,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Recipetin Eats</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="feijoa-chutney">
 <h2>Feijoa Chutney</h2>
 <blockquote class="commentary">This is the recipe which mum uses to make feijoa chutney. It&#x27;s one of my favourites to eat on toast with swiss cheese. Kimmie hates it!</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 30 minutes | <strong>Cook Time:</strong> 3 hours | <strong>Servings:</strong> 8-10 jars</div>
@@ -3192,7 +3232,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="yoghurt">
 <h2>Greek Yoghurt (EasiYo)</h2>
 <blockquote class="commentary">Economical, thick, and creamy Greek yoghurt using EasiYo base and extra milk powder. No straining, no thickeners, no preservatives.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 5 minutes (plus 24 hours incubation) | <strong>Cook Time:</strong> 0 minutes | <strong>Servings:</strong> Makes 1kg</div>
@@ -3228,7 +3268,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Adapted form Kidspot</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="flat-bread">
 <h2>Garlic Butter Flatbreads</h2>
 <blockquote class="commentary">A handy recipe for flat breads to save buying them from the shops. We eat these with curry or as a wrap for koftas.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 10 minutes (+15-30 minutes resting) | <strong>Cook Time:</strong> 20 minutes | <strong>Servings:</strong> 4-6 flatbreads</div>
@@ -3262,7 +3302,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Nadia&#x27;s Comfort Kitchen by Nadia Lim</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="lemon-poppyseed-muffins">
 <h2>Lemon Poppy Seed Muffins</h2>
 <blockquote class="commentary">One of Kimmie&#x27;s party tricks. We often make this recipe.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 10m | <strong>Cook Time:</strong> 15m | <strong>Servings:</strong> 12</div>
@@ -3310,7 +3350,7 @@ h1 {
 </div>
 <div class="attribution">Attribution: Crème de la Crumb</div>
 </div>
-<div class="recipe">
+<div class="recipe" id="banana-bread">
 <h2>Banana Bread</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -3329,7 +3369,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="choc-chip-cookies">
 <h2>Choc Chip Cookies</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -3348,7 +3388,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="banana-pikelets">
 <h2>Banana Pikelets</h2>
 <div class="meta"><strong>Prep Time:</strong>  | <strong>Cook Time:</strong>  | <strong>Servings:</strong> </div>
 <div class="columns">
@@ -3367,7 +3407,7 @@ h1 {
 </ul>
 </div>
 </div>
-<div class="recipe">
+<div class="recipe" id="yorkshire-puddings">
 <h2>Yorkshire Puddings</h2>
 <blockquote class="commentary">Classic British side, crisp and hollow, perfect for roast dinners.</blockquote>
 <div class="meta"><strong>Prep Time:</strong> 35 minutes (including resting) | <strong>Cook Time:</strong> 15-25 minutes | <strong>Servings:</strong> 12 standard muffin sized puddings</div>
@@ -3401,4 +3441,5 @@ h1 {
 <div class="attribution">Attribution: Serious Eats</div>
 </div>
 </div>
+</main>
 </body></html>
