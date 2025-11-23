@@ -51,6 +51,7 @@ sections:
       - "ramen"
       - "chicken-tarragon-sauce"
       - "sweet-potato-quinoa-patties"
+      - "lamb-lentil-ragu"
   - name: "Fakeaways"
     recipes:
       - "calzone"
@@ -80,7 +81,6 @@ sections:
       - "pizzas"
       - "roast"
       - "steak-and-chips"
-      - "lamb-tagine"
       - "lamb-beef-stew"
       - "chicken-leek-pasties"
       - "pulled-lamb-shoulder"
