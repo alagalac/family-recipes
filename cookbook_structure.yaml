@@ -24,7 +24,6 @@ sections:
       - "sausage-rolls"
       - "mince-and-macaroni"
       - "shakshuka"
-      - "stuffed-baked-potatoes"
       - "chilli-con-carne"
       - "chicken-curry-filos"
       - "tofu-stuffing-balls"
@@ -44,7 +43,6 @@ sections:
       - "mince-pie"
       - "pork-schnitzel"
       - "lamb-koftas"
-      - "stuffed-capsicums"
       - "tofu-stuffing-balls"
       - "dumplings"
       - "ramen"
@@ -74,7 +72,6 @@ sections:
       - "fish-tacos"
       - "pulled-beef-tacos"
       - "jfc"
-      - "sweet-and-sour-pork"
   - name: "Weekend"
     recipes:
       - "pizzas"
@@ -89,7 +86,6 @@ sections:
       - "pasta-salad"
       - "roast-vege-salad"
       - "lentil-pomegranate-salad"
-      - "vege-kebabs"
   - name: "Sides"
     recipes:
       - "sweet-sour-yams"
