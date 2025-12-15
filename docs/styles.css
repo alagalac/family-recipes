@@ -177,7 +177,7 @@ h1 {
   color: #ecf0f1;
   overflow-y: auto;
   z-index: 1999;
-  transform: translateX(-100%);
+  transform: translateX(0);
   transition: transform 0.3s ease;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
 }
@@ -452,6 +452,33 @@ main {
   .recipe-nav {
     max-height: calc(100vh - 70px - 16px);
     overflow-y: auto;
+  }
+}
+
+/* Desktop Layout - Sidebar always visible */
+@media (min-width: 769px) {
+  body {
+    padding-top: 70px;
+    padding-left: 280px;
+  }
+
+  main {
+    margin-left: 0;
+    padding: 0 20px;
+  }
+
+  .nav-drawer {
+    width: 280px;
+    transform: translateX(0);
+    display: block;
+  }
+
+  .menu-toggle-btn {
+    display: none;
+  }
+
+  .header-content {
+    padding-left: 0;
   }
 }
 
