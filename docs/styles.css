@@ -153,6 +153,10 @@ h1 {
   border-color: #e67e22;
 }
 
+.cooking-mode-btn.cooking-mode-active .btn-icon {
+  filter: brightness(0.3);
+}
+
 .cooking-mode-btn .btn-text {
   display: inline;
 }
