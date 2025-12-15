@@ -82,12 +82,64 @@ def generate_html_cookbook(structure_file, recipes_folder, output_file):
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2c3e50">
+<meta name="description" content="Family Recipe Cookbook">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>My Family Cookbook</title>
 <link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%232c3e50' width='192' height='192'/><text x='50%' y='50%' font-size='120' font-family='Georgia' fill='%23ecf0f1' text-anchor='middle' dominant-baseline='middle'>📖</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%232c3e50' width='192' height='192'/><text x='50%' y='50%' font-size='120' font-family='Georgia' fill='%23ecf0f1' text-anchor='middle' dominant-baseline='middle'>📖</text></svg>">
 </head>
-<body>""")
+<body>
+<div id="header-bar">
+  <div class="header-content">
+    <h1 class="header-title">📖 Cookbook</h1>
+    <div class="header-controls">
+      <div class="search-container">
+        <input type="text" id="recipe-search" class="search-input" placeholder="Search recipes..." aria-label="Search recipes">
+        <button id="search-clear-btn" class="search-clear-btn" aria-label="Clear search" style="display:none;">✕</button>
+      </div>
+      <button id="cooking-mode-btn" class="cooking-mode-btn" title="Toggle cooking mode" aria-label="Toggle cooking mode"><span class="btn-icon">🔆</span><span class="btn-text"> Cooking Mode</span></button>
+      <button id="menu-toggle-btn" class="menu-toggle-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</div>
+<div id="nav-drawer" class="nav-drawer"></div>
+""")
     
-    # Generate navigation
+    # Build recipes data for search
+    html.append('<script id="recipes-data" type="application/json">')
+    recipes_data = []
+    for section in cookbook['sections']:
+        if section.get('recipes'):
+            for recipe_name in section['recipes']:
+                recipe_file = os.path.join(recipes_folder, f"{recipe_name}.yaml")
+                if os.path.exists(recipe_file):
+                    recipe = load_recipe(recipe_file)
+                    title = recipe.get("title", recipe_name)
+                    recipe_id = recipe_name.lower().replace(' ', '-')
+                    ingredients_str = ""
+                    ingredients = recipe.get("ingredients", [])
+                    if isinstance(ingredients, dict):
+                        for subheading, items in ingredients.items():
+                            if items:
+                                ingredients_str += " ".join([str(ing) for ing in items if ing]) + " "
+                    else:
+                        ingredients_str = " ".join([str(ing) for ing in ingredients if ing])
+                    recipes_data.append({
+                        "id": recipe_id,
+                        "title": title,
+                        "section": section["name"],
+                        "ingredients": ingredients_str
+                    })
+    import json
+    html.append(json.dumps(recipes_data))
+    html.append('</script>')
+    
+    # Navigation drawer
     html.append('<nav class="recipe-nav">')
     for section in cookbook['sections']:
         html.append(f'<h3>{html_escape(section["name"])}</h3>')
@@ -123,7 +175,9 @@ def generate_html_cookbook(structure_file, recipes_folder, output_file):
             html.append(render_recipe(recipe, recipe_id))
         html.append('</div>')
     html.append('</main>')
-    html.append('</body></html>')
+    html.append("""
+<script src="app.js"></script>
+</body></html>""")
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write("\n".join(html))
 
