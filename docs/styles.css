@@ -9,12 +9,16 @@ body {
   background: #f8f8f8;
   color: #222;
   padding-top: 70px;
-  transition: filter 0.3s ease;
 }
 
 body.cooking-mode {
-  filter: brightness(1.3) contrast(1.1);
   background: #fafafa;
+}
+
+body.cooking-mode main,
+body.cooking-mode .section,
+body.cooking-mode .recipe {
+  filter: brightness(1.3) contrast(1.1);
 }
 h1, h2, h3, h4 {
   font-family: 'Segoe UI', Arial, sans-serif;
