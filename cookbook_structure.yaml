@@ -49,7 +49,6 @@ sections:
       - "lamb-lentil-ragu"
   - name: "Fakeaways"
     recipes:
-      - "calzone"
       - "beef-burgers"
       - "vege-burgers"
       - "fish-burgers"
