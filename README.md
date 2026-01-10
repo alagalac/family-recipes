@@ -11,4 +11,4 @@ Install the following:
 
 Run:
 
-`python generate_cookbook.py`
+`python generate_web_cookbook.py`

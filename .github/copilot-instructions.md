@@ -24,3 +24,5 @@ Do not add numbering to instructions; that is handled by the site generator.
 Every recipe must be included in the cookbook_structure.yaml file to be included in the site generation.
 
 Do not modify or embelish the recipes. I want them to be authentic to the original source. If you want to add your own notes or commentary, use the 'notes' or 'commentary' fields. Otherwise copy them verbatim.
+
+Note that all recipes are in NZ measurements, and 1 cup is approximately 250ml.
