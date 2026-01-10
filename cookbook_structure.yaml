@@ -94,6 +94,7 @@ sections:
       - "corn-fritters"
       - "waffles"
       - "scrambled-eggs"
+      - "porridge"
   - name: "Desserts"
     recipes:
       - "chocolate-pudding"
