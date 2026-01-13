@@ -60,12 +60,13 @@ def render_recipe(recipe, recipe_id):
     html.append('</div>')
     html.append('</div>')
     notes = recipe.get("notes")
-    if notes:
+    if notes and (isinstance(notes, str) or (isinstance(notes, list) and any(notes))):
         html.append('<div class="notes"><h4>Notes</h4>')
         if isinstance(notes, list):
             html.append('<ul>')
             for note in notes:
-                html.append(f'<li>{html_escape(note)}</li>')
+                if note:
+                    html.append(f'<li>{html_escape(note)}</li>')
             html.append('</ul>')
         else:
             html.append(f'<p>{html_escape(notes)}</p>')
