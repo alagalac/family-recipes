@@ -104,6 +104,7 @@ sections:
       - "chocolate-cake"
       - "chocolate-mousse"
       - "milk-tart"
+      - "tuscan-apple-cake"
   - name: "Baking"
     recipes:
       - "cheese-scones"
