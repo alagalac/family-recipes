@@ -82,9 +82,7 @@ sections:
     recipes:
       - "sweet-sour-yams"
       - "leek-in-white-sauce"
-      - "sweet-sour-cabbage"
-      - "coleslaw"
-      - "potato-salad"
+      - "shredded-cabbage-walnuts"
       - "oriental-coleslaw"
       - "marinated-beetroot"
   - name: "Brunch"
