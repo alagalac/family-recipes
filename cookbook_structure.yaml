@@ -86,6 +86,7 @@ sections:
       - "oriental-coleslaw"
       - "marinated-beetroot"
       - "bread-sauce"
+      - "asparagus-vinegarette"
   - name: "Brunch"
     recipes:
       - "american-pancakes"
@@ -94,6 +95,7 @@ sections:
       - "waffles"
       - "scrambled-eggs"
       - "porridge"
+      - "toasties"
   - name: "Desserts"
     recipes:
       - "chocolate-pudding"
@@ -105,6 +107,8 @@ sections:
       - "chocolate-mousse"
       - "milk-tart"
       - "tuscan-apple-cake"
+      - "chocolate-roulade"
+      - "chocolate-upside-down-raspberry-cake"
   - name: "Baking"
     recipes:
       - "cheese-scones"
@@ -120,4 +124,5 @@ sections:
       - "christmas-cookies"
       - "banana-pikelets"
       - "flapjacks"
+      - "chocolate-caramel-slice"
       - "yorkshire-puddings"
