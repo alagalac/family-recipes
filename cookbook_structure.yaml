@@ -71,7 +71,6 @@ sections:
       - "steak-and-chips"
       - "lamb-beef-stew"
       - "chicken-leek-pasties"
-      - "pulled-lamb-shoulder"
   - name: "BBQ & Sharing"
     recipes:
       - "focaccia-bread"
