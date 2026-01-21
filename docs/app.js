@@ -169,6 +169,23 @@ navDrawer.addEventListener('click', (e) => {
     if (e.target.tagName === 'A') {
         navDrawer.classList.remove('nav-drawer-open');
         menuToggleBtn.setAttribute('aria-expanded', false);
+        
+        // Handle scroll offset for fixed header
+        const href = e.target.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
+                const headerHeight = 70; // Height of fixed header
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+                // Update URL without triggering navigation
+                window.history.pushState(null, null, href);
+            }
+        }
     }
 });
 
@@ -192,3 +209,28 @@ window.addEventListener('appinstalled', () => {
     console.log('App installed');
     deferredPrompt = null;
 });
+
+// Handle scroll to recipe on page load or hash change
+function scrollToRecipe() {
+    const hash = window.location.hash;
+    if (hash) {
+        // Use setTimeout to ensure DOM is ready
+        setTimeout(() => {
+            const targetElement = document.querySelector(hash);
+            if (targetElement) {
+                const headerHeight = 70; // Height of fixed header
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 100);
+    }
+}
+
+// Handle hash changes
+window.addEventListener('hashchange', scrollToRecipe);
+
+// Handle initial page load with hash
+document.addEventListener('DOMContentLoaded', scrollToRecipe);
