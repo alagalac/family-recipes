@@ -73,7 +73,6 @@ sections:
     recipes:
       - "focaccia-bread"
       - "pasta-salad"
-      - "roast-vege-salad"
       - "lentil-pomegranate-salad"
   - name: "Sides"
     recipes:
