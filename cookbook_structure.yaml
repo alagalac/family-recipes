@@ -74,12 +74,12 @@ sections:
       - "focaccia-bread"
       - "pasta-salad"
       - "lentil-pomegranate-salad"
+      - "oriental-coleslaw"
   - name: "Sides"
     recipes:
       - "sweet-sour-yams"
       - "leek-in-white-sauce"
       - "shredded-cabbage-walnuts"
-      - "oriental-coleslaw"
       - "marinated-beetroot"
       - "bread-sauce"
       - "asparagus-vinegarette"
