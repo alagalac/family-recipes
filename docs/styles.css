@@ -299,12 +299,13 @@ h1 {
   top: 70px;
   left: 0;
   width: 280px;
-  max-height: calc(100vh - 70px);
+  height: calc(100svh - 70px);
   background: #34495e;
   color: #ecf0f1;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   z-index: 1999;
-  transform: translateX(0);
+  transform: translateX(-100%);
   transition: transform 0.3s ease;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
 }
@@ -403,46 +404,6 @@ main {
   color: #3a3a3a;
   font-size: 2em;
   margin-bottom: 12px;
-}
-
-.share-btn {
-  background: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 16px;
-  min-height: 44px;
-  font-size: 0.9em;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin-bottom: 12px;
-  display: inline-block;
-}
-
-.share-btn:hover {
-  background: #2980b9;
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
-}
-
-.share-btn:active {
-  transform: scale(0.98);
-}
-
-body.cooking-mode .share-btn {
-  background: #3498db;
-  color: #fff;
-}
-
-@media (prefers-color-scheme: dark) {
-  body:not(.cooking-mode) .share-btn {
-    background: #2980b9;
-    color: #fff;
-  }
-  
-  body:not(.cooking-mode) .share-btn:hover {
-    background: #3498db;
-  }
 }
 
 .meta {

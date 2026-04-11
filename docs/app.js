@@ -280,32 +280,3 @@ window.addEventListener('hashchange', scrollToRecipe);
 // Handle initial page load with hash
 document.addEventListener('DOMContentLoaded', scrollToRecipe);
 
-// Web Share API - Add share buttons to recipes
-document.addEventListener('DOMContentLoaded', () => {
-    if ('share' in navigator) {
-        document.querySelectorAll('.recipe').forEach(recipe => {
-            const recipeId = recipe.id;
-            const recipeTitle = recipe.querySelector('h2')?.textContent || 'Recipe';
-            const shareBtn = document.createElement('button');
-            shareBtn.className = 'share-btn';
-            shareBtn.setAttribute('aria-label', `Share ${recipeTitle}`);
-            shareBtn.textContent = '↗️ Share';
-            shareBtn.addEventListener('click', () => {
-                hapticFeedback('light');
-                navigator.share({
-                    title: recipeTitle,
-                    text: `Check out this recipe: ${recipeTitle}`,
-                    url: window.location.href.split('#')[0] + '#' + recipeId
-                }).catch(err => {
-                    console.log('Share failed:', err);
-                });
-            });
-            
-            const metaDiv = recipe.querySelector('.meta');
-            if (metaDiv) {
-                metaDiv.parentNode.insertBefore(shareBtn, metaDiv.nextSibling);
-            }
-        });
-    }
-});
-
