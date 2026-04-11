@@ -5,6 +5,19 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+// Haptic feedback helper
+function hapticFeedback(pattern = 'light') {
+    if ('vibrate' in navigator) {
+        if (pattern === 'light') {
+            navigator.vibrate(10);
+        } else if (pattern === 'medium') {
+            navigator.vibrate(20);
+        } else if (pattern === 'strong') {
+            navigator.vibrate([30, 20, 30]);
+        }
+    }
+}
+
 // Get recipes data from embedded JSON
 const recipesData = JSON.parse(document.getElementById('recipes-data').textContent);
 
@@ -73,6 +86,7 @@ searchInput.addEventListener('input', (e) => {
 
 // Clear search
 searchClearBtn.addEventListener('click', () => {
+    hapticFeedback('light');
     searchInput.value = '';
     searchClearBtn.style.display = 'none';
     searchInput.dispatchEvent(new Event('input'));
@@ -137,6 +151,7 @@ document.addEventListener('visibilitychange', async () => {
 
 // Cooking mode button handler
 cookingModeBtn.addEventListener('click', async () => {
+    hapticFeedback('medium');
     cookingModeActive = !cookingModeActive;
     localStorage.setItem('cookingMode', cookingModeActive);
     updateCookingModeButton();
@@ -160,6 +175,7 @@ if (cookingModeActive) {
 
 // Menu toggle for mobile
 menuToggleBtn.addEventListener('click', () => {
+    hapticFeedback('light');
     const isOpen = navDrawer.classList.toggle('nav-drawer-open');
     menuToggleBtn.setAttribute('aria-expanded', isOpen);
 });
@@ -263,3 +279,33 @@ window.addEventListener('hashchange', scrollToRecipe);
 
 // Handle initial page load with hash
 document.addEventListener('DOMContentLoaded', scrollToRecipe);
+
+// Web Share API - Add share buttons to recipes
+document.addEventListener('DOMContentLoaded', () => {
+    if ('share' in navigator) {
+        document.querySelectorAll('.recipe').forEach(recipe => {
+            const recipeId = recipe.id;
+            const recipeTitle = recipe.querySelector('h2')?.textContent || 'Recipe';
+            const shareBtn = document.createElement('button');
+            shareBtn.className = 'share-btn';
+            shareBtn.setAttribute('aria-label', `Share ${recipeTitle}`);
+            shareBtn.textContent = '↗️ Share';
+            shareBtn.addEventListener('click', () => {
+                hapticFeedback('light');
+                navigator.share({
+                    title: recipeTitle,
+                    text: `Check out this recipe: ${recipeTitle}`,
+                    url: window.location.href.split('#')[0] + '#' + recipeId
+                }).catch(err => {
+                    console.log('Share failed:', err);
+                });
+            });
+            
+            const metaDiv = recipe.querySelector('.meta');
+            if (metaDiv) {
+                metaDiv.parentNode.insertBefore(shareBtn, metaDiv.nextSibling);
+            }
+        });
+    }
+});
+

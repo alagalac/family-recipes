@@ -1,0 +1,97 @@
+/* Print Stylesheet */
+
+@page {
+  margin: 1cm;
+}
+
+body {
+  font-family: Georgia, serif;
+  color: #000;
+  background: #fff;
+}
+
+#header-bar,
+#nav-drawer,
+.nav-drawer,
+.menu-toggle-btn,
+.cooking-mode-btn,
+.search-container,
+.search-clear-btn {
+  display: none !important;
+}
+
+body {
+  padding-top: 0;
+}
+
+main {
+  background: #fff;
+}
+
+.section {
+  page-break-inside: avoid;
+  margin-bottom: 2cm;
+}
+
+.recipe {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  margin-bottom: 2cm;
+  padding: 1cm;
+  border: none;
+  background: #fff;
+  box-shadow: none;
+}
+
+.recipe h2 {
+  font-size: 1.5em;
+  margin-top: 0;
+  page-break-after: avoid;
+}
+
+.meta {
+  page-break-after: avoid;
+  font-weight: bold;
+  margin-bottom: 0.5cm;
+}
+
+.ingredients,
+.instructions {
+  background: #fff;
+  page-break-inside: avoid;
+}
+
+.ingredients h3,
+.instructions h3 {
+  page-break-after: avoid;
+  font-size: 1.1em;
+}
+
+.ingredients h4,
+.instructions h4 {
+  page-break-after: avoid;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.notes,
+.commentary,
+.attribution {
+  page-break-inside: avoid;
+  font-size: 0.9em;
+}
+
+h1 {
+  page-break-after: avoid;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Hide empty recipes */
+.recipe .ingredients ul:empty,
+.recipe .instructions ol:empty {
+  display: none;
+}

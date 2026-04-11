@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100svh;
+  -webkit-overflow-scrolling: touch;
+}
+
 body {
   font-family: Georgia, serif;
   margin: 0;
@@ -10,6 +15,64 @@ body {
   color: #222;
   padding-top: 70px;
   font-size: 18px;
+  min-height: 100svh;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #1e1e1e;
+    color: #e0e0e0;
+  }
+  
+  body:not(.cooking-mode) {
+    background: #1e1e1e;
+    color: #e0e0e0;
+  }
+  
+  body:not(.cooking-mode) main {
+    background: #1e1e1e;
+  }
+  
+  body:not(.cooking-mode) .section {
+    background: #2a2a2a;
+    color: #e0e0e0;
+  }
+  
+  body:not(.cooking-mode) .recipe {
+    background: #252525;
+    color: #e0e0e0;
+    border-color: #404040;
+  }
+  
+  body:not(.cooking-mode) .recipe h2 {
+    color: #f0f0f0;
+  }
+  
+  body:not(.cooking-mode) .meta {
+    color: #b0b0b0;
+  }
+  
+  body:not(.cooking-mode) .ingredients,
+  body:not(.cooking-mode) .instructions {
+    background: #2a2a2a;
+    color: #e0e0e0;
+  }
+  
+  body:not(.cooking-mode) .ingredients h3,
+  body:not(.cooking-mode) .instructions h3 {
+    color: #f0f0f0;
+  }
+  
+  body:not(.cooking-mode) .notes {
+    background: #2a2a2a;
+    color: #e0e0e0;
+  }
+  
+  body:not(.cooking-mode) .commentary {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border-left-color: #ff9800;
+  }
 }
 
 body.cooking-mode {
@@ -340,6 +403,46 @@ main {
   color: #3a3a3a;
   font-size: 2em;
   margin-bottom: 12px;
+}
+
+.share-btn {
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  min-height: 44px;
+  font-size: 0.9em;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.share-btn:hover {
+  background: #2980b9;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+}
+
+.share-btn:active {
+  transform: scale(0.98);
+}
+
+body.cooking-mode .share-btn {
+  background: #3498db;
+  color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not(.cooking-mode) .share-btn {
+    background: #2980b9;
+    color: #fff;
+  }
+  
+  body:not(.cooking-mode) .share-btn:hover {
+    background: #3498db;
+  }
 }
 
 .meta {

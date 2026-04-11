@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#2c3e50">
 <meta name="description" content="Family Recipe Cookbook">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>My Family Cookbook</title>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="print.css" media="print">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%232c3e50' width='192' height='192'/><text x='50%' y='50%' font-size='120' font-family='Georgia' fill='%23ecf0f1' text-anchor='middle' dominant-baseline='middle'>📖</text></svg>">
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%232c3e50' width='192' height='192'/><text x='50%' y='50%' font-size='120' font-family='Georgia' fill='%23ecf0f1' text-anchor='middle' dominant-baseline='middle'>📖</text></svg>">
@@ -19,7 +20,7 @@
     <h1 class="header-title">📖 Cookbook</h1>
     <div class="header-controls">
       <div class="search-container">
-        <input type="text" id="recipe-search" class="search-input" placeholder="Search recipes..." aria-label="Search recipes">
+        <input type="text" id="recipe-search" class="search-input" placeholder="Search recipes..." inputmode="search" enterkeyhint="search" aria-label="Search recipes">
         <button id="search-clear-btn" class="search-clear-btn" aria-label="Clear search" style="display:none;">✕</button>
       </div>
       <button id="cooking-mode-btn" class="cooking-mode-btn" title="Toggle cooking mode" aria-label="Toggle cooking mode"><span class="btn-icon">🔆</span><span class="btn-text"> Cooking Mode</span></button>
