@@ -51,6 +51,11 @@ searchInput.addEventListener('input', (e) => {
         });
         document.querySelectorAll('.section').forEach(section => {
             section.style.display = '';
+            // Show section headings again
+            const heading = section.querySelector('h1');
+            if (heading) {
+                heading.style.display = '';
+            }
         });
         return;
     }
@@ -81,6 +86,11 @@ searchInput.addEventListener('input', (e) => {
     document.querySelectorAll('.section').forEach(section => {
         const visibleRecipes = section.querySelectorAll('.recipe:not([style*="display: none"])');
         section.style.display = visibleRecipes.length > 0 ? '' : 'none';
+        // Hide section heading (h1) when searching
+        const heading = section.querySelector('h1');
+        if (heading) {
+            heading.style.display = 'none';
+        }
     });
 });
 

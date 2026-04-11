@@ -160,7 +160,6 @@ def generate_html_cookbook(structure_file, recipes_folder, output_file):
     
     # Main content
     html.append('<main>')
-    html.append('<h1>Jason's Cookbook</h1>')
     
     for section in cookbook['sections']:
         html.append(f'<div class="section"><h1>{html_escape(section["name"])}</h1>')

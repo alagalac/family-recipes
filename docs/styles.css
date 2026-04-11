@@ -13,7 +13,7 @@ body {
   padding: 0;
   background: #f8f8f8;
   color: #222;
-  padding-top: 70px;
+  padding-top: calc(70px + max(0px, env(safe-area-inset-top)));
   font-size: 18px;
   min-height: 100svh;
 }
@@ -146,10 +146,11 @@ h1 {
   top: 0;
   left: 0;
   right: 0;
-  height: 70px;
+  min-height: 70px;
   padding-top: max(0px, env(safe-area-inset-top));
   padding-left: max(16px, env(safe-area-inset-left));
   padding-right: max(16px, env(safe-area-inset-right));
+  padding-bottom: 8px;
   background: #2c3e50;
   color: #ecf0f1;
   z-index: 2000;
@@ -296,14 +297,16 @@ h1 {
 /* Navigation Drawer */
 .nav-drawer {
   position: fixed;
-  top: 70px;
+  top: calc(70px + max(0px, env(safe-area-inset-top)));
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 280px;
-  height: calc(100svh - 70px);
   background: #34495e;
   color: #ecf0f1;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  padding-bottom: max(0px, env(safe-area-inset-bottom));
   z-index: 1999;
   transform: translateX(-100%);
   transition: transform 0.3s ease;
