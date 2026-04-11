@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cookbook-v4';
+const CACHE_NAME = 'cookbook-v5';
 const urlsToCache = [
   '/',
   '/family-recipes/',
