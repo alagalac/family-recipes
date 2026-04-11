@@ -197,6 +197,35 @@ document.addEventListener('click', (e) => {
     }
 });
 
+// Swipe gesture handling for nav drawer
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleSwipe() {
+    const swipeThreshold = 50; // Minimum distance for a swipe
+    const diff = touchStartX - touchEndX;
+    
+    // Swipe left (close drawer)
+    if (diff > swipeThreshold && navDrawer.classList.contains('nav-drawer-open')) {
+        navDrawer.classList.remove('nav-drawer-open');
+        menuToggleBtn.setAttribute('aria-expanded', false);
+    }
+    // Swipe right (open drawer) - only if drawer is not open
+    else if (diff < -swipeThreshold && !navDrawer.classList.contains('nav-drawer-open')) {
+        navDrawer.classList.add('nav-drawer-open');
+        menuToggleBtn.setAttribute('aria-expanded', true);
+    }
+}
+
+document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, false);
+
 // Install prompt handling for PWA
 let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
