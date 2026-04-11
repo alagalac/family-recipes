@@ -1,10 +1,15 @@
-const CACHE_NAME = 'cookbook-v1';
+const CACHE_NAME = 'cookbook-v2';
 const urlsToCache = [
   '/',
+  '/family-recipes/',
   '/index.html',
+  '/family-recipes/index.html',
   '/styles.css',
+  '/family-recipes/styles.css',
   '/app.js',
-  '/manifest.json'
+  '/family-recipes/app.js',
+  '/manifest.json',
+  '/family-recipes/manifest.json'
 ];
 
 // Install event - cache resources
