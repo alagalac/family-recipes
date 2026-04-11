@@ -1,8 +1,8 @@
 {
   "name": "My Family Cookbook",
-  "short_name": "Cookbook",
+  "short_name": "Family Cookbook",
   "description": "A family recipe collection with search and cooking mode",
-  "start_url": "/",
+  "start_url": "/family-recipes/",
   "display": "standalone",
   "scope": "/",
   "theme_color": "#2c3e50",
