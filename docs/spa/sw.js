@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cookbook-spa-v1';
+const CACHE_NAME = 'cookbook-spa-v2';
 const urlsToCache = [
   '/',
   '/family-recipes/spa/',
