@@ -18,6 +18,29 @@ function hapticFeedback(pattern = 'light') {
     }
 }
 
+// Wake Lock management
+let wakeLock = null;
+
+async function requestWakeLock() {
+    try {
+        if ('wakeLock' in navigator) {
+            wakeLock = await navigator.wakeLock.request('screen');
+            wakeLock.addEventListener('release', () => {
+                wakeLock = null;
+            });
+        }
+    } catch (err) {
+        console.log('Wake Lock request failed:', err);
+    }
+}
+
+async function releaseWakeLock() {
+    if (wakeLock) {
+        await wakeLock.release();
+        wakeLock = null;
+    }
+}
+
 const { useState, useEffect, useRef } = React;
 
 // Recipe List Component
@@ -65,7 +88,7 @@ function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery }) {
 }
 
 // Recipe Detail Component
-function RecipeDetail({ recipe, onBack, cookingMode, onToggleCookingMode }) {
+function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn }) {
     const renderIngredients = (ingredients) => {
         if (Array.isArray(ingredients)) {
             return React.createElement('ul', null,
@@ -115,7 +138,7 @@ function RecipeDetail({ recipe, onBack, cookingMode, onToggleCookingMode }) {
     };
 
     return React.createElement('div', { className: 'recipe-detail' },
-        React.createElement('div', { className: 'recipe-header' },
+        React.createElement('div', { className: 'app-header recipe-header' },
             React.createElement('button', {
                 className: 'back-btn',
                 onClick: () => {
@@ -125,13 +148,19 @@ function RecipeDetail({ recipe, onBack, cookingMode, onToggleCookingMode }) {
                 'aria-label': 'Back to recipes'
             }, '← Back'),
             React.createElement('button', {
-                className: 'cooking-mode-btn',
+                className: `keep-screen-on-btn ${keepScreenOn ? 'active' : ''}`,
                 onClick: () => {
-                    hapticFeedback('medium');
-                    onToggleCookingMode();
+                    hapticFeedback('light');
+                    if (!keepScreenOn) {
+                        requestWakeLock();
+                        setKeepScreenOn(true);
+                    } else {
+                        releaseWakeLock();
+                        setKeepScreenOn(false);
+                    }
                 },
-                'aria-label': 'Toggle cooking mode'
-            }, cookingMode ? '🔅 On' : '🔆 Off')
+                'aria-label': 'Keep screen on'
+            }, keepScreenOn ? '💡' : '⚪')
         ),
         React.createElement('div', { className: 'recipe-content' },
             React.createElement('h1', null, recipe.title),
@@ -154,13 +183,16 @@ function RecipeDetail({ recipe, onBack, cookingMode, onToggleCookingMode }) {
                     renderInstructions(recipe.instructions)
                 )
             ),
-            recipe.notes && recipe.notes.length > 0 ? React.createElement('div', { className: 'notes' },
+            recipe.notes ? React.createElement('div', { className: 'notes' },
                 React.createElement('h4', null, 'Notes'),
-                React.createElement('ul', null,
-                    recipe.notes.map((note, idx) =>
-                        React.createElement('li', { key: idx }, note)
-                    )
-                )
+                typeof recipe.notes === 'string' ?
+                    React.createElement('p', null, recipe.notes) :
+                    Array.isArray(recipe.notes) && recipe.notes.length > 0 ?
+                    React.createElement('ul', null,
+                        recipe.notes.map((note, idx) =>
+                            React.createElement('li', { key: idx }, note)
+                        )
+                    ) : null
             ) : null,
             recipe.attribution ? React.createElement('div', { className: 'attribution' },
                 React.createElement('strong', null, 'Attribution: '),
@@ -175,7 +207,7 @@ function App() {
     const [recipes, setRecipes] = useState([]);
     const [selectedRecipeId, setSelectedRecipeId] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
-    const [cookingMode, setCookingMode] = useState(localStorage.getItem('cookingMode') === 'true');
+    const [keepScreenOn, setKeepScreenOn] = useState(localStorage.getItem('keepScreenOn') === 'true');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -193,14 +225,15 @@ function App() {
     }, []);
 
     useEffect(() => {
-        // Update document class for cooking mode
-        if (cookingMode) {
-            document.body.classList.add('cooking-mode');
-        } else {
-            document.body.classList.remove('cooking-mode');
+        localStorage.setItem('keepScreenOn', keepScreenOn);
+        if (selectedRecipeId) {
+            if (keepScreenOn) {
+                requestWakeLock();
+            } else {
+                releaseWakeLock();
+            }
         }
-        localStorage.setItem('cookingMode', cookingMode);
-    }, [cookingMode]);
+    }, [keepScreenOn, selectedRecipeId]);
 
     const selectedRecipe = recipes.find(r => r.id === selectedRecipeId);
 
@@ -212,39 +245,47 @@ function App() {
         return React.createElement(RecipeDetail, {
             recipe: selectedRecipe,
             onBack: () => setSelectedRecipeId(null),
-            cookingMode: cookingMode,
-            onToggleCookingMode: () => setCookingMode(!cookingMode)
+            keepScreenOn: keepScreenOn,
+            setKeepScreenOn: setKeepScreenOn
         });
     }
 
     return React.createElement('div', { className: 'app' },
         React.createElement('header', { className: 'app-header' },
             React.createElement('h1', null, '📖 Cookbook'),
-            React.createElement('div', { className: 'search-container' },
-                React.createElement('input', {
-                    type: 'text',
-                    className: 'search-input',
-                    placeholder: 'Search recipes...',
-                    inputMode: 'search',
-                    enterKeyHint: 'search',
-                    value: searchQuery,
-                    onChange: (e) => setSearchQuery(e.target.value),
-                    'aria-label': 'Search recipes'
-                }),
-                searchQuery ? React.createElement('button', {
-                    className: 'search-clear-btn',
-                    onClick: () => setSearchQuery(''),
-                    'aria-label': 'Clear search'
-                }, '✕') : null
-            ),
-            React.createElement('button', {
-                className: 'cooking-mode-btn',
-                onClick: () => {
-                    hapticFeedback('medium');
-                    setCookingMode(!cookingMode);
-                },
-                'aria-label': 'Toggle cooking mode'
-            }, cookingMode ? '🔅' : '🔆')
+            React.createElement('div', { className: 'header-controls' },
+                React.createElement('div', { className: 'search-container' },
+                    React.createElement('input', {
+                        type: 'text',
+                        className: 'search-input',
+                        placeholder: 'Search recipes...',
+                        inputMode: 'search',
+                        enterKeyHint: 'search',
+                        value: searchQuery,
+                        onChange: (e) => setSearchQuery(e.target.value),
+                        'aria-label': 'Search recipes'
+                    }),
+                    searchQuery ? React.createElement('button', {
+                        className: 'search-clear-btn',
+                        onClick: () => setSearchQuery(''),
+                        'aria-label': 'Clear search'
+                    }, '✕') : null
+                ),
+                React.createElement('button', {
+                    className: `keep-screen-on-btn ${keepScreenOn ? 'active' : ''}`,
+                    onClick: () => {
+                        hapticFeedback('light');
+                        if (!keepScreenOn) {
+                            requestWakeLock();
+                            setKeepScreenOn(true);
+                        } else {
+                            releaseWakeLock();
+                            setKeepScreenOn(false);
+                        }
+                    },
+                    'aria-label': 'Keep screen on'
+                }, keepScreenOn ? '💡' : '⚪')
+            )
         ),
         React.createElement(RecipeList, {
             recipes: recipes,
