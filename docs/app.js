@@ -202,8 +202,9 @@ navDrawer.addEventListener('click', (e) => {
             e.preventDefault();
             const targetElement = document.querySelector(href);
             if (targetElement) {
-                const headerHeight = 70; // Height of fixed header
-                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+                const headerBar = document.getElementById('header-bar');
+                const headerHeight = headerBar ? headerBar.offsetHeight : 70;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -273,8 +274,9 @@ function scrollToRecipe() {
         setTimeout(() => {
             const targetElement = document.querySelector(hash);
             if (targetElement) {
-                const headerHeight = 70; // Height of fixed header
-                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+                const headerBar = document.getElementById('header-bar');
+                const headerHeight = headerBar ? headerBar.offsetHeight : 70;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
