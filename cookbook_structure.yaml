@@ -25,6 +25,7 @@ sections:
       - "chilli-con-carne"
       - "chicken-curry-filos"
       - "tofu-stuffing-balls"
+      - "sushi-bowls"
   - name: "Longer Weeknights"
     recipes:
       - "frittata"
