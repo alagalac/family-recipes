@@ -2786,20 +2786,27 @@
     "id": "crumble",
     "title": "Crumble",
     "section": "Desserts",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "This is one of our classic BBQ night dessers for when there is lots of fruit to be used up.",
+    "prep_time": "15 mins",
+    "cook_time": "45 mins",
+    "servings": "4",
+    "commentary": "This is one of our classic BBQ night desserts for when there is lots of fruit to be used up.",
     "ingredients": [
-      "Fruit (e.g. apple, rhubarb, berries, stone fruit)"
+      "125g plain flour",
+      "50g butter, cubed and chilled",
+      "50g sugar",
+      "450g apples, peeled, cored and sliced"
     ],
     "instructions": [
-      null
+      "Preheat the oven to 180°C (160°C fan). Put the flour into a bowl. Add the butter and rub in with your fingertips until the mixture resembles fine bread-crumbs. Stir in half the sugar. Put aside.",
+      "Arrange half the apples in a 1.1 litre pie dish and sprinkle with the rest of the sugar. Add the remaining apple slices to the dish.",
+      "Spoon the crumble mixture over the fruit. Bake in the oven for about 45 mins or until the fruit is soft. Serve hot with custard or a drizzle of double cream."
     ],
     "notes": [
-      null
+      "Serve with vanilla ice-crema or cream.",
+      "Use whatever fruit is available. Our common flavours are apple, apple & rhubarb, feijoa, plum, or apple & blackberry.",
+      "Add oats and/or nuts to the crumble topping for extra texture and flavour."
     ],
-    "attribution": ""
+    "attribution": "Good Housekeeping"
   },
   {
     "id": "carrot-cake",
