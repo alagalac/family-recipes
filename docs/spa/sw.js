@@ -45,29 +45,55 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - network-first for recipes.json, cache-first for others
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') {
     return;
   }
 
+  const url = new URL(event.request.url);
+  const isRecipesJson = url.pathname.includes('recipes.json');
+
   event.respondWith(
-    caches.match(event.request).then(response => {
-      if (response) {
-        return response;
-      }
-      return fetch(event.request).then(response => {
-        if (!response || response.status !== 200 || response.type === 'error') {
-          return response;
-        }
-        const responseToCache = response.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, responseToCache);
-        });
-        return response;
-      });
-    }).catch(() => {
-      return caches.match('/index.html');
-    })
+    (isRecipesJson ? networkFirstStrategy(event.request) : cacheFirstStrategy(event.request))
   );
 });
+
+// Network-first strategy for recipes.json
+function networkFirstStrategy(request) {
+  return fetch(request)
+    .then(response => {
+      if (!response || response.status !== 200 || response.type === 'error') {
+        return response;
+      }
+      const responseToCache = response.clone();
+      caches.open(CACHE_NAME).then(cache => {
+        cache.put(request, responseToCache);
+      });
+      return response;
+    })
+    .catch(() => {
+      return caches.match(request);
+    });
+}
+
+// Cache-first strategy for other assets
+function cacheFirstStrategy(request) {
+  return caches.match(request).then(response => {
+    if (response) {
+      return response;
+    }
+    return fetch(request).then(response => {
+      if (!response || response.status !== 200 || response.type === 'error') {
+        return response;
+      }
+      const responseToCache = response.clone();
+      caches.open(CACHE_NAME).then(cache => {
+        cache.put(request, responseToCache);
+      });
+      return response;
+    });
+  }).catch(() => {
+    return caches.match('/index.html');
+  });
+}
