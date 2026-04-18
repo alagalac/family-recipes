@@ -43,8 +43,29 @@ async function releaseWakeLock() {
 
 const { useState, useEffect, useRef } = React;
 
+// Swipe gesture handler
+function useSwipeGesture(onSwipeLeft) {
+    const touchStartX = useRef(0);
+    const touchEndX = useRef(0);
+    
+    const handleTouchStart = (e) => {
+        touchStartX.current = e.changedTouches[0].screenX;
+    };
+    
+    const handleTouchEnd = (e) => {
+        touchEndX.current = e.changedTouches[0].screenX;
+        const diff = touchStartX.current - touchEndX.current;
+        // Swipe from left to right (negative diff means swiping right)
+        if (diff < -50) {
+            onSwipeLeft();
+        }
+    };
+    
+    return { handleTouchStart, handleTouchEnd };
+}
+
 // Recipe List Component
-function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery }) {
+function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery, listRef }) {
     const filteredRecipes = recipes.filter(recipe => {
         const query = searchQuery.toLowerCase();
         const titleMatch = recipe.title.toLowerCase().includes(query);
@@ -61,7 +82,7 @@ function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery }) {
         grouped[recipe.section].push(recipe);
     });
 
-    return React.createElement('div', { className: 'recipe-list' },
+    return React.createElement('div', { className: 'recipe-list', ref: listRef },
         Object.entries(grouped).map(([section, items]) =>
             React.createElement('div', { key: section, className: 'section' },
                 searchQuery === '' ? React.createElement('h2', null, section) : null,
@@ -88,7 +109,7 @@ function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery }) {
 }
 
 // Recipe Detail Component
-function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn }) {
+function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn, recipeDetailRef }) {
     const renderIngredients = (ingredients) => {
         if (Array.isArray(ingredients)) {
             return React.createElement('ul', null,
@@ -137,7 +158,19 @@ function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn }) {
         return null;
     };
 
-    return React.createElement('div', { className: 'recipe-detail' },
+    const hasNotes = recipe.notes && (
+        (typeof recipe.notes === 'string' && recipe.notes.trim() !== '') ||
+        (Array.isArray(recipe.notes) && recipe.notes.length > 0)
+    );
+
+    const swipe = useSwipeGesture(onBack);
+
+    return React.createElement('div', { 
+        className: 'recipe-detail',
+        ref: recipeDetailRef,
+        onTouchStart: swipe.handleTouchStart,
+        onTouchEnd: swipe.handleTouchEnd
+    },
         React.createElement('div', { className: 'app-header recipe-header' },
             React.createElement('button', {
                 className: 'back-btn',
@@ -183,11 +216,11 @@ function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn }) {
                     renderInstructions(recipe.instructions)
                 )
             ),
-            recipe.notes ? React.createElement('div', { className: 'notes' },
+            hasNotes ? React.createElement('div', { className: 'notes' },
                 React.createElement('h4', null, 'Notes'),
                 typeof recipe.notes === 'string' ?
                     React.createElement('p', null, recipe.notes) :
-                    Array.isArray(recipe.notes) && recipe.notes.length > 0 ?
+                    Array.isArray(recipe.notes) ?
                     React.createElement('ul', null,
                         recipe.notes.map((note, idx) =>
                             React.createElement('li', { key: idx }, note)
@@ -209,6 +242,8 @@ function App() {
     const [searchQuery, setSearchQuery] = useState('');
     const [keepScreenOn, setKeepScreenOn] = useState(localStorage.getItem('keepScreenOn') === 'true');
     const [loading, setLoading] = useState(true);
+    const listRef = useRef(null);
+    const recipeDetailRef = useRef(null);
 
     useEffect(() => {
         // Load recipes from JSON
@@ -235,6 +270,27 @@ function App() {
         }
     }, [keepScreenOn, selectedRecipeId]);
 
+    const handleSelectRecipe = (recipeId) => {
+        // Save current scroll position before navigating
+        if (listRef.current) {
+            localStorage.setItem('recipeListScrollY', listRef.current.scrollTop);
+        }
+        setSelectedRecipeId(recipeId);
+    };
+
+    const handleBackFromRecipe = () => {
+        setSelectedRecipeId(null);
+        // Restore scroll position when returning to list
+        setTimeout(() => {
+            if (listRef.current) {
+                const savedScrollY = localStorage.getItem('recipeListScrollY');
+                if (savedScrollY) {
+                    listRef.current.scrollTop = parseInt(savedScrollY);
+                }
+            }
+        }, 0);
+    };
+
     const selectedRecipe = recipes.find(r => r.id === selectedRecipeId);
 
     if (loading) {
@@ -244,9 +300,10 @@ function App() {
     if (selectedRecipeId && selectedRecipe) {
         return React.createElement(RecipeDetail, {
             recipe: selectedRecipe,
-            onBack: () => setSelectedRecipeId(null),
+            onBack: handleBackFromRecipe,
             keepScreenOn: keepScreenOn,
-            setKeepScreenOn: setKeepScreenOn
+            setKeepScreenOn: setKeepScreenOn,
+            recipeDetailRef: recipeDetailRef
         });
     }
 
@@ -288,9 +345,10 @@ function App() {
         ),
         React.createElement(RecipeList, {
             recipes: recipes,
-            onSelectRecipe: setSelectedRecipeId,
+            onSelectRecipe: handleSelectRecipe,
             searchQuery: searchQuery,
-            setSearchQuery: setSearchQuery
+            setSearchQuery: setSearchQuery,
+            listRef: listRef
         })
     );
 }

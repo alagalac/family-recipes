@@ -131,6 +131,7 @@ body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 0 16px 16px;
+  padding-bottom: max(40px, calc(16px + env(safe-area-inset-bottom)));
 }
 
 .recipe-list .section h2 {
@@ -240,7 +241,7 @@ body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 20px 16px;
-  padding-bottom: max(20px, env(safe-area-inset-bottom));
+  padding-bottom: max(40px, calc(20px + env(safe-area-inset-bottom)));
 }
 
 .recipe-content h1 {
