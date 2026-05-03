@@ -5,34 +5,40 @@ servings: "4 pizzas"
 ingredients:
   Bases:
     - "Pizza dough"
-    - "1 can tomato puree (400g)"
-    - "2 tsp Mixed herbs"
+    - "Pizza sauce (see notes)"
     - "Mozzarella cheese"
-    - "Toppings of choice (pepperoni, mushrooms, peppers, etc.)"
-  Hawaiian:
+    - "Toppings of choice (see below)"
+  Hawaiian topping:
     - "Ham"
     - "Pineapple"
-  Potato & Rosemary:
+    - "Tomato"
+  Potato & Rosemary topping:
     - "Potatoes, thinly sliced"
     - "Fresh rosemary"
-    - "Garlic aioli"
-  Chicken & Plum Sauce:
+    - "Garlic aioli (although not necessary if using a white base)"
+  Chicken & Plum Sauce topping:
     - "Cooked chicken, shredded"
     - "Plum sauce (cranberry or apricot sauce can be used as alternatives)"
-  Supreme:
+  Supreme topping:
     - "Tomato"
     - "Mushrooms"
     - "Capsicum"
     - "Olives"
+  Burger topping:
+    - "Pulled beef or pork"
+    - "Avocado"
+    - "Burger sauce"
+    - "Sour cream"
 instructions:
   - "Preheat the oven to 220°C."
   - "Roll out the pizza dough on a floured surface."
-  - "Spread the tomato puree evenly over the base."
+  - "Spread the pizza sauce evenly over the base."
   - "Add mozzarella cheese and your choice of toppings."
   - "Bake in the preheated oven for 12-15 minutes."
 notes: 
   - "We make our own pizza dough in the bread maker."
-  - "We make our own pizza sauce by mixing tomato puree with herbs such as oregano, basil, and/or garlic and a pinch of salt."
+  - "We make our own pizza sauce by mixing 1 can of tomato puree with herbs such as oregano, basil, and/or garlic and a pinch of salt."
+  - "We also sometimes do a white pizza sauce with a roux with garlic, herbs, and a bit of cheese instead of the tomato puree."
   - "Our top combinations are tomato, ham, & pineapple, potato & rosemary, and chicken & plum sauce."
 commentary: "Now you might be thinking, why is this under the Sunday meals section? Well, sunday night is usually pizza night. It's an easy tasty meal to end the weekend with (plus we get leftovers for monday lunch!)."
 attribution: ""
