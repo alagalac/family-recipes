@@ -46,6 +46,7 @@ sections:
       - "chicken-tarragon-sauce"
       - "sweet-potato-quinoa-patties"
       - "lamb-lentil-ragu"
+      - "toad-in-the-hole"
   - name: "Fakeaways"
     recipes:
       - "beef-burgers"
