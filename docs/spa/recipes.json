@@ -537,12 +537,8 @@
         "Mix together cornflour and soy sauce, then mix in remaining ingredients."
       ],
       "Chicken & Noodles": [
-        {
-          "Marinate Chicken": "Pour 1 tbsp of Sauce over the chicken, mix to coat, set aside to marinate for 10 minutes."
-        },
-        {
-          "Noodles": "Prepare the noodles according to the packet instructions, then drain."
-        }
+        "Mix 1 tbsp of Sauce with the chicken, mix to coat, set aside to marinate for 10 minutes.",
+        "Prepare the noodles according to the packet instructions, then drain."
       ],
       "Cooking": [
         "Heat oil in wok or large fry pan over high heat.",
@@ -1509,7 +1505,7 @@
     "prep_time": "10 minutes",
     "cook_time": "25 minutes",
     "servings": "4 servings",
-    "commentary": "Greek food pulls off the clever trick of being both hearty and summery! This delicious dish of tomatoey lamb and lentils with nutty bulgur wheat and refreshing cucumber tzatziki will bring the holiday vibes straight to you.",
+    "commentary": "One of my favourites is bulgur wheat, but we don't have it much as it goes everywhere with kids.",
     "ingredients": [
       "2 onions, halved, peeled and thinly sliced",
       "2 garlic cloves, peeled and grated",
@@ -1731,10 +1727,10 @@
     "section": "Fakeaways",
     "prep_time": "",
     "cook_time": "",
-    "servings": "",
+    "servings": "4",
     "commentary": "",
     "ingredients": [
-      null
+      "4 large potatoes, cut into chips"
     ],
     "instructions": [
       null
@@ -1895,18 +1891,36 @@
     "id": "burritos",
     "title": "Burritos",
     "section": "Fakeaways",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "",
+    "prep_time": "20 mins",
+    "cook_time": "20 mins",
+    "servings": "6",
+    "commentary": "A simple classic. The kids really like tortillas.",
     "ingredients": [
-      null
+      "400g beef mince",
+      "1 onion, diced",
+      "1 can crushed tomatoes",
+      "1 can kidney beans, drained and rinsed",
+      "2 cloves garlic, minced",
+      "1 tsp cumin",
+      "1 tsp paprika",
+      "3 tomatoes, diced",
+      "1/2 iceberg lettuce, shredded",
+      "1 cup grated cheese",
+      "sour cream, to serve",
+      "avocado, sliced, if you have them!",
+      "6 jumbo flour tortillas"
     ],
     "instructions": [
-      null
+      "Heat frying pan and add onion and garlic. Cook until softened.",
+      "Add beef mince and cook until browned. chop in pan with flat edged wooden spoon to break up the mince.",
+      "Add crushed tomatoes, kidney beans, cumin and paprika. Simmer for 10-15 minutes until thickened.",
+      "Warm the tortillas in the microwave",
+      "To assemble, put some lettuce in middle of each tortilla, then add beef mixture, tomato, cheese, sour cream and avocado. Roll up and serve!"
     ],
     "notes": [
-      null
+      "Instead of the can of kidney beans and spices, you can just use a can of mild chilli beans. We prefer the Watties brand.",
+      "Mesculine mix also works well instead of the iceberg lettuce.",
+      "Add some chipotle sauce for a bit of heat."
     ],
     "attribution": ""
   },
@@ -2084,41 +2098,48 @@
     "ingredients": {
       "Bases": [
         "Pizza dough",
-        "1 can tomato puree (400g)",
-        "2 tsp Mixed herbs",
+        "Pizza sauce (see notes)",
         "Mozzarella cheese",
-        "Toppings of choice (pepperoni, mushrooms, peppers, etc.)"
+        "Toppings of choice (see below)"
       ],
-      "Hawaiian": [
+      "Hawaiian topping": [
         "Ham",
-        "Pineapple"
+        "Pineapple",
+        "Tomato"
       ],
-      "Potato & Rosemary": [
+      "Potato & Rosemary topping": [
         "Potatoes, thinly sliced",
         "Fresh rosemary",
-        "Garlic aioli"
+        "Garlic aioli (although not necessary if using a white base)"
       ],
-      "Chicken & Plum Sauce": [
+      "Chicken & Plum Sauce topping": [
         "Cooked chicken, shredded",
         "Plum sauce (cranberry or apricot sauce can be used as alternatives)"
       ],
-      "Supreme": [
+      "Supreme topping": [
         "Tomato",
         "Mushrooms",
         "Capsicum",
         "Olives"
+      ],
+      "Burger topping": [
+        "Pulled beef or pork",
+        "Avocado",
+        "Burger sauce",
+        "Sour cream"
       ]
     },
     "instructions": [
       "Preheat the oven to 220°C.",
       "Roll out the pizza dough on a floured surface.",
-      "Spread the tomato puree evenly over the base.",
+      "Spread the pizza sauce evenly over the base.",
       "Add mozzarella cheese and your choice of toppings.",
       "Bake in the preheated oven for 12-15 minutes."
     ],
     "notes": [
       "We make our own pizza dough in the bread maker.",
-      "We make our own pizza sauce by mixing tomato puree with herbs such as oregano, basil, and/or garlic and a pinch of salt.",
+      "We make our own pizza sauce by mixing 1 can of tomato puree with herbs such as oregano, basil, and/or garlic and a pinch of salt.",
+      "We also sometimes do a white pizza sauce with a roux with garlic, herbs, and a bit of cheese instead of the tomato puree.",
       "Our top combinations are tomato, ham, & pineapple, potato & rosemary, and chicken & plum sauce."
     ],
     "attribution": ""
@@ -2588,7 +2609,7 @@
     "section": "Brunch",
     "prep_time": "25 minutes",
     "cook_time": "15 minutes",
-    "servings": "8 pancakes",
+    "servings": "2 servings (8 pancakes)",
     "commentary": "These are the pancakes which I grew up with. Mum would occasionally make them as a weekend treat. However, Kimmie grew up with the more fluffier style pancakes. We had a long dispute over what constitues a pancake, so we settled for calling one style British and the other style American.",
     "ingredients": [
       "125g plain flour",
@@ -2833,20 +2854,21 @@
     "servings": "4",
     "commentary": "This is one of our classic BBQ night desserts for when there is lots of fruit to be used up.",
     "ingredients": [
-      "125g plain flour",
+      "100g plain flour",
       "50g butter, cubed and chilled",
-      "50g sugar",
-      "450g apples, peeled, cored and sliced"
+      "100g sugar",
+      "450g prepared fruit"
     ],
     "instructions": [
       "Preheat the oven to 180°C (160°C fan). Put the flour into a bowl. Add the butter and rub in with your fingertips until the mixture resembles fine bread-crumbs. Stir in half the sugar. Put aside.",
-      "Arrange half the apples in a 1.1 litre pie dish and sprinkle with the rest of the sugar. Add the remaining apple slices to the dish.",
+      "Arrange half the prepared fruit in a 1.1 litre pie dish and sprinkle with the rest of the sugar. Add the remaining fruit to the dish.",
       "Spoon the crumble mixture over the fruit. Bake in the oven for about 45 mins or until the fruit is soft. Serve hot with custard or a drizzle of double cream."
     ],
     "notes": [
       "Serve with vanilla ice-crema or cream.",
       "Use whatever fruit is available. Our common flavours are apple, apple & rhubarb, feijoa, plum, or apple & blackberry.",
-      "Add oats and/or nuts to the crumble topping for extra texture and flavour."
+      "Add oats and/or nuts to the crumble topping for extra texture and flavour.",
+      "Modern versions of this recipe use less sugar!"
     ],
     "attribution": "Good Housekeeping"
   },
@@ -3147,8 +3169,8 @@
     "id": "chocolate-upside-down-raspberry-cake",
     "title": "Chocolate upside-down raspberry cake",
     "section": "Desserts",
-    "prep_time": "",
-    "cook_time": "",
+    "prep_time": "20 minutes",
+    "cook_time": "40 minutes",
     "servings": "6-8 servings",
     "commentary": "Nan grows fresh raspberries. This is one of her recipes which uses them in a delicious cake.",
     "ingredients": {
@@ -3621,8 +3643,8 @@
     "id": "flapjacks",
     "title": "Flapjacks",
     "section": "Baking",
-    "prep_time": "",
-    "cook_time": "",
+    "prep_time": "10 minutes",
+    "cook_time": "20 minutes",
     "servings": "8-10 servings",
     "commentary": "These were one of Nan's favourite treats when she was young, and the featured regularly in our school lunchboxes.",
     "ingredients": [
