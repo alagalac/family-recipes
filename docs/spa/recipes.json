@@ -3489,20 +3489,33 @@
     "id": "banana-bread",
     "title": "Banana Bread",
     "section": "Baking",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "",
+    "prep_time": "15 minutes",
+    "cook_time": "45-50 minutes",
+    "servings": "1 loaf (10 servings)",
+    "commentary": "We like banana bread, and it goes well in lunch boxes.",
     "ingredients": [
-      null
+      "125g softened butter",
+      "1 cup brown sugar",
+      "2 eggs",
+      "1 1/2 cups plain flour",
+      "1 tsp baking powder",
+      "1 tsp baking soda",
+      "1/4 cup natural yoghurt",
+      "1/4 cup milk",
+      "2 ripe bananas, mashed"
     ],
     "instructions": [
-      null
+      "Preheat oven to 180C. Grease a loaf tin (measuring about 22cm x 15xm).",
+      "IN a large bowl, use an electric mixer to beat butter and sugar until pale and creamy. Add eggs, beating well to combine.",
+      "Sift flour, baking powder, and baking soda into the butter mixture. Stir until well combined.",
+      "In a small bowl, whisk youghurt and milk together. Add yoghurt mixture and bananas to flour mixture and mix well.",
+      "Spoon mixture into prepared loaf tin. Bake for 45-50 minutes until a skewer inserted into centre comes out clean. Allow to cool for 5-10 minutes before turning out onto a wire rack to cool completely."
     ],
     "notes": [
-      null
+      "Kimmie likes to add walnuts for a bit of crunch and texture.",
+      "Serve hot with butter."
     ],
-    "attribution": ""
+    "attribution": "Family Favourites by Bargain Box and Nadia Lim"
   },
   {
     "id": "choc-chip-cookies",
