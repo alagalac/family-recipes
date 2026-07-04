@@ -26,6 +26,7 @@ sections:
       - "chicken-curry-filos"
       - "tofu-stuffing-balls"
       - "sushi-bowls"
+      - "noodle-salad"
   - name: "Longer Weeknights"
     recipes:
       - "frittata"
