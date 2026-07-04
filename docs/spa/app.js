@@ -43,27 +43,6 @@ async function releaseWakeLock() {
 
 const { useState, useEffect, useRef } = React;
 
-// Swipe gesture handler
-function useSwipeGesture(onSwipeLeft) {
-    const touchStartX = useRef(0);
-    const touchEndX = useRef(0);
-    
-    const handleTouchStart = (e) => {
-        touchStartX.current = e.changedTouches[0].screenX;
-    };
-    
-    const handleTouchEnd = (e) => {
-        touchEndX.current = e.changedTouches[0].screenX;
-        const diff = touchStartX.current - touchEndX.current;
-        // Swipe from left to right (negative diff means swiping right)
-        if (diff < -50) {
-            onSwipeLeft();
-        }
-    };
-    
-    return { handleTouchStart, handleTouchEnd };
-}
-
 // Recipe List Component
 function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery, listRef }) {
     const filteredRecipes = recipes.filter(recipe => {
@@ -109,7 +88,7 @@ function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery, list
 }
 
 // Recipe Detail Component
-function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn, recipeDetailRef }) {
+function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn }) {
     const renderIngredients = (ingredients) => {
         if (Array.isArray(ingredients)) {
             return React.createElement('ul', null,
@@ -163,13 +142,8 @@ function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn, recipeDet
         (Array.isArray(recipe.notes) && recipe.notes.length > 0)
     );
 
-    const swipe = useSwipeGesture(onBack);
-
     return React.createElement('div', { 
-        className: 'recipe-detail',
-        ref: recipeDetailRef,
-        onTouchStart: swipe.handleTouchStart,
-        onTouchEnd: swipe.handleTouchEnd
+        className: 'recipe-detail'
     },
         React.createElement('div', { className: 'app-header recipe-header' },
             React.createElement('button', {
@@ -243,7 +217,6 @@ function App() {
     const [keepScreenOn, setKeepScreenOn] = useState(localStorage.getItem('keepScreenOn') === 'true');
     const [loading, setLoading] = useState(true);
     const listRef = useRef(null);
-    const recipeDetailRef = useRef(null);
 
     useEffect(() => {
         // Load recipes from JSON
@@ -302,8 +275,7 @@ function App() {
             recipe: selectedRecipe,
             onBack: handleBackFromRecipe,
             keepScreenOn: keepScreenOn,
-            setKeepScreenOn: setKeepScreenOn,
-            recipeDetailRef: recipeDetailRef
+            setKeepScreenOn: setKeepScreenOn
         });
     }
 
