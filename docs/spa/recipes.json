@@ -388,7 +388,7 @@
     "commentary": "A really basic recipe for when you need something the kids will eat and can't be bothered to do anything else!",
     "ingredients": [
       "1 cups basil pesto",
-      "400 pasta of choice (ziti, penne or spaghetti)",
+      "400g pasta of choice",
       "2 tsp salt",
       "1 cup pasta cooking water",
       "Parmesan for serving"
@@ -597,8 +597,8 @@
     "id": "butter-chicken-curry",
     "title": "Butter Chicken Curry",
     "section": "Quick Weeknights",
-    "prep_time": "10",
-    "cook_time": "20",
+    "prep_time": "10 minutes",
+    "cook_time": "20 minutes",
     "servings": "6",
     "commentary": "A standard dish which the kids like. I've been making variantions of this for years but the recipe has evolved over time.",
     "ingredients": [
@@ -626,7 +626,7 @@
       "Serve with rice and naan bread."
     ],
     "notes": [
-      "To make this a little more healthy, feel free to add vegetables and reduce the cream!",
+      "To make this a little more healthy, feel free to add vegetables and reduce the cream! Carrot can be good for sweetness and colour.",
       "To make this a little less healthy, add about 3 tbsp of sugar to the curry sauce for that real NZ mall butter chicken flavour.",
       "This recipe also works if youi substitute the cream for 1 can of coconut cream and/or the chicken for paneer."
     ],
@@ -1179,41 +1179,40 @@
     "prep_time": "15 minutes",
     "cook_time": "45 minutes",
     "servings": "6",
-    "commentary": "A good hearty classic. I like to have it with HP sauce.",
+    "commentary": "A good hearty classic. The kids also seem to love it too. I like to have it with HP sauce.",
     "ingredients": [
       "900g potatoes",
-      "1 Tbsp oil",
+      "1 tbsp oil",
       "1 onion, diced",
       "1 large carrot, diced",
+      "2 sticks celery, diced",
       "500g beef mince",
       "2 cloves garlic, crushed",
       "1 Tbsp mixed herbs",
       "1/3 cup red wine (optional)",
       "1 tbsp Worcestershire sauce",
-      "2 Tbsp tomato paste",
+      "2 tbsp tomato paste",
       "2 cups beef stock",
       "2 Tbsp cornflour",
       "1 cup frozen peas",
       "30g butter",
-      "1/2 cup milk",
-      "1 cup cheese, grated"
+      "1/3 cup milk",
+      "1/2 cup cheese, grated"
     ],
     "instructions": [
       "Preheat oven to 180°C fan bake.",
       "Peel and chop potatoes, add to a saucepan with water. Bring to the boil and reduce to medium heat to simmer for 15-20 mins until tender.",
-      "Heat the oil in a large frying pan, add onion and carrot, fry until softened.",
+      "Heat the oil in a large frying pan, add onion,  carrot, and celery, fry until softened.",
       "Add the mince, garlic and herbs then fry until lightly browned. Stir in the red wine, Worcestershire sauce, tomato paste and stock. Simmer for 10 minutes.",
       "Mix the cornflour with 2 tablespoons of water to make a slurry then add to the mince. Add the peas and stir until it heats up and thickens. Season to taste with salt and pepper.",
       "Mash the potatoes with butter and milk and season to taste.",
-      "Divide the mince into 6 individual pie dishes and top with mashed potato, smoothing and then roughing up with a fork. Top with grated cheese.",
+      "Add the mince to a baking dish and top with mashed potato, smoothing and then roughing up with a fork. Top with grated cheese.",
       "Bake for 20 minutes or until the cheese is lightly browned with crispy bits."
     ],
     "notes": [
-      "This recipe can also be made in one large pie dish.",
-      "Freeze in an airtight container for up to 3 months.",
       "Swap the beef for lamb mince to make a shepherd's pie."
     ],
-    "attribution": "Adapted from VJ cooks"
+    "attribution": "Mine"
   },
   {
     "id": "bangers-and-mash",
@@ -1356,10 +1355,9 @@
     ],
     "notes": [
       "You can use skewers, but I tend not to.",
-      "Instead of the grilled vegetables, a hummus, tomato, and feta combo also works well.",
       "Pearl couscous salad goes well inside these too, but it can get messy!"
     ],
-    "attribution": "Adapted from VJ Cooks"
+    "attribution": ""
   },
   {
     "id": "tofu-stuffing-balls",
@@ -1484,7 +1482,7 @@
         "1 fresh red chili, deseeded and finely chopped (optional)",
         "60g (1/2 cup) crushed walnuts, to serve"
       ],
-      "Chreen tahini and lime dressing": [
+      "Green tahini and lime dressing": [
         "2 tablespoons tahini",
         "2 tablespoons olive oil",
         "1 avocado",
@@ -1742,10 +1740,12 @@
     "section": "Fakeaways",
     "prep_time": "",
     "cook_time": "",
-    "servings": "",
+    "servings": "4",
     "commentary": "",
     "ingredients": [
-      null
+      "250g beef mince",
+      "250g pork mince",
+      "4 long rolls"
     ],
     "instructions": [
       null
@@ -2006,7 +2006,7 @@
     "notes": [
       null
     ],
-    "attribution": "Nan"
+    "attribution": ""
   },
   {
     "id": "vietnamese-pork-tacos",
@@ -2224,7 +2224,7 @@
       ]
     },
     "instructions": [
-      "Preheat the oven to 220°C (428°F).",
+      "Preheat the oven to 220°C.",
       "Cut the potatoes into chips and soak them in water for 30 minutes.",
       "Drain and pat the potatoes dry, then toss with oil and seasonings.",
       "Spread the chips on a baking tray and bake for 30-40 minutes until golden and crispy.",
