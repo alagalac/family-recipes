@@ -1,65 +1,128 @@
-import yaml
-import os
+import argparse
 import glob
+import re
+from collections import Counter
+from pathlib import Path
 
-# Count recipes in cookbook_structure
-with open('cookbook_structure.yaml', 'r') as f:
-    structure = yaml.safe_load(f)
+import yaml
 
-recipes_in_structure = []
-for section in structure['sections']:
-    recipes_in_structure.extend(section['recipes'])
 
-recipes_in_structure = list(set(recipes_in_structure))
-total_in_structure = len(recipes_in_structure)
+REQUIRED_FIELDS = {
+    'title', 'prep_time', 'cook_time', 'servings', 'ingredients',
+    'instructions', 'notes', 'commentary', 'attribution'
+}
+TIME_FIELDS = ('prep_time', 'cook_time')
+SHORT_TIME_UNIT = re.compile(r'(?i)(?<![a-z])(?:h|hr|hrs|m|min|mins)(?![a-z])')
 
-print(f'Total recipes in cookbook_structure: {total_in_structure}')
 
-# Get all yaml files that exist
-yaml_files = glob.glob('recipes/*.yaml')
-yaml_file_ids = set()
-for filepath in yaml_files:
-    filename = os.path.basename(filepath)
-    recipe_id = filename.replace('.yaml', '')
-    yaml_file_ids.add(recipe_id)
+def main():
+    parser = argparse.ArgumentParser(description='Validate the recipe catalogue.')
+    parser.add_argument(
+        '--strict-placeholders',
+        action='store_true',
+        help='treat recipes with empty content as errors',
+    )
+    args = parser.parse_args()
 
-# Find missing recipes (in structure but no yaml file)
-missing_recipes = [r for r in recipes_in_structure if r not in yaml_file_ids]
-print(f'Missing recipes (in structure but no yaml file): {len(missing_recipes)}')
-if missing_recipes:
-    print(f'  -> {", ".join(sorted(missing_recipes))}')
+    root = Path(__file__).resolve().parent
+    structure_path = root / 'cookbook_structure.yaml'
+    recipes_path = root / 'recipes'
+    errors = []
+    warnings = []
 
-# Check template status for recipes that have yaml files
-template_recipes = []
-filled_recipes = []
+    try:
+        with structure_path.open(encoding='utf-8') as file:
+            structure = yaml.safe_load(file)
+    except (OSError, yaml.YAMLError) as error:
+        print(f'ERROR: unable to load {structure_path.name}: {error}')
+        return 1
 
-for recipe_id in recipes_in_structure:
-    if recipe_id in yaml_file_ids:
-        filepath = f'recipes/{recipe_id}.yaml'
-        with open(filepath, 'r') as f:
-            content = f.read()
-        
-        # Check if it's just a template (empty fields)
-        if 'prep_time: ""' in content and 'cook_time: ""' in content and 'servings: ""' in content:
-            template_recipes.append(recipe_id)
+    sections = structure.get('sections') if isinstance(structure, dict) else None
+    if not isinstance(sections, list):
+        print('ERROR: cookbook_structure.yaml must contain a sections list')
+        return 1
+
+    catalog_entries = []
+    for section in sections:
+        if not isinstance(section, dict) or not isinstance(section.get('recipes'), list):
+            errors.append('each section must contain a recipes list')
+            continue
+        catalog_entries.extend(section['recipes'])
+
+    duplicate_entries = sorted(
+        recipe_id for recipe_id, count in Counter(catalog_entries).items() if count > 1
+    )
+    if duplicate_entries:
+        errors.append(f'duplicate catalogue entries: {", ".join(duplicate_entries)}')
+
+    recipe_files = glob.glob(str(recipes_path / '*.yaml'))
+    recipe_ids = {Path(filepath).stem for filepath in recipe_files}
+    catalog_ids = set(catalog_entries)
+
+    missing_recipes = sorted(catalog_ids - recipe_ids)
+    if missing_recipes:
+        errors.append(f'missing recipe files: {", ".join(missing_recipes)}')
+
+    orphaned_recipes = sorted(recipe_ids - catalog_ids)
+    if orphaned_recipes:
+        errors.append(f'orphaned recipe files: {", ".join(orphaned_recipes)}')
+
+    placeholders = []
+    for filepath in recipe_files:
+        recipe_path = Path(filepath)
+        try:
+            with recipe_path.open(encoding='utf-8') as file:
+                recipe = yaml.safe_load(file)
+        except (OSError, yaml.YAMLError) as error:
+            errors.append(f'{recipe_path.name}: invalid YAML: {error}')
+            continue
+
+        if not isinstance(recipe, dict):
+            errors.append(f'{recipe_path.name}: recipe must be a YAML mapping')
+            continue
+
+        missing_fields = sorted(REQUIRED_FIELDS - set(recipe))
+        extra_fields = sorted(set(recipe) - REQUIRED_FIELDS)
+        if missing_fields:
+            errors.append(f'{recipe_path.name}: missing fields: {", ".join(missing_fields)}')
+        if extra_fields:
+            errors.append(f'{recipe_path.name}: unexpected fields: {", ".join(extra_fields)}')
+
+        for field in TIME_FIELDS:
+            value = recipe.get(field)
+            if value and not isinstance(value, str):
+                errors.append(f'{recipe_path.name}: {field} must be text')
+            elif isinstance(value, str) and SHORT_TIME_UNIT.search(value):
+                errors.append(
+                    f'{recipe_path.name}: {field} must use "hour(s)" and "minute(s)", '
+                    f'not shorthand: {value}'
+                )
+
+        if not recipe.get('title'):
+            placeholders.append(recipe_path.stem)
+
+    if placeholders:
+        message = f'placeholder recipes: {", ".join(sorted(placeholders))}'
+        if args.strict_placeholders:
+            errors.append(message)
         else:
-            filled_recipes.append(recipe_id)
+            warnings.append(message)
 
-print(f'Recipes with content: {len(filled_recipes)}')
-print(f'Empty template recipes (in structure): {len(template_recipes)}')
-if template_recipes:
-    print(f'  -> {", ".join(sorted(template_recipes))}')
+    print(f'Total catalogue entries: {len(catalog_entries)}')
+    print(f'Unique recipes in catalogue: {len(catalog_ids)}')
+    print(f'Recipe files: {len(recipe_ids)}')
+    for warning in warnings:
+        print(f'WARNING: {warning}')
+    for error in errors:
+        print(f'ERROR: {error}')
 
-# Find orphaned yaml files (exist but not in structure)
-orphaned_recipes = [r for r in yaml_file_ids if r not in recipes_in_structure]
-print(f'\nOrphaned yaml files (not in structure): {len(orphaned_recipes)}')
-if orphaned_recipes:
-    print(f'  -> {", ".join(sorted(orphaned_recipes))}')
+    if errors:
+        print(f'Validation failed with {len(errors)} error(s).')
+        return 1
 
-print(f'\n--- Summary ---')
-print(f'Total in cookbook_structure: {total_in_structure}')
-print(f'With yaml files: {len(filled_recipes) + len(template_recipes)}')
-print(f'  - Filled with content: {len(filled_recipes)}')
-print(f'  - Empty templates: {len(template_recipes)}')
-print(f'Missing yaml files: {len(missing_recipes)}')
-print(f'Orphaned yaml files: {len(orphaned_recipes)}')
+    print('Validation passed.')
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())

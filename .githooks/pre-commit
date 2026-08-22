@@ -1,0 +1,5 @@
+#!/bin/sh
+
+repo_root=$(git rev-parse --show-toplevel) || exit 1
+python "$repo_root/check_recipes.py" || exit 1
+git diff --cached --check || exit 1

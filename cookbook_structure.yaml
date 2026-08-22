@@ -2,7 +2,6 @@ sections:
   - name: "Quick Weeknights"
     recipes:
       - "spag-bol"
-      - "chicken-leek-pasties"
       - "mini-meatloaves"
       - "chicken-chorizo-paella"
       - "chicken-katsu-curry"
@@ -41,7 +40,6 @@ sections:
       - "mince-pie"
       - "pork-schnitzel"
       - "lamb-koftas"
-      - "tofu-stuffing-balls"
       - "dumplings"
       - "ramen"
       - "sweet-potato-quinoa-patties"
