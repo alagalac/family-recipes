@@ -34,6 +34,7 @@ sections:
       - "lasagna"
       - "mushroom-risotto"
       - "okonomiyaki"
+      - "okonomiyaki-osaka"
       - "pumpkin-soup"
       - "chicken-corn-soup"
       - "cottage-pie"
@@ -48,6 +49,7 @@ sections:
       - "sweet-potato-quinoa-patties"
       - "lamb-lentil-ragu"
       - "toad-in-the-hole"
+      - "tomato-soup"
   - name: "Fakeaways"
     recipes:
       - "beef-burgers"

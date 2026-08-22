@@ -1089,6 +1089,45 @@
     "attribution": "RecipeTin Eats: Japan"
   },
   {
+    "id": "okonomiyaki-osaka",
+    "title": "Osaka Okonomiyaki",
+    "section": "Longer Weeknights",
+    "prep_time": "10 minutes",
+    "cook_time": "25 minutes",
+    "servings": "4",
+    "commentary": "While we maybe prefer the Hiroshima style okonomiyaki, these ones are a bit easier to make and still taste good.",
+    "ingredients": {
+      "Batter": [
+        "3 cups all-purpose flour",
+        "700ml stock (dashi, but I used chicken stock)",
+        "2 eggs",
+        "300g cabbage, shredded"
+      ],
+      "Toppings": [
+        "150g cabbage, shredded",
+        "200g bean sprouts",
+        "4 eggs",
+        "300g chopped bacon",
+        "Kewpie mayonnaise",
+        "Okonomiyaki sauce"
+      ]
+    },
+    "instructions": [
+      "In a large mixing bowl mix the flour, stock and batter eggs together until smooth. Add the shredded cabbage and mix well.",
+      "In a large frying pan heat 1 tbsp of oil over medium heat. Ladel in just under 1/4 of the batter and spread to make a round pancake.",
+      "Spread a quarter of the cabbage and bean sprouts over the top of the pancake, leaving a little well in the middle. Crack an egg into the middle of the well. Sprinkle 1/4 of the bcon over the top of the pancake.",
+      "Drizzle a bit more of the batter over the top of the pancake to help bind the toppings.",
+      "Cook for 10 minutes until pancake it turning golden brown on the bottom.",
+      "Carefully flip the pancake over and cook for another 10 minutes.",
+      "Remove from the pan and place on a plate. Drizzle with okonomiyaki sauce and Kewpie mayonnaise. Repeat with the remaining batter and toppings."
+    ],
+    "notes": [
+      "You can substitute Kewpie for regular mayo or aioli.",
+      "You can make okonomiyaki sauce by mixing 2 tbsp tomato sauce, 1 tbsp Worcestershire sauce, and 1 tbsp soy sauce."
+    ],
+    "attribution": "Adapted form RecipeTin Eats: Japan"
+  },
+  {
     "id": "pumpkin-soup",
     "title": "Pumpkin Soup",
     "section": "Longer Weeknights",
@@ -1584,6 +1623,36 @@
       null
     ],
     "attribution": "Good Housekeeping"
+  },
+  {
+    "id": "tomato-soup",
+    "title": "Tomato Soup",
+    "section": "Longer Weeknights",
+    "prep_time": "10 minutes",
+    "cook_time": "35 minutes",
+    "servings": "6",
+    "commentary": "This soup was a big hit with all the kids including Fraser, who had it as one of his first foods!",
+    "ingredients": [
+      "2 carrots",
+      "2 sticks celery",
+      "2 onions",
+      "2 cloves garlic",
+      "1.5 liters stock (chicken or vegetable)",
+      "2 400g tins of plum tomatoes",
+      "3 large ripe tomatoes",
+      "1/2 bunch fresh basil (15g)"
+    ],
+    "instructions": [
+      "Roughly chop the carrots, celery sticks, onions, and garlic.",
+      "Heat 2 tbsp olive oil in a large pot over medium heat and add the carrots, celery, onion, and garlic. Cook with lid ajar for 10-15 minutes.",
+      "Add the stock, tinned tomatoes, and fresh tomatoes. Bring to the boil and then simmer for 10 minutes with the lid on.",
+      "Remove from the heat, add basil leaves, and season to taste.",
+      "Blend with a stick blender until smooth. Serve with toasted ciabatta bread."
+    ],
+    "notes": [
+      null
+    ],
+    "attribution": "Ministry of Food by Jamie Oliver"
   },
   {
     "id": "beef-burgers",
