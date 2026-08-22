@@ -16,7 +16,6 @@ sections:
       - "fried-rice"
       - "chow-mein"
       - "thai-curry"
-      - "massaman-curry"
       - "butter-chicken-curry"
       - "palak-paneer-curry"
       - "sausage-rolls"
@@ -72,7 +71,6 @@ sections:
       - "pizzas"
       - "roast"
       - "steak-and-chips"
-      - "lamb-beef-stew"
       - "chicken-leek-pasties"
   - name: "BBQ & Sharing"
     recipes:

@@ -575,25 +575,6 @@
     "attribution": "Adapted from what Nan used to make"
   },
   {
-    "id": "massaman-curry",
-    "title": "Massaman Curry",
-    "section": "Quick Weeknights",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "",
-    "ingredients": [
-      null
-    ],
-    "instructions": [
-      null
-    ],
-    "notes": [
-      null
-    ],
-    "attribution": ""
-  },
-  {
     "id": "butter-chicken-curry",
     "title": "Butter Chicken Curry",
     "section": "Quick Weeknights",
@@ -2319,25 +2300,6 @@
       "You can use other cuts of steak, but scotch fillet is my favourite."
     ],
     "attribution": "Various recipes"
-  },
-  {
-    "id": "lamb-beef-stew",
-    "title": "Lamb / Beef Stew",
-    "section": "Weekend",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "",
-    "ingredients": [
-      null
-    ],
-    "instructions": [
-      null
-    ],
-    "notes": [
-      null
-    ],
-    "attribution": ""
   },
   {
     "id": "chicken-leek-pasties",
