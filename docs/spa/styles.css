@@ -445,15 +445,15 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #1d2420;
-    --surface: #27302b;
-    --surface-muted: #303a34;
-    --ink: #edf1ec;
-    --ink-muted: #b7c1ba;
-    --forest: #b9d8c3;
-    --forest-soft: #30463a;
-    --terracotta: #f09a70;
-    --line: #46534b;
+    --paper: #181b1a;
+    --surface: #242826;
+    --surface-muted: #2d322f;
+    --ink: #eeeae1;
+    --ink-muted: #b7b7ae;
+    --forest: #b8c8b9;
+    --forest-soft: #2b3931;
+    --terracotta: #d78967;
+    --line: #414743;
   }
 
   .search-input,
@@ -469,8 +469,8 @@ body {
   }
 
   .commentary {
-    background: #3a2d27;
-    color: #f1ddd4;
+    background: #332a26;
+    color: #eadbd2;
   }
 
   .attribution {
