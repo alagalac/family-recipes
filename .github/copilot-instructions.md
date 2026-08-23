@@ -28,3 +28,5 @@ Do not modify or embelish the recipes. I want them to be authentic to the origin
 Note that all recipes are in NZ measurements, and 1 cup is approximately 250ml. All recipes should be in NZ measurements. If a recipe has measurements in other units, convert them to NZ measurements. If a recipe has measurements in both NZ and other units, remove the non-NZ measurements. If a recipe has measurements in non-NZ units, convert them to NZ measurements and remove the original non-NZ measurements.
 
 Make sure to use ascii characters for all measurements and ingredients. Do not use any special characters or unicode characters in the recipes. For example, use "1/2 cup" instead of "½ cup", and "1 tbsp" instead of "1 tablespoon". This is to ensure that the recipes are easily readable and can be copied and pasted without any issues.
+
+When changing any cached SPA asset under docs/spa, increment CACHE_NAME in docs/spa/sw.js in the same change.

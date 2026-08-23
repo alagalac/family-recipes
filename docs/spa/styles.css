@@ -8,7 +8,8 @@
   --surface-muted: #e9eef0;
   --ink: #202b33;
   --ink-muted: #66727a;
-  --forest: #193f52;
+  --header: #193f52;
+  --heading: #193f52;
   --forest-soft: #e2ecef;
   --terracotta: #c96952;
   --line: #d4dde0;
@@ -51,7 +52,7 @@ body {
 }
 
 .app-header {
-  background: var(--forest);
+  background: var(--header);
   color: #f7faf9;
   padding: max(16px, env(safe-area-inset-top)) 16px 16px;
   border-bottom: 3px solid var(--terracotta);
@@ -63,7 +64,6 @@ body {
 .app-header h1 {
   margin: 0;
   font-size: 1.5em;
-  text-align: left;
   letter-spacing: 0.01em;
 }
 
@@ -170,7 +170,7 @@ body {
 .recipe-list .section h2 {
   font-size: 1.3em;
   margin: 24px 4px 10px;
-  color: var(--forest);
+  color: var(--heading);
   padding: 4px 0 4px 10px;
   border-left: 4px solid var(--terracotta);
   font-weight: 600;
@@ -215,7 +215,7 @@ body {
 .recipe-list-item h3 {
   margin: 0 0 5px 0;
   font-size: 1.15em;
-  color: var(--forest);
+  color: var(--heading);
   font-weight: 600;
 }
 
@@ -255,7 +255,7 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  background: var(--forest);
+  background: var(--header);
   color: #f8f5ee;
   padding: max(16px, env(safe-area-inset-top)) 16px 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
@@ -305,7 +305,7 @@ body {
 .recipe-content h1 {
   margin: 0 0 12px 0;
   font-size: 1.8em;
-  color: var(--forest);
+  color: var(--heading);
   line-height: 1.2;
 }
 
@@ -317,7 +317,7 @@ body {
 }
 
 .recipe-content .meta strong {
-  color: var(--forest);
+  color: var(--heading);
 }
 
 .recipe-columns {
@@ -345,7 +345,7 @@ body {
 .instructions h3 {
   margin: 0 0 12px 0;
   font-size: 1.2em;
-  color: var(--forest);
+  color: var(--heading);
 }
 
 .ingredients ul,
@@ -388,7 +388,7 @@ body {
 .notes h4 {
   margin: 0 0 12px 0;
   font-size: 1.1em;
-  color: var(--forest);
+  color: var(--heading);
 }
 
 .notes ul {
@@ -432,7 +432,7 @@ body {
   min-height: 100dvh;
   padding: 24px;
   text-align: center;
-  color: var(--forest);
+  color: var(--heading);
 }
 
 .load-error h1 {
@@ -452,7 +452,7 @@ body {
   padding: 10px 18px;
   border: 0;
   border-radius: 8px;
-  background: var(--forest);
+  background: var(--header);
   color: #fff;
   font: inherit;
   cursor: pointer;
@@ -465,7 +465,8 @@ body {
     --surface-muted: #2d353d;
     --ink: #edf0ed;
     --ink-muted: #b5bec2;
-    --forest: #b8cbd0;
+    --header: #173542;
+    --heading: #bfd0d2;
     --forest-soft: #2b3a40;
     --terracotta: #df8b70;
     --line: #414b52;
