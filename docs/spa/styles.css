@@ -3,15 +3,16 @@
 }
 
 :root {
-  --paper: #fbf8f2;
+  --paper: #f4f6f5;
   --surface: #ffffff;
-  --surface-muted: #f2eee6;
-  --ink: #26332d;
-  --ink-muted: #65706a;
-  --forest: #23483b;
-  --forest-soft: #dfeae3;
-  --terracotta: #c96f4a;
-  --line: #d9d4ca;
+  --surface-muted: #e9eef0;
+  --ink: #202b33;
+  --ink-muted: #66727a;
+  --forest: #193f52;
+  --forest-soft: #e2ecef;
+  --terracotta: #c96952;
+  --line: #d4dde0;
+  --focus: #d58a3a;
 }
 
 html {
@@ -36,6 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 100dvh;
   width: 100%;
 }
 
@@ -43,29 +45,39 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 100dvh;
   width: 100%;
   overflow: hidden;
 }
 
 .app-header {
   background: var(--forest);
-  color: #f8f5ee;
+  color: #f7faf9;
   padding: max(16px, env(safe-area-inset-top)) 16px 16px;
+  border-bottom: 3px solid var(--terracotta);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 100;
   flex-shrink: 0;
 }
 
 .app-header h1 {
-  margin: 0 0 12px 0;
+  margin: 0;
   font-size: 1.5em;
   text-align: left;
   letter-spacing: 0.01em;
 }
 
+.header-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
 .recipe-count {
-  margin: -8px 0 12px;
-  color: #c8d8cf;
+  margin: 0;
+  color: #c4d6dc;
   font-size: 0.8em;
 }
 
@@ -87,7 +99,7 @@ body {
   border-radius: 8px;
   font-size: 16px;
   font-family: inherit;
-  background: #f8f7f3;
+  background: #f7f9f9;
   color: var(--ink);
   transition: all 0.2s ease;
 }
@@ -98,9 +110,9 @@ body {
 
 .search-input:focus {
   outline: none;
-  border-color: #3498db;
+  border-color: var(--terracotta);
   background: #fff;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  box-shadow: 0 0 0 3px rgba(201, 105, 82, 0.16);
 }
 
 .search-clear-btn {
@@ -141,8 +153,8 @@ body {
 }
 
 .keep-screen-on-btn.active {
-  background: #f39c12;
-  border-color: #e67e22;
+  background: var(--terracotta);
+  border-color: var(--terracotta);
   color: #fff;
 }
 
@@ -151,7 +163,8 @@ body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 0 12px 16px;
-  padding-bottom: max(40px, calc(16px + env(safe-area-inset-bottom)));
+  padding-bottom: 12px;
+  scroll-padding-bottom: 12px;
 }
 
 .recipe-list .section h2 {
@@ -195,7 +208,7 @@ body {
 .keep-screen-on-btn:focus-visible,
 .search-clear-btn:focus-visible,
 .retry-btn:focus-visible {
-  outline: 3px solid #f39c12;
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
 
@@ -232,6 +245,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
+  min-height: 100dvh;
   width: 100%;
   background: var(--paper);
 }
@@ -281,7 +295,8 @@ body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   padding: 20px 16px;
-  padding-bottom: max(40px, calc(20px + env(safe-area-inset-bottom)));
+  padding-bottom: 12px;
+  scroll-padding-bottom: 12px;
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
@@ -354,12 +369,12 @@ body {
 }
 
 .commentary {
-  background: #fff2e8;
+  background: #fff0eb;
   border-left: 4px solid var(--terracotta);
   padding: 12px 16px;
   margin: 20px 0;
   font-style: italic;
-  color: #5f5149;
+  color: #5e4d48;
   border-radius: 4px;
 }
 
@@ -406,7 +421,7 @@ body {
   align-items: center;
   height: 100vh;
   font-size: 1.1em;
-  color: #666;
+  color: var(--ink-muted);
 }
 
 .load-error {
@@ -417,7 +432,7 @@ body {
   min-height: 100dvh;
   padding: 24px;
   text-align: center;
-  color: #2c3e50;
+  color: var(--forest);
 }
 
 .load-error h1 {
@@ -429,7 +444,7 @@ body {
   max-width: 30rem;
   margin: 0 0 20px;
   line-height: 1.5;
-  color: #555;
+  color: var(--ink-muted);
 }
 
 .retry-btn {
@@ -437,7 +452,7 @@ body {
   padding: 10px 18px;
   border: 0;
   border-radius: 8px;
-  background: #2c3e50;
+  background: var(--forest);
   color: #fff;
   font: inherit;
   cursor: pointer;
@@ -445,15 +460,16 @@ body {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --paper: #181b1a;
-    --surface: #242826;
-    --surface-muted: #2d322f;
-    --ink: #eeeae1;
-    --ink-muted: #b7b7ae;
-    --forest: #b8c8b9;
-    --forest-soft: #2b3931;
-    --terracotta: #d78967;
-    --line: #414743;
+    --paper: #171c21;
+    --surface: #232a31;
+    --surface-muted: #2d353d;
+    --ink: #edf0ed;
+    --ink-muted: #b5bec2;
+    --forest: #b8cbd0;
+    --forest-soft: #2b3a40;
+    --terracotta: #df8b70;
+    --line: #414b52;
+    --focus: #e0b06b;
   }
 
   .search-input,
@@ -469,8 +485,8 @@ body {
   }
 
   .commentary {
-    background: #332a26;
-    color: #eadbd2;
+    background: #332a29;
+    color: #eadbd5;
   }
 
   .attribution {
@@ -479,7 +495,7 @@ body {
 
   .retry-btn {
     background: var(--terracotta);
-    color: #211a17;
+    color: #211b19;
   }
 }
 

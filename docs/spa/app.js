@@ -342,8 +342,10 @@ function App() {
 
     return React.createElement('div', { className: 'app' },
         React.createElement('header', { className: 'app-header' },
-            React.createElement('h1', null, 'Cookbook'),
-            React.createElement('p', { className: 'recipe-count' }, `${recipes.length} recipes`),
+            React.createElement('div', { className: 'header-heading' },
+                React.createElement('h1', null, 'Cookbook'),
+                React.createElement('p', { className: 'recipe-count' }, `${recipes.length} recipes`)
+            ),
             React.createElement('div', { className: 'header-controls' },
                 React.createElement('div', { className: 'search-container' },
                     React.createElement('input', {
