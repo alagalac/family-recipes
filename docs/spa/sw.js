@@ -1,17 +1,11 @@
-const CACHE_NAME = 'cookbook-spa-v4';
-const urlsToCache = [
-  '/',
-  '/family-recipes/spa/',
-  '/index.html',
-  '/family-recipes/spa/index.html',
-  '/app.js',
-  '/family-recipes/spa/app.js',
-  '/recipes.json',
-  '/family-recipes/spa/recipes.json',
-  '/styles.css',
-  '/family-recipes/spa/styles.css',
-  '/manifest.json',
-  '/family-recipes/spa/manifest.json'
+const CACHE_NAME = 'cookbook-spa-v5';
+const appShell = [
+  './',
+  './index.html',
+  './app.js',
+  './recipes.json',
+  './styles.css',
+  './manifest.json'
 ];
 
 // Install event - cache resources
@@ -19,7 +13,8 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
       console.log('Opened cache');
-      return cache.addAll(urlsToCache).catch(err => {
+      const urls = appShell.map(path => new URL(path, self.registration.scope).href);
+      return cache.addAll(urls).catch(err => {
         console.log('Cache addAll error:', err);
         return Promise.resolve();
       });
@@ -94,6 +89,6 @@ function cacheFirstStrategy(request) {
       return response;
     });
   }).catch(() => {
-    return caches.match('/index.html');
+    return caches.match(new URL('./index.html', self.registration.scope).href);
   });
 }

@@ -47,7 +47,7 @@ const { useState, useEffect, useRef } = React;
 function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery, listRef }) {
     const filteredRecipes = recipes.filter(recipe => {
         const query = searchQuery.toLowerCase();
-        const titleMatch = recipe.title.toLowerCase().includes(query);
+        const titleMatch = String(recipe.title || '').toLowerCase().includes(query);
         const ingredientMatch = JSON.stringify(recipe.ingredients).toLowerCase().includes(query);
         return titleMatch || ingredientMatch;
     });
@@ -66,8 +66,9 @@ function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery, list
             React.createElement('div', { key: section, className: 'section' },
                 searchQuery === '' ? React.createElement('h2', null, section) : null,
                 items.map(recipe =>
-                    React.createElement('div', {
+                    React.createElement('button', {
                         key: recipe.id,
+                        type: 'button',
                         className: 'recipe-list-item',
                         onClick: () => {
                             hapticFeedback('light');
@@ -93,18 +94,19 @@ function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn }) {
         if (Array.isArray(ingredients)) {
             return React.createElement('ul', null,
                 ingredients.map((ing, idx) =>
-                    React.createElement('li', { key: idx }, ing)
+                    ing ? React.createElement('li', { key: idx }, ing) : null
                 )
             );
-        } else if (typeof ingredients === 'object') {
+        } else if (ingredients && typeof ingredients === 'object') {
             return React.createElement('div', null,
                 Object.entries(ingredients).map(([subheading, items]) =>
                     React.createElement('div', { key: subheading },
                         React.createElement('h4', null, subheading),
                         React.createElement('ul', null,
-                            items.map((ing, idx) =>
-                                React.createElement('li', { key: idx }, ing)
+                            Array.isArray(items) ? items.map((ing, idx) =>
+                                ing ? React.createElement('li', { key: idx }, ing) : null
                             )
+                            : null
                         )
                     )
                 )
@@ -117,18 +119,19 @@ function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn }) {
         if (Array.isArray(instructions)) {
             return React.createElement('ol', null,
                 instructions.map((step, idx) =>
-                    React.createElement('li', { key: idx }, step)
+                    step ? React.createElement('li', { key: idx }, step) : null
                 )
             );
-        } else if (typeof instructions === 'object') {
+        } else if (instructions && typeof instructions === 'object') {
             return React.createElement('div', null,
                 Object.entries(instructions).map(([subheading, steps]) =>
                     React.createElement('div', { key: subheading },
                         React.createElement('h4', null, subheading),
                         React.createElement('ol', null,
-                            steps.map((step, idx) =>
-                                React.createElement('li', { key: idx }, step)
+                            Array.isArray(steps) ? steps.map((step, idx) =>
+                                step ? React.createElement('li', { key: idx }, step) : null
                             )
+                            : null
                         )
                     )
                 )
@@ -166,7 +169,8 @@ function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn }) {
                         setKeepScreenOn(false);
                     }
                 },
-                'aria-label': 'Keep screen on'
+                'aria-label': keepScreenOn ? 'Turn off keep screen on' : 'Keep screen on',
+                'aria-pressed': keepScreenOn
             }, keepScreenOn ? '💡' : '⚪')
         ),
         React.createElement('div', { className: 'recipe-content' },
@@ -212,24 +216,55 @@ function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn }) {
 // Main App Component
 function App() {
     const [recipes, setRecipes] = useState([]);
-    const [selectedRecipeId, setSelectedRecipeId] = useState(null);
+    const [selectedRecipeId, setSelectedRecipeId] = useState(() => window.location.hash.slice(1) || null);
     const [searchQuery, setSearchQuery] = useState('');
     const [keepScreenOn, setKeepScreenOn] = useState(localStorage.getItem('keepScreenOn') === 'true');
     const [loading, setLoading] = useState(true);
+    const [loadError, setLoadError] = useState(null);
+    const [loadAttempt, setLoadAttempt] = useState(0);
     const listRef = useRef(null);
 
     useEffect(() => {
-        // Load recipes from JSON
-        fetch('recipes.json')
-            .then(res => res.json())
+        let cancelled = false;
+        setLoading(true);
+        setLoadError(null);
+
+        fetch('recipes.json', { cache: 'no-cache' })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`Recipe data request failed (${res.status})`);
+                }
+                return res.json();
+            })
             .then(data => {
+                if (cancelled) {
+                    return;
+                }
+                if (!Array.isArray(data)) {
+                    throw new Error('Recipe data is not an array');
+                }
                 setRecipes(data);
                 setLoading(false);
             })
             .catch(err => {
                 console.error('Error loading recipes:', err);
-                setLoading(false);
+                if (!cancelled) {
+                    setLoadError('The recipes could not be loaded. Check your connection and try again.');
+                    setLoading(false);
+                }
             });
+
+        return () => {
+            cancelled = true;
+        };
+    }, [loadAttempt]);
+
+    useEffect(() => {
+        const handleHistoryChange = () => {
+            setSelectedRecipeId(window.location.hash.slice(1) || null);
+        };
+        window.addEventListener('popstate', handleHistoryChange);
+        return () => window.removeEventListener('popstate', handleHistoryChange);
     }, []);
 
     useEffect(() => {
@@ -240,7 +275,19 @@ function App() {
             } else {
                 releaseWakeLock();
             }
+        } else {
+            releaseWakeLock();
         }
+    }, [keepScreenOn, selectedRecipeId]);
+
+    useEffect(() => {
+        const reacquireWakeLock = () => {
+            if (keepScreenOn && selectedRecipeId && document.visibilityState === 'visible') {
+                requestWakeLock();
+            }
+        };
+        document.addEventListener('visibilitychange', reacquireWakeLock);
+        return () => document.removeEventListener('visibilitychange', reacquireWakeLock);
     }, [keepScreenOn, selectedRecipeId]);
 
     const handleSelectRecipe = (recipeId) => {
@@ -248,10 +295,16 @@ function App() {
         if (listRef.current) {
             localStorage.setItem('recipeListScrollY', listRef.current.scrollTop);
         }
+        window.history.pushState({ recipeId }, '', `#${recipeId}`);
         setSelectedRecipeId(recipeId);
     };
 
     const handleBackFromRecipe = () => {
+        if (window.history.state && window.history.state.recipeId) {
+            window.history.back();
+            return;
+        }
+        window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
         setSelectedRecipeId(null);
         // Restore scroll position when returning to list
         setTimeout(() => {
@@ -270,6 +323,18 @@ function App() {
         return React.createElement('div', { className: 'loading' }, 'Loading recipes...');
     }
 
+    if (loadError) {
+        return React.createElement('div', { className: 'load-error', role: 'alert' },
+            React.createElement('h1', null, 'Cookbook unavailable'),
+            React.createElement('p', null, loadError),
+            React.createElement('button', {
+                type: 'button',
+                className: 'retry-btn',
+                onClick: () => setLoadAttempt(attempt => attempt + 1)
+            }, 'Try again')
+        );
+    }
+
     if (selectedRecipeId && selectedRecipe) {
         return React.createElement(RecipeDetail, {
             recipe: selectedRecipe,
@@ -281,6 +346,7 @@ function App() {
 
     return React.createElement('div', { className: 'app' },
         React.createElement('header', { className: 'app-header' },
+            React.createElement('h1', null, 'Cookbook'),
             React.createElement('div', { className: 'header-controls' },
                 React.createElement('div', { className: 'search-container' },
                     React.createElement('input', {
@@ -311,7 +377,8 @@ function App() {
                             setKeepScreenOn(false);
                         }
                     },
-                    'aria-label': 'Keep screen on'
+                        'aria-label': keepScreenOn ? 'Turn off keep screen on' : 'Keep screen on',
+                        'aria-pressed': keepScreenOn
                 }, keepScreenOn ? '💡' : '⚪')
             )
         ),
