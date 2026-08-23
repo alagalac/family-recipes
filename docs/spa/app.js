@@ -43,29 +43,6 @@ async function releaseWakeLock() {
 
 const { useState, useEffect, useRef } = React;
 
-function durationInMinutes(value) {
-    if (typeof value !== 'string' || !value.trim()) {
-        return null;
-    }
-    const hourMatch = value.match(/(\d+)\s*hours?/i);
-    const minuteMatches = [...value.matchAll(/(\d+)\s*minutes?/gi)];
-    const minutes = minuteMatches.length ? Math.max(...minuteMatches.map(match => Number(match[1]))) : 0;
-    if (hourMatch) {
-        return Number(hourMatch[1]) * 60 + minutes;
-    }
-    const numbers = [...value.matchAll(/\d+/g)].map(match => Number(match[0]));
-    return numbers.length ? Math.max(...numbers) : null;
-}
-
-function totalTime(recipe) {
-    const prep = durationInMinutes(recipe.prep_time);
-    const cook = durationInMinutes(recipe.cook_time);
-    if (prep === null || cook === null) {
-        return null;
-    }
-    return `${prep + cook} min total`;
-}
-
 // Recipe List Component
 function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery, listRef }) {
     const filteredRecipes = recipes.filter(recipe => {
@@ -98,12 +75,7 @@ function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery, list
                             onSelectRecipe(recipe.id);
                         }
                     },
-                    React.createElement('h3', null, recipe.title),
-                    (recipe.prep_time || recipe.cook_time) ? React.createElement('p', { className: 'recipe-meta' },
-                        totalTime(recipe) ? React.createElement('span', { className: 'total-time' }, totalTime(recipe)) : null,
-                        recipe.prep_time ? React.createElement('span', null, 'Prep ' + recipe.prep_time) : null,
-                        recipe.cook_time ? React.createElement('span', null, 'Cook ' + recipe.cook_time) : null
-                    ) : null
+                    React.createElement('h3', null, recipe.title)
                     )
                 )
             )
