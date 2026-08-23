@@ -139,7 +139,7 @@ function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn }) {
 
     const hasNotes = recipe.notes && (
         (typeof recipe.notes === 'string' && recipe.notes.trim() !== '') ||
-        (Array.isArray(recipe.notes) && recipe.notes.some(note => note.trim() !== ''))
+        (Array.isArray(recipe.notes) && recipe.notes.some(note => typeof note === 'string' && note.trim() !== ''))
     );
 
     return React.createElement('div', { 
@@ -196,7 +196,7 @@ function RecipeDetail({ recipe, onBack, keepScreenOn, setKeepScreenOn }) {
                     React.createElement('p', null, recipe.notes) :
                     Array.isArray(recipe.notes) ?
                     React.createElement('ul', null,
-                        recipe.notes.filter(note => note.trim() !== '').map((note, idx) =>
+                        recipe.notes.filter(note => typeof note === 'string' && note.trim() !== '').map((note, idx) =>
                             React.createElement('li', { key: idx }, note)
                         )
                     ) : null
