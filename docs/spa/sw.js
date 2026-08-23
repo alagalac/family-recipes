@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cookbook-spa-v5';
+const CACHE_NAME = 'cookbook-spa-v6';
 const appShell = [
   './',
   './index.html',
