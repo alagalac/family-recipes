@@ -1,6 +1,16 @@
 // Register service worker for PWA support
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').catch(err => {
+    let refreshing = false;
+    const hadController = Boolean(navigator.serviceWorker.controller);
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (hadController && !refreshing) {
+            refreshing = true;
+            window.location.reload();
+        }
+    });
+    navigator.serviceWorker.register('sw.js').then(registration => {
+        registration.update();
+    }).catch(err => {
         console.log('Service Worker registration failed:', err);
     });
 }
@@ -220,6 +230,18 @@ function App() {
     const [loadAttempt, setLoadAttempt] = useState(0);
     const listRef = useRef(null);
 
+    const restoreRecipeListPosition = () => {
+        const savedScrollY = localStorage.getItem('recipeListScrollY');
+        if (savedScrollY === null) {
+            return;
+        }
+        requestAnimationFrame(() => {
+            if (listRef.current) {
+                listRef.current.scrollTop = Number.parseInt(savedScrollY, 10) || 0;
+            }
+        });
+    };
+
     useEffect(() => {
         let cancelled = false;
         setLoading(true);
@@ -257,7 +279,11 @@ function App() {
 
     useEffect(() => {
         const handleHistoryChange = () => {
-            setSelectedRecipeId(window.location.hash.slice(1) || null);
+            const recipeId = window.location.hash.slice(1) || null;
+            setSelectedRecipeId(recipeId);
+            if (!recipeId) {
+                restoreRecipeListPosition();
+            }
         };
         window.addEventListener('popstate', handleHistoryChange);
         return () => window.removeEventListener('popstate', handleHistoryChange);
@@ -302,15 +328,7 @@ function App() {
         }
         window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
         setSelectedRecipeId(null);
-        // Restore scroll position when returning to list
-        setTimeout(() => {
-            if (listRef.current) {
-                const savedScrollY = localStorage.getItem('recipeListScrollY');
-                if (savedScrollY) {
-                    listRef.current.scrollTop = parseInt(savedScrollY);
-                }
-            }
-        }, 0);
+        restoreRecipeListPosition();
     };
 
     const selectedRecipe = recipes.find(r => r.id === selectedRecipeId);

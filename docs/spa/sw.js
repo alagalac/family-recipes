@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cookbook-spa-v7';
+const CACHE_NAME = 'cookbook-spa-v9';
 const appShell = [
   './',
   './index.html',
@@ -40,7 +40,7 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-// Fetch event - network-first for recipes.json, cache-first for others
+// Fetch event - network-first for app assets, cache-first for other requests
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') {
     return;
@@ -48,15 +48,18 @@ self.addEventListener('fetch', event => {
 
   const url = new URL(event.request.url);
   const isRecipesJson = url.pathname.includes('recipes.json');
+  const isAppAsset = appShell.some(path => {
+    return new URL(path, self.registration.scope).pathname === url.pathname;
+  });
 
   event.respondWith(
-    (isRecipesJson ? networkFirstStrategy(event.request) : cacheFirstStrategy(event.request))
+    (isRecipesJson || isAppAsset ? networkFirstStrategy(event.request) : cacheFirstStrategy(event.request))
   );
 });
 
 // Network-first strategy for recipes.json
 function networkFirstStrategy(request) {
-  return fetch(request)
+  return fetch(request, { cache: 'no-cache' })
     .then(response => {
       if (!response || response.status !== 200 || response.type === 'error') {
         return response;
