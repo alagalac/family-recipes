@@ -80,6 +80,7 @@ sections:
       - "bread-sauce"
       - "asparagus-vinegarette"
       - "yorkshire-puddings"
+      - "flat-bread"
   - name: "Brunch"
     recipes:
       - "american-pancakes"
@@ -111,7 +112,6 @@ sections:
       - "feijoa-chutney"
       - "spicy-plum-chutney"
       - "yoghurt"
-      - "flat-bread"
       - "lemon-poppyseed-muffins"
       - "banana-bread"
       - "choc-chip-cookies"

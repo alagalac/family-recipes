@@ -1191,6 +1191,11 @@
         "Avocado",
         "Burger sauce",
         "Sour cream"
+      ],
+      "Pumpkin topping": [
+        "Pumpkin, roasted and sliced",
+        "Feta cheese",
+        "Bacon"
       ]
     },
     "instructions": [
@@ -1528,63 +1533,6 @@
     "attribution": ""
   },
   {
-    "id": "stir-fry",
-    "title": "Stir Fry",
-    "section": "Longer Recipes",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "",
-    "ingredients": [
-      null
-    ],
-    "instructions": [
-      null
-    ],
-    "notes": [
-      null
-    ],
-    "attribution": ""
-  },
-  {
-    "id": "shakshuka",
-    "title": "Shakshuka",
-    "section": "Longer Recipes",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "",
-    "ingredients": [
-      null
-    ],
-    "instructions": [
-      null
-    ],
-    "notes": [
-      null
-    ],
-    "attribution": ""
-  },
-  {
-    "id": "chilli-con-carne",
-    "title": "Chilli Con Carne",
-    "section": "Longer Recipes",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "",
-    "ingredients": [
-      null
-    ],
-    "instructions": [
-      null
-    ],
-    "notes": [
-      null
-    ],
-    "attribution": ""
-  },
-  {
     "id": "tofu-stuffing-balls",
     "title": "Pistachio & Cranberry Stuffing Balls",
     "section": "Longer Recipes",
@@ -1706,25 +1654,6 @@
     "attribution": "Adapted from a recipe by Nadia Lim"
   },
   {
-    "id": "lasagna",
-    "title": "Lasagna",
-    "section": "Longer Recipes",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "",
-    "ingredients": [
-      null
-    ],
-    "instructions": [
-      null
-    ],
-    "notes": [
-      null
-    ],
-    "attribution": ""
-  },
-  {
     "id": "mushroom-risotto",
     "title": "Mushroom Risotto",
     "section": "Longer Recipes",
@@ -1833,25 +1762,6 @@
       "Swap the beef for lamb mince to make a shepherd's pie."
     ],
     "attribution": "Mine"
-  },
-  {
-    "id": "bangers-and-mash",
-    "title": "Bangers and Mash",
-    "section": "Longer Recipes",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "",
-    "ingredients": [
-      null
-    ],
-    "instructions": [
-      null
-    ],
-    "notes": [
-      null
-    ],
-    "attribution": ""
   },
   {
     "id": "mince-pie",
@@ -2048,63 +1958,6 @@
       "You can use other cuts of steak, but scotch fillet is my favourite."
     ],
     "attribution": "Various recipes"
-  },
-  {
-    "id": "fish-burgers",
-    "title": "Fish Burgers",
-    "section": "Longer Recipes",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "",
-    "ingredients": [
-      null
-    ],
-    "instructions": [
-      null
-    ],
-    "notes": [
-      null
-    ],
-    "attribution": ""
-  },
-  {
-    "id": "meatball-subs",
-    "title": "Meatball Subs",
-    "section": "Longer Recipes",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "",
-    "ingredients": [
-      null
-    ],
-    "instructions": [
-      null
-    ],
-    "notes": [
-      null
-    ],
-    "attribution": ""
-  },
-  {
-    "id": "fish-and-chips",
-    "title": "Fish and Chips",
-    "section": "Longer Recipes",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "",
-    "ingredients": [
-      null
-    ],
-    "instructions": [
-      null
-    ],
-    "notes": [
-      null
-    ],
-    "attribution": ""
   },
   {
     "id": "quesadillas",
@@ -2566,6 +2419,44 @@
     "attribution": "Serious Eats"
   },
   {
+    "id": "flat-bread",
+    "title": "Garlic Butter Flatbreads",
+    "section": "Sides",
+    "prep_time": "10 minutes (+15-30 minutes resting)",
+    "cook_time": "20 minutes",
+    "servings": "4-6 flatbreads",
+    "commentary": "A handy recipe for flat breads to save buying them from the shops. We eat these with curry or as a wrap for koftas.",
+    "ingredients": {
+      "Flatbreads": [
+        "2 cups self-raising flour (or plain/high grade flour + 2 1/2 tsp baking powder)",
+        "3/4 cup milk (or plain yoghurt or water)",
+        "1 1/2 tablespoons olive oil (or any oil)",
+        "1/4 teaspoon salt"
+      ],
+      "Garlic herb butter (optional)": [
+        "2 tablespoons softened butter",
+        "1 clove garlic, finely chopped",
+        "2 teaspoons finely chopped parsley"
+      ]
+    },
+    "instructions": [
+      "Place flour, milk, oil and salt in a bowl and mix to combine.",
+      "Knead on a lightly floured surface for about 5 minutes until smooth and elastic.",
+      "Divide the dough into 4 or 6 portions and rest on the bench for at least 15-30 minutes (longer is fine; wrap if resting overnight).",
+      "If making garlic & herb butter, mix softened butter, chopped garlic and parsley together and set aside.",
+      "Heat a large heavy-based skillet or frypan over medium heat. Roll each piece of dough into a roughly 25cm circle and lightly brush with oil.",
+      "Place the dough in the hot pan and cook about 2 minutes per side until puffed and golden. Repeat with remaining pieces.",
+      "Brush with garlic herb butter while still hot, if using, and serve immediately."
+    ],
+    "notes": [
+      "Rest the dough 15-30 minutes to relax the gluten; you can rest for several hours or overnight (wrap tightly in clingfilm if overnight).",
+      "For gluten-free flatbreads use gluten-free flour and milk or yoghurt (not water) to help bind the dough.",
+      "To reheat, wrap flatbreads in foil and warm in the oven to prevent drying out.",
+      "If you don't have a pastry brush, drizzle a little oil over each flatbread before placing it in the pan."
+    ],
+    "attribution": "Nadia's Comfort Kitchen by Nadia Lim"
+  },
+  {
     "id": "american-pancakes",
     "title": "American Pancakes",
     "section": "Brunch",
@@ -2683,25 +2574,6 @@
     "attribution": "Anko Waffle Maker FS-315-W User Manual"
   },
   {
-    "id": "scrambled-eggs",
-    "title": "Scrambled Eggs",
-    "section": "Brunch",
-    "prep_time": "",
-    "cook_time": "",
-    "servings": "",
-    "commentary": "",
-    "ingredients": [
-      null
-    ],
-    "instructions": [
-      null
-    ],
-    "notes": [
-      null
-    ],
-    "attribution": ""
-  },
-  {
     "id": "porridge",
     "title": "Porridge",
     "section": "Brunch",
@@ -2750,6 +2622,10 @@
       "Cream corn toastie": [
         "2 tbsp cream corn",
         "1 tsp sour cream"
+      ],
+      "Ploughman's toastie": [
+        "Feijoa chutney",
+        "Cheddar cheese"
       ]
     },
     "instructions": [
@@ -3420,44 +3296,6 @@
       "Adjust the amount of milk powder to get your desired thickness. More milk powder = thicker yoghurt."
     ],
     "attribution": "Adapted form Kidspot"
-  },
-  {
-    "id": "flat-bread",
-    "title": "Garlic Butter Flatbreads",
-    "section": "Baking",
-    "prep_time": "10 minutes (+15-30 minutes resting)",
-    "cook_time": "20 minutes",
-    "servings": "4-6 flatbreads",
-    "commentary": "A handy recipe for flat breads to save buying them from the shops. We eat these with curry or as a wrap for koftas.",
-    "ingredients": {
-      "Flatbreads": [
-        "2 cups self-raising flour (or plain/high grade flour + 2 1/2 tsp baking powder)",
-        "3/4 cup milk (or plain yoghurt or water)",
-        "1 1/2 tablespoons olive oil (or any oil)",
-        "1/4 teaspoon salt"
-      ],
-      "Garlic herb butter (optional)": [
-        "2 tablespoons softened butter",
-        "1 clove garlic, finely chopped",
-        "2 teaspoons finely chopped parsley"
-      ]
-    },
-    "instructions": [
-      "Place flour, milk, oil and salt in a bowl and mix to combine.",
-      "Knead on a lightly floured surface for about 5 minutes until smooth and elastic.",
-      "Divide the dough into 4 or 6 portions and rest on the bench for at least 15-30 minutes (longer is fine; wrap if resting overnight).",
-      "If making garlic & herb butter, mix softened butter, chopped garlic and parsley together and set aside.",
-      "Heat a large heavy-based skillet or frypan over medium heat. Roll each piece of dough into a roughly 25cm circle and lightly brush with oil.",
-      "Place the dough in the hot pan and cook about 2 minutes per side until puffed and golden. Repeat with remaining pieces.",
-      "Brush with garlic herb butter while still hot, if using, and serve immediately."
-    ],
-    "notes": [
-      "Rest the dough 15-30 minutes to relax the gluten; you can rest for several hours or overnight (wrap tightly in clingfilm if overnight).",
-      "For gluten-free flatbreads use gluten-free flour and milk or yoghurt (not water) to help bind the dough.",
-      "To reheat, wrap flatbreads in foil and warm in the oven to prevent drying out.",
-      "If you don't have a pastry brush, drizzle a little oil over each flatbread before placing it in the pan."
-    ],
-    "attribution": "Nadia's Comfort Kitchen by Nadia Lim"
   },
   {
     "id": "lemon-poppyseed-muffins",
