@@ -29,4 +29,4 @@ Note that all recipes are in NZ measurements, and 1 cup is approximately 250ml. 
 
 Make sure to use ascii characters for all measurements and ingredients. Do not use any special characters or unicode characters in the recipes. For example, use "1/2 cup" instead of "½ cup", and "1 tbsp" instead of "1 tablespoon". This is to ensure that the recipes are easily readable and can be copied and pasted without any issues.
 
-When changing any cached SPA asset under docs/spa, increment CACHE_NAME in docs/spa/sw.js in the same change.
+The SPA uses network-first loading for its app assets and cached fallbacks for offline use. Do not change CACHE_NAME for normal SPA asset edits; change it only when deliberately changing the service-worker cache structure.

@@ -5,25 +5,3 @@ cd "$repo_root" || exit 1
 
 python "$repo_root/check_recipes.py" || exit 1
 git diff --cached --check || exit 1
-
-spa_asset_changed=false
-for file in docs/spa/app.js docs/spa/index.html docs/spa/manifest.json docs/spa/recipes.json docs/spa/styles.css; do
-	if git diff --cached --name-only -- "$file" | grep -q .; then
-		spa_asset_changed=true
-		break
-	fi
-done
-
-if [ "$spa_asset_changed" = true ]; then
-	if ! git diff --cached --name-only -- docs/spa/sw.js | grep -q .; then
-		echo "ERROR: SPA assets changed; stage docs/spa/sw.js with a new CACHE_NAME version."
-		exit 1
-	fi
-
-	old_cache_name=$(git show HEAD:docs/spa/sw.js 2>/dev/null | sed -n "s/^const CACHE_NAME = '\([^']*\)';/\1/p")
-	new_cache_name=$(git show :docs/spa/sw.js 2>/dev/null | sed -n "s/^const CACHE_NAME = '\([^']*\)';/\1/p")
-	if [ -z "$new_cache_name" ] || [ "$old_cache_name" = "$new_cache_name" ]; then
-		echo "ERROR: SPA assets changed; increment CACHE_NAME in the staged docs/spa/sw.js."
-		exit 1
-	fi
-fi

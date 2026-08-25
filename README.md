@@ -13,7 +13,7 @@ Configure the versioned pre-commit hook once per checkout:
 
 `git config core.hooksPath .githooks`
 
-When changing files under `docs/spa`, increment `CACHE_NAME` in `docs/spa/sw.js` in the same commit so installed copies receive the update. The pre-commit hook checks this automatically.
+The SPA checks for updated assets when it opens online and uses cached assets when offline. You do not need to change a cache version for normal CSS, JavaScript, or recipe changes. Change `CACHE_NAME` only when deliberately changing the service-worker cache structure.
 
 Run:
 
