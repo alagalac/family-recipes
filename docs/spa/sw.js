@@ -3,6 +3,7 @@ const appShell = [
   './',
   './index.html',
   './app.js',
+  './foreword.md',
   './recipes.json',
   './styles.css',
   './manifest.json'

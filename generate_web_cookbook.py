@@ -1,5 +1,7 @@
 import yaml
 import os
+import html
+import re
 
 def load_structure(filename):
     with open(filename, 'r', encoding='utf-8') as f:
@@ -8,6 +10,51 @@ def load_structure(filename):
 def load_recipe(filename):
     with open(filename, 'r', encoding='utf-8') as f:
         return yaml.safe_load(f)
+
+def load_foreword(filename):
+    with open(filename, 'r', encoding='utf-8') as f:
+        markdown = f.read()
+
+    def inline_markdown(text):
+        escaped = html.escape(text)
+        escaped = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', escaped)
+        return re.sub(r'\*([^*]+)\*', r'<em>\1</em>', escaped)
+
+    output = []
+    paragraph = []
+    list_items = []
+
+    def flush_paragraph():
+        if paragraph:
+            output.append(f'<p>{inline_markdown(" ".join(paragraph))}</p>')
+            paragraph.clear()
+
+    def flush_list():
+        if list_items:
+            output.append('<ul>')
+            output.extend(f'<li>{inline_markdown(item)}</li>' for item in list_items)
+            output.append('</ul>')
+            list_items.clear()
+
+    for line in markdown.splitlines():
+        line = line.strip()
+        if not line:
+            flush_paragraph()
+            flush_list()
+        elif line.startswith('- '):
+            flush_paragraph()
+            list_items.append(line[2:])
+        elif line.startswith('# '):
+            flush_paragraph()
+            flush_list()
+            output.append(f'<h3>{inline_markdown(line[2:])}</h3>')
+        else:
+            flush_list()
+            paragraph.append(line)
+
+    flush_paragraph()
+    flush_list()
+    return '\n'.join(output)
 
 def html_escape(text):
     import html
@@ -76,8 +123,22 @@ def render_recipe(recipe, recipe_id):
     html.append('</div>')
     return "\n".join(html)
 
+def generate_foreword_asset(source_file, output_file):
+    with open(source_file, 'r', encoding='utf-8') as f:
+        content = f.read().strip() + '\n'
+
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write(content)
+
+    print(f"Foreword asset generated: {output_file}")
+
+
 def generate_html_cookbook(structure_file, recipes_folder, output_file):
     cookbook = load_structure(structure_file)
+    foreword_file = os.path.join(os.path.dirname(__file__), 'foreword.md')
+    spa_foreword_file = os.path.join(os.path.dirname(__file__), 'docs', 'spa', 'foreword.md')
+    generate_foreword_asset(foreword_file, spa_foreword_file)
+    foreword_html = load_foreword(foreword_file)
     html = []
     html.append("""<!DOCTYPE html>
 <html lang="en">
@@ -160,6 +221,11 @@ def generate_html_cookbook(structure_file, recipes_folder, output_file):
     
     # Main content
     html.append('<main>')
+    html.append('<section class="foreword" aria-labelledby="foreword-title">')
+    html.append('<p class="foreword-kicker">Our cookbook</p>')
+    html.append('<h2 id="foreword-title">A few words before we cook</h2>')
+    html.append(f'<div class="foreword-text">{foreword_html}</div>')
+    html.append('</section>')
     
     for section in cookbook['sections']:
         html.append(f'<div class="section"><h1>{html_escape(section["name"])}</h1>')

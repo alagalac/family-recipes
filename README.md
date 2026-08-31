@@ -22,3 +22,5 @@ Run:
 Check the recipe catalogue manually with:
 
 `python check_recipes.py`
+
+Edit the foreword in `foreword.md`. It is displayed from the About button in the SPA and at the top of the normal HTML site. It supports paragraphs, headings, bullet lists, bold, and italics.

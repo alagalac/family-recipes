@@ -53,8 +53,105 @@ async function releaseWakeLock() {
 
 const { useState, useEffect, useRef } = React;
 
+function renderInlineMarkdown(text) {
+    return text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).filter(Boolean).map((part, index) => {
+        if (part.startsWith('**') && part.endsWith('**')) {
+            return React.createElement('strong', { key: index }, part.slice(2, -2));
+        }
+        if (part.startsWith('*') && part.endsWith('*')) {
+            return React.createElement('em', { key: index }, part.slice(1, -1));
+        }
+        return React.createElement(React.Fragment, { key: index }, part);
+    });
+}
+
+function renderMarkdown(markdown) {
+    const lines = markdown.split(/\r?\n/);
+    const elements = [];
+    let paragraph = [];
+    let listItems = [];
+
+    const flushParagraph = () => {
+        if (paragraph.length) {
+            elements.push(React.createElement('p', { key: elements.length }, renderInlineMarkdown(paragraph.join(' '))));
+            paragraph = [];
+        }
+    };
+    const flushList = () => {
+        if (listItems.length) {
+            elements.push(React.createElement('ul', { key: elements.length }, listItems.map((item, index) =>
+                React.createElement('li', { key: index }, renderInlineMarkdown(item))
+            )));
+            listItems = [];
+        }
+    };
+
+    lines.forEach(line => {
+        const trimmed = line.trim();
+        if (!trimmed) {
+            flushParagraph();
+            flushList();
+        } else if (trimmed.startsWith('- ')) {
+            flushParagraph();
+            listItems.push(trimmed.slice(2));
+        } else if (trimmed.startsWith('# ')) {
+            flushParagraph();
+            flushList();
+            elements.push(React.createElement('h3', { key: elements.length }, renderInlineMarkdown(trimmed.slice(2))));
+        } else {
+            flushList();
+            paragraph.push(trimmed);
+        }
+    });
+    flushParagraph();
+    flushList();
+    return elements;
+}
+
+function Foreword({ onClose }) {
+    const [markdown, setMarkdown] = useState(null);
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        fetch('./foreword.md', { cache: 'no-cache' })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Foreword request failed (${response.status})`);
+                }
+                return response.text();
+            })
+            .then(setMarkdown)
+            .catch(error => {
+                console.error('Error loading foreword:', error);
+                setError(true);
+            });
+    }, []);
+
+    return React.createElement('section', {
+        className: 'foreword',
+        id: 'foreword-panel',
+        'aria-labelledby': 'foreword-title'
+    },
+        React.createElement('div', { className: 'foreword-heading' },
+            React.createElement('div', null,
+                React.createElement('p', { className: 'foreword-kicker' }, 'Our cookbook'),
+                React.createElement('h2', { id: 'foreword-title' }, 'A few words before we cook')
+            ),
+            React.createElement('button', {
+                type: 'button',
+                className: 'foreword-close',
+                onClick: onClose,
+                'aria-label': 'Close about this cookbook'
+            }, 'Close')
+        ),
+        markdown !== null ? renderMarkdown(markdown) :
+            error ? React.createElement('p', null, 'The foreword could not be loaded.') :
+            React.createElement('p', null, 'Loading...')
+    );
+}
+
 // Recipe List Component
-function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery, listRef }) {
+function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery, listRef, showAbout, setShowAbout }) {
     const filteredRecipes = recipes.filter(recipe => {
         const query = searchQuery.toLowerCase();
         const titleMatch = String(recipe.title || '').toLowerCase().includes(query);
@@ -72,6 +169,7 @@ function RecipeList({ recipes, onSelectRecipe, searchQuery, setSearchQuery, list
     });
 
     return React.createElement('div', { className: 'recipe-list', ref: listRef },
+        searchQuery === '' && showAbout ? React.createElement(Foreword, { onClose: () => setShowAbout(false) }) : null,
         Object.entries(grouped).map(([section, items]) =>
             React.createElement('div', { key: section, className: 'section' },
                 searchQuery === '' ? React.createElement('h2', null, section) : null,
@@ -228,6 +326,7 @@ function App() {
     const [loading, setLoading] = useState(true);
     const [loadError, setLoadError] = useState(null);
     const [loadAttempt, setLoadAttempt] = useState(0);
+    const [showAbout, setShowAbout] = useState(false);
     const listRef = useRef(null);
 
     const restoreRecipeListPosition = () => {
@@ -362,7 +461,14 @@ function App() {
         React.createElement('header', { className: 'app-header' },
             React.createElement('div', { className: 'header-heading' },
                 React.createElement('h1', null, 'Cookbook'),
-                React.createElement('p', { className: 'recipe-count' }, `${recipes.length} recipes`)
+                React.createElement('p', { className: 'recipe-count' }, `${recipes.length} recipes`),
+                React.createElement('button', {
+                    type: 'button',
+                    className: 'about-btn',
+                    onClick: () => setShowAbout(visible => !visible),
+                    'aria-expanded': showAbout,
+                    'aria-controls': 'foreword-panel'
+                }, showAbout ? 'Hide about' : 'About')
             ),
             React.createElement('div', { className: 'header-controls' },
                 React.createElement('div', { className: 'search-container' },
@@ -404,7 +510,9 @@ function App() {
             onSelectRecipe: handleSelectRecipe,
             searchQuery: searchQuery,
             setSearchQuery: setSearchQuery,
-            listRef: listRef
+            listRef: listRef,
+            showAbout: showAbout,
+            setShowAbout: setShowAbout
         })
     );
 }

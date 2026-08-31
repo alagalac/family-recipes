@@ -81,6 +81,22 @@ body {
   font-size: 0.8em;
 }
 
+.about-btn {
+  min-height: 36px;
+  padding: 6px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  background: transparent;
+  color: #f7faf9;
+  font: 600 0.78em Arial, sans-serif;
+  cursor: pointer;
+}
+
+.about-btn:hover,
+.about-btn[aria-expanded='true'] {
+  background: rgba(255, 255, 255, 0.14);
+}
+
 .header-controls {
   display: flex;
   gap: 12px;
@@ -166,6 +182,63 @@ body {
   padding-bottom: 12px;
   margin-bottom: calc(-1 * env(safe-area-inset-bottom));
   scroll-padding-bottom: 12px;
+}
+
+.foreword {
+  max-width: 760px;
+  margin: 20px auto 30px;
+  padding: 22px 20px 20px;
+  border-top: 4px solid var(--terracotta);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.foreword-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.foreword-kicker {
+  margin: 0 0 6px;
+  color: var(--terracotta);
+  font-family: Arial, sans-serif;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.foreword h2 {
+  margin: 0 0 10px;
+  color: var(--heading);
+  font-size: 1.35em;
+  line-height: 1.2;
+}
+
+.foreword-close {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ink-muted);
+  font: 600 0.78em Arial, sans-serif;
+  cursor: pointer;
+}
+
+.foreword-close:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+
+.foreword p:last-child {
+  max-width: 620px;
+  margin: 0;
+  color: var(--ink-muted);
+  line-height: 1.55;
 }
 
 .recipe-list .section h2 {
@@ -494,6 +567,10 @@ body {
 
   .attribution {
     background: var(--surface-muted);
+  }
+
+  .foreword {
+    border-bottom-color: var(--line);
   }
 
   .retry-btn {

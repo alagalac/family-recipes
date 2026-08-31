@@ -1960,6 +1960,46 @@
     "attribution": "Various recipes"
   },
   {
+    "id": "meatball-subs",
+    "title": "Meatball Subs",
+    "section": "Longer Recipes",
+    "prep_time": "15 minutes",
+    "cook_time": "15 minutes",
+    "servings": "4",
+    "commentary": "Better than subway!",
+    "ingredients": {
+      "Meatballs": [
+        "200g Beef mince",
+        "200g Pork mince",
+        "1 tsp oregano",
+        "1/2 tsp salt",
+        "1/2 cup panko breadcumbs",
+        "1 egg",
+        "2 cloves garlic, minced"
+      ],
+      "Sauce": [
+        "1 tin crushed tomatoes",
+        "1 tsp dried oregano",
+        "1/2 tsp salt"
+      ],
+      "To serve": [
+        "1/2 cup grated cheese",
+        "4 long rolls"
+      ]
+    },
+    "instructions": [
+      "In a large bowl mix the meatball ingredients together. Using a 1 tbsp scoop, scoop the mixture out into balls on a spare plate.",
+      "Heat a large fryign pan wiht a drizzle of oil and brown meatballs on all sides for 5-7 minutes. Remove from pan.",
+      "In same pan add the sauce ingredients and simmer for 10 minutes. Add meatballs back to the pan and simmer for another 5 minutes.",
+      "Cut rolls in half, and brush with a bit of oil then grill in oven for a few minutes until getting crispy.",
+      "Remove rolls from oven, and spoon over meatballs in sauce and sprinkle with cheese. Return to oven for a few minutes until cheese is melted."
+    ],
+    "notes": [
+      null
+    ],
+    "attribution": ""
+  },
+  {
     "id": "quesadillas",
     "title": "Pulled pork quesadillas",
     "section": "Longer Recipes",
