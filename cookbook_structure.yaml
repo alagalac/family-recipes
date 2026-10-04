@@ -69,6 +69,7 @@ sections:
     recipes:
       - "focaccia-bread"
       - "pasta-salad"
+      - "potato-salad"
       - "lentil-pomegranate-salad"
       - "oriental-coleslaw"
   - name: "Sides"
